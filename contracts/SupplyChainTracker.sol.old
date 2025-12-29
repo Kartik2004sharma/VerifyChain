@@ -1,0 +1,653 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+
+/**
+ * @title SupplyChainTracker
+ * @dev Smart contract for tracking products through supply chain
+ * @notice Records immutable supply chain checkpoints on blockchain
+ */
+contract SupplyChainTracker is Ownable, ReentrancyGuard {
+    
+    // ============ Structs ============
+    
+    struct Product {
+        string productId;
+        string name;
+        string serialNumber;
+        string batchNumber;
+        address manufacturer;
+        uint256 createdAt;
+        string currentLocation;
+        address currentCustodian;
+        string status; // "Authentic", "Suspicious", "Flagged", "Delivered"
+        uint256 lastUpdated;
+        bool isVerified;
+        uint256 verificationTimestamp;
+    }
+    
+    struct TrackingEvent {
+        address actor;
+        string location;
+        string eventType; // "Created", "Shipped", "Received", "Inspected", "Flagged"
+        string notes;
+        uint256 timestamp;
+        uint256 blockNumber;
+        bool isAnomalous;
+    }
+    
+    struct ChainOfCustody {
+        address[] custodians;
+        uint256[] timestamps;
+        string[] locations;
+        string[] roles;
+    }
+    
+    struct AnomalyAlert {
+        string productId;
+        address flaggedBy;
+        string anomalyType; // "Unauthorized Custody", "Wrong Route", "Time Gap", "Duplicate Location"
+        string description;
+        uint256 timestamp;
+        bool resolved;
+    }
+    
+    struct SupplyChainMetrics {
+        uint256 totalProducts;
+        uint256 verifiedProducts;
+        uint256 suspiciousProducts;
+        uint256 flaggedProducts;
+        uint256 totalEvents;
+        uint256 totalAnomalies;
+        uint256 averageTransitTime;
+    }
+    
+    // ============ State Variables ============
+    
+    mapping(string => Product) private products;
+    mapping(string => TrackingEvent[]) private productTrackingHistory;
+    mapping(string => ChainOfCustody) private custodyChain;
+    mapping(string => AnomalyAlert[]) private productAnomalies;
+    mapping(address => string[]) private manufacturerProducts;
+    mapping(address => string[]) private actorProducts;
+    mapping(address => bool) private registeredActors;
+    mapping(address => string) private actorRole;
+    mapping(string => bool) private flaggedProducts;
+    mapping(string => uint256) private anomalyCount;
+    
+    uint256 private totalProductsGlobal;
+    uint256 private totalEventsGlobal;
+    uint256 private totalAnomaliesGlobal;
+    uint256 private totalFlaggedProductsGlobal;
+    uint256 private totalVerifiedProducts;
+    
+    address[] private registeredActorsList;
+    
+    // ============ Events ============
+    
+    event ProductCreated(
+        string indexed productId,
+        string name,
+        string serialNumber,
+        address indexed manufacturer,
+        uint256 timestamp
+    );
+    
+    event TrackingEventRecorded(
+        string indexed productId,
+        address indexed actor,
+        string eventType,
+        string location,
+        bool isAnomalous,
+        uint256 timestamp
+    );
+    
+    event CustodyTransferred(
+        string indexed productId,
+        address indexed fromCustodian,
+        address indexed toCustodian,
+        string location,
+        uint256 timestamp
+    );
+    
+    event ProductStatusUpdated(
+        string indexed productId,
+        string newStatus,
+        string location,
+        uint256 timestamp
+    );
+    
+    event ProductVerified(
+        string indexed productId,
+        address indexed verifier,
+        uint256 timestamp
+    );
+    
+    event AnomalyDetected(
+        string indexed productId,
+        string anomalyType,
+        address indexed flaggedBy,
+        uint256 timestamp
+    );
+    
+    event ProductFlagged(
+        string indexed productId,
+        string reason,
+        uint256 timestamp
+    );
+    
+    event ActorRegistered(
+        address indexed actor,
+        string role,
+        uint256 timestamp
+    );
+    
+    // ============ Modifiers ============
+    
+    modifier onlyRegisteredActor() {
+        require(registeredActors[msg.sender], "Actor not registered");
+        _;
+    }
+    
+    modifier productExists(string memory productId) {
+        require(bytes(products[productId].productId).length > 0, "Product does not exist");
+        _;
+    }
+    
+    modifier validString(string memory str) {
+        require(bytes(str).length > 0 && bytes(str).length <= 500, "Invalid string");
+        _;
+    }
+    
+    // ============ Constructor ============
+    
+    constructor() Ownable(msg.sender) {
+        registeredActors[msg.sender] = true;
+        actorRole[msg.sender] = "Admin";
+        registeredActorsList.push(msg.sender);
+    }
+    
+    // ============ Actor Management ============
+    
+    function registerActor(address actor, string memory role) 
+        external 
+        onlyOwner 
+        validString(role) 
+    {
+        require(actor != address(0), "Invalid address");
+        if (!registeredActors[actor]) {
+            registeredActors[actor] = true;
+            registeredActorsList.push(actor);
+        }
+        actorRole[actor] = role;
+        emit ActorRegistered(actor, role, block.timestamp);
+    }
+    
+    function unregisterActor(address actor) external onlyOwner {
+        require(actor != address(0), "Invalid address");
+        registeredActors[actor] = false;
+    }
+    
+    function isActorRegistered(address actor) external view returns (bool) {
+        return registeredActors[actor];
+    }
+    
+    function getActorRole(address actor) external view returns (string memory) {
+        return actorRole[actor];
+    }
+    
+    // ============ Product Management ============
+    
+    function createProduct(
+        string memory productId,
+        string memory name,
+        string memory serialNumber,
+        string memory batchNumber,
+        string memory initialLocation
+    ) 
+        external 
+        onlyRegisteredActor 
+        validString(productId)
+        validString(name)
+        validString(serialNumber)
+        validString(initialLocation)
+    {
+        require(bytes(products[productId].productId).length == 0, "Product exists");
+        
+        Product memory newProduct = Product({
+            productId: productId,
+            name: name,
+            serialNumber: serialNumber,
+            batchNumber: batchNumber,
+            manufacturer: msg.sender,
+            createdAt: block.timestamp,
+            currentLocation: initialLocation,
+            currentCustodian: msg.sender,
+            status: "Authentic",
+            lastUpdated: block.timestamp,
+            isVerified: false,
+            verificationTimestamp: 0
+        });
+        
+        products[productId] = newProduct;
+        manufacturerProducts[msg.sender].push(productId);
+        actorProducts[msg.sender].push(productId);
+        
+        TrackingEvent memory trackingEvent = TrackingEvent({
+            actor: msg.sender,
+            location: initialLocation,
+            eventType: "Created",
+            notes: "Product created",
+            timestamp: block.timestamp,
+            blockNumber: block.number,
+            isAnomalous: false
+        });
+        
+        productTrackingHistory[productId].push(trackingEvent);
+        
+        custodyChain[productId].custodians.push(msg.sender);
+        custodyChain[productId].timestamps.push(block.timestamp);
+        custodyChain[productId].locations.push(initialLocation);
+        custodyChain[productId].roles.push(actorRole[msg.sender]);
+        
+        totalProductsGlobal++;
+        totalEventsGlobal++;
+        
+        emit ProductCreated(productId, name, serialNumber, msg.sender, block.timestamp);
+        emit TrackingEventRecorded(productId, msg.sender, "Created", initialLocation, false, block.timestamp);
+    }
+    
+    function recordTrackingEvent(
+        string memory productId,
+        string memory eventType,
+        string memory location,
+        string memory notes
+    ) 
+        external 
+        onlyRegisteredActor 
+        productExists(productId)
+        validString(eventType)
+        validString(location)
+    {
+        bool isAnomalous = _detectAnomaly(productId, location);
+        
+        TrackingEvent memory trackingEvent = TrackingEvent({
+            actor: msg.sender,
+            location: location,
+            eventType: eventType,
+            notes: notes,
+            timestamp: block.timestamp,
+            blockNumber: block.number,
+            isAnomalous: isAnomalous
+        });
+        
+        productTrackingHistory[productId].push(trackingEvent);
+        products[productId].currentLocation = location;
+        products[productId].lastUpdated = block.timestamp;
+        
+        if (isAnomalous) {
+            anomalyCount[productId]++;
+            totalAnomaliesGlobal++;
+            if (anomalyCount[productId] >= 3) {
+                flagProduct(productId, "Multiple anomalies detected");
+            }
+        }
+        
+        if (!_hasProduct(msg.sender, productId)) {
+            actorProducts[msg.sender].push(productId);
+        }
+        
+        totalEventsGlobal++;
+        
+        emit TrackingEventRecorded(productId, msg.sender, eventType, location, isAnomalous, block.timestamp);
+    }
+    
+    function transferCustody(
+        string memory productId,
+        address newCustodian,
+        string memory location,
+        string memory notes
+    ) 
+        external 
+        onlyRegisteredActor 
+        productExists(productId)
+        nonReentrant
+    {
+        require(newCustodian != address(0), "Invalid custodian");
+        require(registeredActors[newCustodian], "Recipient not registered");
+        require(products[productId].currentCustodian == msg.sender, "Only current custodian");
+        
+        bool isAnomalous = _detectAnomaly(productId, location);
+        
+        TrackingEvent memory trackingEvent = TrackingEvent({
+            actor: msg.sender,
+            location: location,
+            eventType: "Shipped",
+            notes: notes,
+            timestamp: block.timestamp,
+            blockNumber: block.number,
+            isAnomalous: isAnomalous
+        });
+        
+        productTrackingHistory[productId].push(trackingEvent);
+        
+        custodyChain[productId].custodians.push(newCustodian);
+        custodyChain[productId].timestamps.push(block.timestamp);
+        custodyChain[productId].locations.push(location);
+        custodyChain[productId].roles.push(actorRole[newCustodian]);
+        
+        address oldCustodian = products[productId].currentCustodian;
+        products[productId].currentCustodian = newCustodian;
+        products[productId].currentLocation = location;
+        products[productId].status = "Authentic";
+        products[productId].lastUpdated = block.timestamp;
+        
+        if (isAnomalous) {
+            anomalyCount[productId]++;
+            totalAnomaliesGlobal++;
+            AnomalyAlert memory alert = AnomalyAlert({
+                productId: productId,
+                flaggedBy: msg.sender,
+                anomalyType: "Unauthorized Custody",
+                description: notes,
+                timestamp: block.timestamp,
+                resolved: false
+            });
+            productAnomalies[productId].push(alert);
+            emit AnomalyDetected(productId, "Unauthorized Custody", msg.sender, block.timestamp);
+        }
+        
+        if (!_hasProduct(newCustodian, productId)) {
+            actorProducts[newCustodian].push(productId);
+        }
+        
+        totalEventsGlobal++;
+        
+        emit CustodyTransferred(productId, oldCustodian, newCustodian, location, block.timestamp);
+        emit TrackingEventRecorded(productId, msg.sender, "Shipped", location, isAnomalous, block.timestamp);
+    }
+    
+    function verifyProduct(
+        string memory productId,
+        bool isAuthentic
+    ) 
+        external 
+        onlyOwner 
+        productExists(productId)
+    {
+        products[productId].isVerified = true;
+        products[productId].verificationTimestamp = block.timestamp;
+        
+        if (isAuthentic) {
+            products[productId].status = "Authentic";
+            totalVerifiedProducts++;
+        } else {
+            flagProduct(productId, "Failed verification");
+        }
+        
+        emit ProductVerified(productId, msg.sender, block.timestamp);
+    }
+    
+    function flagProduct(
+        string memory productId,
+        string memory reason
+    ) 
+        public 
+        onlyRegisteredActor 
+        productExists(productId)
+        validString(reason)
+    {
+        require(!flaggedProducts[productId], "Already flagged");
+        
+        flaggedProducts[productId] = true;
+        products[productId].status = "Flagged";
+        totalFlaggedProductsGlobal++;
+        
+        AnomalyAlert memory alert = AnomalyAlert({
+            productId: productId,
+            flaggedBy: msg.sender,
+            anomalyType: "Product Flagged",
+            description: reason,
+            timestamp: block.timestamp,
+            resolved: false
+        });
+        productAnomalies[productId].push(alert);
+        
+        emit ProductFlagged(productId, reason, block.timestamp);
+    }
+    
+    function updateProductStatus(
+        string memory productId,
+        string memory newStatus,
+        string memory location
+    ) 
+        external 
+        onlyRegisteredActor 
+        productExists(productId)
+        validString(newStatus)
+        validString(location)
+    {
+        require(
+            keccak256(abi.encodePacked(newStatus)) == keccak256(abi.encodePacked("Authentic")) ||
+            keccak256(abi.encodePacked(newStatus)) == keccak256(abi.encodePacked("Suspicious")) ||
+            keccak256(abi.encodePacked(newStatus)) == keccak256(abi.encodePacked("Flagged")) ||
+            keccak256(abi.encodePacked(newStatus)) == keccak256(abi.encodePacked("Delivered")),
+            "Invalid status"
+        );
+        
+        products[productId].status = newStatus;
+        products[productId].currentLocation = location;
+        products[productId].lastUpdated = block.timestamp;
+        
+        emit ProductStatusUpdated(productId, newStatus, location, block.timestamp);
+    }
+    
+    // ============ Anomaly Detection ============
+    
+    function _detectAnomaly(string memory productId, string memory newLocation) 
+        internal 
+        view 
+        returns (bool) 
+    {
+        if (productTrackingHistory[productId].length == 0) {
+            return false;
+        }
+        
+        TrackingEvent[] memory history = productTrackingHistory[productId];
+        uint256 lastIndex = history.length - 1;
+        uint256 timeSinceLastEvent = block.timestamp - history[lastIndex].timestamp;
+        
+        // Flag if gap > 30 days (2592000 seconds)
+        if (timeSinceLastEvent > 2592000) {
+            return true;
+        }
+        
+        // Check for immediate re-location (impossible travel)
+        if (timeSinceLastEvent < 3600 && 
+            keccak256(abi.encodePacked(history[lastIndex].location)) != keccak256(abi.encodePacked(newLocation))) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    // ============ View Functions ============
+    
+    function getProduct(string memory productId) 
+        external 
+        view 
+        productExists(productId)
+        returns (Product memory) 
+    {
+        return products[productId];
+    }
+    
+    function getTrackingHistory(string memory productId) 
+        external 
+        view 
+        productExists(productId)
+        returns (TrackingEvent[] memory) 
+    {
+        return productTrackingHistory[productId];
+    }
+    
+    function getChainOfCustody(string memory productId) 
+        external 
+        view 
+        productExists(productId)
+        returns (address[] memory custodians, uint256[] memory timestamps, string[] memory locations, string[] memory roles) 
+    {
+        ChainOfCustody memory chain = custodyChain[productId];
+        return (chain.custodians, chain.timestamps, chain.locations, chain.roles);
+    }
+    
+    function getProductAnomalies(string memory productId) 
+        external 
+        view 
+        productExists(productId)
+        returns (AnomalyAlert[] memory) 
+    {
+        return productAnomalies[productId];
+    }
+    
+    function isFlagged(string memory productId) 
+        external 
+        view 
+        returns (bool) 
+    {
+        return flaggedProducts[productId];
+    }
+    
+    function getSupplyChainMetrics() 
+        external 
+        view 
+        returns (
+            uint256 totalProducts,
+            uint256 verifiedProducts,
+            uint256 suspiciousProducts,
+            uint256 flaggedProducts,
+            uint256 totalEvents,
+            uint256 totalAnomalies
+        ) 
+    {
+        uint256 suspiciousProducts = 0;
+        // Calculate suspicious products (those with anomalies but not flagged)
+        
+        return (
+            totalProductsGlobal,
+            totalVerifiedProducts,
+            suspiciousProducts,
+            totalFlaggedProductsGlobal,
+            totalEventsGlobal,
+            totalAnomaliesGlobal
+        );
+    }
+    
+    function getManufacturerProducts(address manufacturer) 
+        external 
+        view 
+        returns (string[] memory) 
+    {
+        return manufacturerProducts[manufacturer];
+    }
+    
+    function getActorProducts(address actor) 
+        external 
+        view 
+        returns (string[] memory) 
+    {
+        return actorProducts[actor];
+    }
+    
+    function getCurrentLocation(string memory productId) 
+        external 
+        view 
+        productExists(productId)
+        returns (string memory) 
+    {
+        return products[productId].currentLocation;
+    }
+    
+    function getCurrentCustodian(string memory productId) 
+        external 
+        view 
+        productExists(productId)
+        returns (address) 
+    {
+        return products[productId].currentCustodian;
+    }
+    
+    function getProductStatus(string memory productId) 
+        external 
+        view 
+        productExists(productId)
+        returns (string memory) 
+    {
+        return products[productId].status;
+    }
+    
+    function getEventCount(string memory productId) 
+        external 
+        view 
+        productExists(productId)
+        returns (uint256) 
+    {
+        return productTrackingHistory[productId].length;
+    }
+    
+    function getAnomalyCount(string memory productId) 
+        external 
+        view 
+        returns (uint256) 
+    {
+        return anomalyCount[productId];
+    }
+    
+    function getRegisteredActors() 
+        external 
+        view 
+        returns (address[] memory) 
+    {
+        return registeredActorsList;
+    }
+    
+    function getGlobalStats() 
+        external 
+        view 
+        returns (
+            uint256 totalProducts,
+            uint256 totalEvents,
+            uint256 totalAnomalies,
+            uint256 totalFlagged,
+            uint256 totalVerified,
+            uint256 totalActors
+        ) 
+    {
+        return (
+            totalProductsGlobal,
+            totalEventsGlobal,
+            totalAnomaliesGlobal,
+            totalFlaggedProductsGlobal,
+            totalVerifiedProducts,
+            registeredActorsList.length
+        );
+    }
+    
+    // ============ Internal Helpers ============
+    
+    function _hasProduct(address actor, string memory productId) 
+        internal 
+        view 
+        returns (bool) 
+    {
+        string[] memory actorProductsList = actorProducts[actor];
+        for (uint256 i = 0; i < actorProductsList.length; i++) {
+            if (keccak256(abi.encodePacked(actorProductsList[i])) == keccak256(abi.encodePacked(productId))) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
