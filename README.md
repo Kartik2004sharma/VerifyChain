@@ -278,6 +278,8 @@ Make sure to set these in your deployment platform:
 
 **Kartik Sharma**
 - GitHub: [@Kartik2004sharma](https://github.com/Kartik2004sharma)
+- GitHub: [@JeeyaSharma](https://github.com/JeeyaSharma)
+
 
 ---
 
