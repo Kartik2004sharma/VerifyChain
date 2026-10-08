@@ -5,7 +5,7 @@
 | [verifychain-intro.mp4](verifychain-intro.mp4)               | 23-second, 1920×1080, 30 fps intro; H.264 video with AAC audio |
 | [verifychain-intro-poster.jpg](verifychain-intro-poster.jpg) | Settled opening frame, also baked into the video's first frame |
 
-GitHub-hosted player: https://github.com/user-attachments/assets/5c672d81-3517-4d91-a5ab-e75984ca00b1
+GitHub-hosted player: https://github.com/user-attachments/assets/87f9a80a-735d-4f73-9c0f-ff655a58f55c
 
 The recording shows the published VerifyChain interface on 9 October 2026 and an actual metadata review with labeled sample input. No wallet signature, metadata upload, or blockchain write is presented as completed. The closing scene discloses that this is a Sepolia preview with live services not configured.
 
