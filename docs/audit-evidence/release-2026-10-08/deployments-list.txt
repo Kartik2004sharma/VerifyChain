@@ -1,0 +1,14 @@
+Vercel CLI 63.1.0
+Fetching deployments in kartik2004sharmas-projects
+> Deployments for kartik2004sharmas-projects/verifychain [330ms]
+
+  Age     Project                                    Deployment                                                              Status         Environment     Duration     Username             
+  2m      kartik2004sharmas-projects/verifychain     https://verifychain-cc3n46ngt-kartik2004sharmas-projects.vercel.app     ● Building     Production      --           kartik2004sharma     
+  11m     kartik2004sharmas-projects/verifychain     https://verifychain-325em6wfd-kartik2004sharmas-projects.vercel.app     ● Ready        Preview         4m           kartik2004sharma     
+  20m     kartik2004sharmas-projects/verifychain     https://verifychain-j2760fmn7-kartik2004sharmas-projects.vercel.app     ● Ready        Preview         4m           kartik2004sharma     
+  20m     kartik2004sharmas-projects/verifychain     https://verifychain-6yafovfpn-kartik2004sharmas-projects.vercel.app     ● Ready        Production      3m           kartik2004sharma     
+
+https://verifychain-cc3n46ngt-kartik2004sharmas-projects.vercel.app
+https://verifychain-325em6wfd-kartik2004sharmas-projects.vercel.app
+https://verifychain-j2760fmn7-kartik2004sharmas-projects.vercel.app
+https://verifychain-6yafovfpn-kartik2004sharmas-projects.vercel.app

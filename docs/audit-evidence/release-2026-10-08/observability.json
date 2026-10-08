@@ -1,0 +1,11 @@
+{
+  "staged_runtime_error_scan": {
+    "exit": 0,
+    "entries": 0,
+    "scope": "Exact staged deployment during smoke checks, last hour, at most 50 error entries.",
+    "report": "staged-error-log.jsonl"
+  },
+  "drains_for_project": 0,
+  "monitoring": "Vercel request/runtime logs inspected. No external alerting or field performance integration configured.",
+  "live_services": "Readiness and lookup 503 are expected until dependencies are configured."
+}

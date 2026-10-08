@@ -11,7 +11,7 @@
     "skipped": 6,
     "failed": 0,
     "reviewed_images": 42,
-    "report": "browser.txt",
+    "report": "browser-keyboard-final.txt",
     "skip_reason": "Duplicate visual cases outside baseline viewports; route behavior runs on all five projects."
   },
   "production_dependencies": {
@@ -35,11 +35,16 @@
   },
   "independent_ci": {
     "first_run": "https://github.com/Kartik2004sharma/VerifyChain/actions/runs/37813644610",
-    "result": "133 browser checks passed; one WebKit focus test failed and was repaired to use native Option-Tab plus exact Etherscan focus assertion. No application code or baseline changed.",
+    "result": "Final independent run succeeded, including all 134 browser checks and both three-run performance budgets.",
     "focused_repair_passes": 5,
-    "final_run": "pending"
+    "final_run": "https://github.com/Kartik2004sharma/VerifyChain/actions/runs/37814803951"
   },
-  "hosting": "Staged production build READY; all 13 authenticated route/API smoke requests passed expected statuses; no runtime errors found.",
+  "hosting": {
+    "production_origin": "https://verifychain-murex.vercel.app",
+    "public_browser_passed": 134,
+    "live_services_ready": false,
+    "publication_summary": "publication-summary.json"
+  },
   "performance": {
     "report": "performance-summary.json",
     "mobile": {

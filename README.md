@@ -2,17 +2,17 @@
 
 An evidence-first product passport application on **Ethereum Sepolia testnet**. Consumers inspect registrations without a wallet. Manufacturers review canonical metadata, authorize a server-side IPFS upload, and explicitly sign a registration. Authorized handlers record checkpoints. Registration does **not** certify a brand or the physical item.
 
-Repository: [Kartik2004sharma/VerifyChain](https://github.com/Kartik2004sharma/VerifyChain).
+**Website:** [verifychain-murex.vercel.app](https://verifychain-murex.vercel.app) · **Repository:** [Kartik2004sharma/VerifyChain](https://github.com/Kartik2004sharma/VerifyChain).
 
 ## Current release state
 
-The application and repaired contract source are implemented locally. There is **no verified hosted release or active Sepolia deployment for this source**. `deployments/manifest.json` intentionally has no active addresses. Old addresses and historical files are preserved for investigation, not silently reused. Lookups show unavailable and writes stay disabled until configuration is validated.
+The reviewed website is **published on Vercel**, with 134 public-hosted browser checks passing. Live blockchain/storage operations remain unavailable: there is **no active Sepolia deployment for this source or configured RPC/Redis/Pinata service set**. `deployments/manifest.json` intentionally has no active addresses. Old addresses and historical files are preserved for investigation, not silently reused. Lookups show unavailable and writes stay disabled until configuration is validated.
 
 Read [implementation progress](docs/IMPLEMENTATION_PROGRESS.md), [the audit](docs/PROJECT_AUDIT.md) and [all 53 acceptance requirements](docs/QA_ACCEPTANCE_MATRIX.md). A successful test fixture is not public-chain evidence.
 
 ## Local verification
 
-Clean install, lint, strict types and production build pass. Tests: 42 unit/API, 20 Solidity, 5 real local-chain integration and **134 browser/visual checks passed**, covering 42 reviewed images; 6 duplicate screenshot cases deliberately skip outside the two baseline viewports. 8 October three-run Lighthouse medians: mobile **99/100/100/100**, desktop **100/100/100/100** (performance/accessibility/best-practices/SEO). Both profiles pass their unchanged budgets; the earlier mobile failure is retained in the dated audit history. The 53-row ledger records **27 local passes, 21 partial requirements and 5 blocked release requirements**. This is local evidence, not hosted/Sepolia acceptance or an independent audit. [Latest verification evidence](docs/audit-evidence/release-2026-10-08/preflight-summary.json).
+Clean install, lint, strict types and production build pass. Tests: 42 unit/API, 20 Solidity, 5 real local-chain integration and **134 browser/visual checks passed**, covering 42 reviewed images; 6 duplicate screenshot cases deliberately skip outside the two baseline viewports. 8 October three-run Lighthouse medians: mobile **99/100/100/100**, desktop **100/100/100/100** (performance/accessibility/best-practices/SEO). Both profiles pass their unchanged budgets; the earlier mobile failure is retained in the dated audit history. The 53-row ledger records **30 scoped passes, 21 partial requirements and 2 blocked release requirements**. The independent GitHub CI run and all 134 public-hosted browser checks also pass. Service/wallet fixtures are test-only; this is not completed live Sepolia acceptance or an independent security audit. [Latest verification evidence](docs/audit-evidence/release-2026-10-08/publication-summary.json).
 
 ## Start and validate
 
@@ -90,7 +90,7 @@ rtk npm run check
 
 The deploy script saves real receipts, blocks, code/source/ABI hashes and compiler settings into a new history file. It preserves the active manifest. Activation verifies the deployed code and receipt against compiled source identity before switching the manifest. Archive the previous manifest before deliberate activation. Do not blindly rerun a partially completed deployment; reconcile submitted hashes first.
 
-Vercel preparation: import this repository, use Node 24, `npm ci` and `npm run build`, and set server/public variables separately for Preview and Production. Set `APP_ORIGIN` to the exact reviewed preview origin for testing, then to the production origin for promotion. Do not configure deployment keys on the host. No paid resource or public publication has been performed by this build.
+Vercel preparation: import this repository, use Node 24, `npm ci` and `npm run build`, and set server/public variables separately for Preview and Production. Set `APP_ORIGIN` to the exact reviewed preview origin for testing, then to the production origin for promotion. Do not configure deployment keys on the host. The website is published on the owner’s existing Vercel scope; no paid resource or testnet contract deployment was created.
 
 After a reviewed preview exists:
 

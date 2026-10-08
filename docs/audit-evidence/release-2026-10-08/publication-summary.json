@@ -1,0 +1,70 @@
+{
+  "published_at_utc": "2026-10-08T17:25:58.206688+00:00",
+  "origin": "https://verifychain-murex.vercel.app",
+  "target": "production",
+  "status": "READY",
+  "framework": "Next.js",
+  "ci_verified_revision": "45d2bb818b790d0562c6be86e02f9c3ddd38a569",
+  "independent_ci": {
+    "status": "success",
+    "url": "https://github.com/Kartik2004sharma/VerifyChain/actions/runs/37814803951",
+    "browser_passes": 134,
+    "visual_images": 42,
+    "mobile_and_desktop_budgets": "passed"
+  },
+  "local_quality": {
+    "unit_api": 42,
+    "solidity": 20,
+    "local_chain_integration": 5,
+    "clean_install": true,
+    "lint_types_build": true,
+    "production_audit_high": 0,
+    "production_audit_critical": 0,
+    "production_audit_moderate": 23
+  },
+  "local_lighthouse_medians": {
+    "mobile": [
+      99,
+      100,
+      100,
+      100
+    ],
+    "desktop": [
+      100,
+      100,
+      100,
+      100
+    ]
+  },
+  "public_browser": {
+    "exit": 0,
+    "passed": 134,
+    "skipped": 6,
+    "failed": 0,
+    "report": "public-browser.txt",
+    "service_wallet_fixtures": "Test-only boundaries; does not prove live dependencies or real signatures."
+  },
+  "public_http": {
+    "report": "public-hosted-smoke.json",
+    "pages_live": true,
+    "login_required": false,
+    "liveness": 200,
+    "readiness": 503,
+    "lookup": 503
+  },
+  "runtime_errors": 0,
+  "external_alerting": "not configured",
+  "live_integration_release": "blocked; dedicated Sepolia RPC, matching deployed contracts, Redis, Pinata and user-signed workflow evidence absent",
+  "credentials": "Real environment files and local authentication material excluded from Git and uploads; no secrets published.",
+  "production_origin_configured": true,
+  "public_deployment_report": "public-deployment.json",
+  "acceptance": {
+    "scoped_pass": 30,
+    "partial": 21,
+    "blocked": 2,
+    "blocked_ids": [
+      "E03",
+      "E04"
+    ]
+  }
+}
