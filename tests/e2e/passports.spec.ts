@@ -383,7 +383,10 @@ test("camera denial leaves manual entry usable", async ({ page }) => {
   await expect(page.getByLabel("Product ID", { exact: true })).toBeVisible();
 });
 
-test("dark theme result and keyboard evidence inspection", async ({ page }) => {
+test("dark theme result and keyboard evidence inspection", async ({
+  page,
+  browserName,
+}) => {
   await service(page);
   await page.addInitScript(() => localStorage.setItem("theme", "dark"));
   await page.route("**/api/blockchain/verify", (route) =>
@@ -404,10 +407,12 @@ test("dark theme result and keyboard evidence inspection", async ({ page }) => {
       (v) => v.impact === "serious" || v.impact === "critical",
     ),
   ).toEqual([]);
-  await page.keyboard.press("Tab");
-  expect(await page.evaluate(() => document.activeElement?.tagName)).not.toBe(
-    "BODY",
-  );
+  await page.getByText("Inspect blockchain evidence", { exact: false }).focus();
+  // Safari requires Option–Tab to include links in keyboard navigation.
+  await page.keyboard.press(browserName === "webkit" ? "Alt+Tab" : "Tab");
+  await expect(
+    page.getByRole("link", { name: "Inspect registry on Etherscan" }),
+  ).toBeFocused();
 });
 
 test("skip link is usable by keyboard and API not-found shows no registrant", async ({

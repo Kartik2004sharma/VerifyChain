@@ -1,0 +1,18 @@
+{
+  "id": "dpl_GjAnGxKUGPcc39CP1YxNdTrfPQF4",
+  "url": "verifychain-6yafovfpn-kartik2004sharmas-projects.vercel.app",
+  "name": "verifychain",
+  "target": "production",
+  "readyState": "READY",
+  "createdAt": 1791479017918,
+  "buildingAt": 1791479018961,
+  "ready": 1791479181747,
+  "alias": [
+    "verifychain-kartik2004sharmas-projects.vercel.app"
+  ],
+  "aliasAssigned": true,
+  "projectId": "prj_mFh66zxPy7OT9dKT5XDEIV4XHKaa",
+  "commit": "ab16c47fc915836ce9fd22788b28290d28fed414",
+  "branch": "codex/verifychain-release",
+  "build_duration_ms": 162786
+}

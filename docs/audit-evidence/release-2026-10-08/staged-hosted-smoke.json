@@ -1,0 +1,164 @@
+{
+  "origin": "https://verifychain-6yafovfpn-kartik2004sharmas-projects.vercel.app",
+  "checked_at_utc": "2026-10-08T17:07:56.114251+00:00",
+  "authentication": "CLI automatic deployment protection bypass; credentials never recorded",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-MzdiYzk4ZmEtNTU5Ny00MzMwLWE1N2ItMDI0NjNjNzdiMTQw' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/verify",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-ZTg4ZGZhMGYtMTM1My00OTM5LTgyNGItNjJlMjQwMGIyMDkx' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/dashboard",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-NGI5ODVlMTQtNTZlYi00NjJiLWJlYTUtNDFjMzFkYjJhNjgy' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/dashboard/register-product",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-Njg1MmQ4ZGMtZjlkMy00NmMzLThiYjQtMzE1OWM1OWMzZGVk' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/dashboard/register-manufacturer",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-YjQzMmU5NzYtZGI2YS00NmQwLWE4YzItMWExYjRiNGNhMzI0' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/dashboard/supply-chain",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-N2NiYjYyNTQtMTRkNS00YmMwLWE1NjctMzc4ZDZlZTg2MTBh' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/dashboard/verification-history",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-NDJjYmU3YjItNWJiNy00NGFhLWIyNzgtNGQwM2FkNGU3ZTI1' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/dashboard/analytics",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-YjI0ZWExZjYtNmQ0OS00MzQ2LWI4ZTEtNjhjYmNjMjgwMWRk' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/dashboard/verification-analytics",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-MmI1Nzc2OTMtYTg2Yy00NDYzLWE1Y2YtOGY5YzgzNjA2NGRh' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/dashboard/settings",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-Y2I4YmUyMjctYjE3YS00OWI3LWJhYzAtZjU5MjI5MDAxNjU0' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ethereum-sepolia-rpc.publicnode.com; media-src 'self' blob:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/api/health/live",
+      "status": 200,
+      "expected": 200,
+      "headers": {
+        "content-security-policy": null,
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/api/health/ready",
+      "status": 503,
+      "expected": 503,
+      "headers": {
+        "content-security-policy": null,
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    },
+    {
+      "path": "/api/blockchain/verify",
+      "status": 503,
+      "expected": 503,
+      "headers": {
+        "content-security-policy": null,
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+        "strict-transport-security": "max-age=31536000; includeSubDomains"
+      }
+    }
+  ],
+  "live_services_ready": false
+}

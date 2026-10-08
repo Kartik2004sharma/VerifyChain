@@ -1,0 +1,3 @@
+Resolving deployment "dpl_GjAnGxKUGPcc39CP1YxNdTrfPQF4"
+Fetching project "prj_mFh66zxPy7OT9dKT5XDEIV4XHKaa"
+Fetching logs...

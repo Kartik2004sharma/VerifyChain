@@ -1,7 +1,7 @@
 {
   "checked_at_utc": "2026-10-08T17:01:20.424565+00:00",
   "base_commit": "59ae343b830b33239becf7814d93fa815a46123d",
-  "state": "reviewed working tree before publication",
+  "state": "Published application source plus Safari keyboard test repair; UI source unchanged",
   "node": "24.19.0",
   "files": {
     ".env.contracts.example": "7ed0b693db01ae7f9aefe216d6ee31ca6ba44bdcf311eb7654596e2814fe0d96",
@@ -77,7 +77,7 @@
     "scripts/release-check.mjs": "ed1b69884244b0dc378b89f99b6832d531cd0f7b3c3d41d71cce278bd9054296",
     "scripts/review-redesign.mjs": "1ba274df417b0d2fca8f571e830beea8ae23e4b318945bd7862bad307d63f318",
     "test/contracts.js": "ab928f6bed79b3159792fef0d11e91cd248e61ef8cf5518644c635a09a34cd5b",
-    "tests/e2e/passports.spec.ts": "02ba5e1788788ab1052cf37f0b694dbd9fb422aaa63441bac284f7f24008dc32",
+    "tests/e2e/passports.spec.ts": "0411d8f9c25fb6c8277718b9437e9c6455f88fbda1716ce5b8d451d486149815",
     "tests/e2e/visual.spec.ts": "e0130b96bf8d48966f239721cab26f146bcf9f3f9b60e35f3b7c7b080ab15bc0",
     "tests/integration/passport.test.ts": "70d2dc46d6e9926eda79426b48f0a6b81bf7d607d73cdecc364e71fb6dd9c6be",
     "tests/unit/api.test.ts": "7166ea61493d676affb4d13eed56a0eecae8c9cc4c91f1e9ac1c047054084e6f",
@@ -89,6 +89,6 @@
     "vitest.config.ts": "b440536f6013df1423f920fdc6c2484eb226e5d6798ec9848c39254eeb0692fb",
     "vitest.integration.config.ts": "e350d87e16f15cbae16732eae09a3b5cf59d39c3ec7bf63ee59f1b64a344e60b"
   },
-  "source_sha256": "7d190079301d126a8172e98a372ee82edba3b7ae2d46b6339586e80bd63bea17",
+  "source_sha256": "f90185fa0d882146bdb87df5c2d7bdea3e406c634650398e0383cb01c22faca7",
   "fingerprint_algorithm": "sha256 of Python json.dumps(files, sort_keys=True) UTF-8"
 }

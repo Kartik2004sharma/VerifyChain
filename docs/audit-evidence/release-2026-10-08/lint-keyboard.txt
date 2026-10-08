@@ -1,0 +1,4 @@
+
+> verifychain@1.0.0 lint
+> eslint app components lib tests scripts middleware.ts next.config.ts
+
