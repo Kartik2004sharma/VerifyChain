@@ -21,7 +21,7 @@ VerifyChain connects a product ID or QR label to its registration, metadata comm
 
 ## Product intro
 
-https://github.com/user-attachments/assets/5c672d81-3517-4d91-a5ab-e75984ca00b1
+https://github.com/user-attachments/assets/87f9a80a-735d-4f73-9c0f-ff655a58f55c
 
 **23 seconds · 1080p · sound included.** The walkthrough shows the published website and an actual metadata-review interaction using clearly labeled sample input. It does not show a completed upload or blockchain transaction.
 
