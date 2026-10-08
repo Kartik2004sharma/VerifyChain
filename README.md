@@ -1,105 +1,241 @@
-# VerifyChain
+<h1 align="center">VerifyChain</h1>
 
-An evidence-first product passport application on **Ethereum Sepolia testnet**. Consumers inspect registrations without a wallet. Manufacturers review canonical metadata, authorize a server-side IPFS upload, and explicitly sign a registration. Authorized handlers record checkpoints. Registration does **not** certify a brand or the physical item.
+<p align="center"><strong>Know the record. Make your own judgment.</strong></p>
+<p align="center">Evidence-first product passports on Ethereum Sepolia.</p>
 
-**Website:** [verifychain-murex.vercel.app](https://verifychain-murex.vercel.app) · **Repository:** [Kartik2004sharma/VerifyChain](https://github.com/Kartik2004sharma/VerifyChain).
+<p align="center">
+  <a href="https://verifychain-murex.vercel.app">Explore the website</a> ·
+  <a href="#product-intro">Watch the intro</a> ·
+  <a href="#quick-start">Run locally</a> ·
+  <a href="docs/RELEASE_HANDOFF.md">Release guide</a>
+</p>
 
-## Current release state
+[![Quality checks](https://github.com/Kartik2004sharma/VerifyChain/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/Kartik2004sharma/VerifyChain/actions/workflows/quality.yml)
+![Next.js 15](https://img.shields.io/badge/Next.js-15-0e1629)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-2455ec)
+![Network: Sepolia](https://img.shields.io/badge/Network-Sepolia-d9f86a?labelColor=0e1629)
 
-The reviewed website is **published on Vercel**, with 134 public-hosted browser checks passing. Live blockchain/storage operations remain unavailable: there is **no active Sepolia deployment for this source or configured RPC/Redis/Pinata service set**. `deployments/manifest.json` intentionally has no active addresses. Old addresses and historical files are preserved for investigation, not silently reused. Lookups show unavailable and writes stay disabled until configuration is validated.
+VerifyChain connects a product ID or QR label to its registration, metadata commitment, manufacturer address, and recorded supply-chain activity. Consumers can inspect the public passport without connecting a wallet. Manufacturers and authorized handlers use explicit wallet approvals to write records.
 
-Read [implementation progress](docs/IMPLEMENTATION_PROGRESS.md), [the audit](docs/PROJECT_AUDIT.md) and [all 53 acceptance requirements](docs/QA_ACCEPTANCE_MATRIX.md). A successful test fixture is not public-chain evidence.
+**A registration is evidence of a recorded claim. It does not certify a brand, authenticate a physical item, or prevent someone from copying a QR label.**
 
-## Local verification
+## Product intro
 
-Clean install, lint, strict types and production build pass. Tests: 42 unit/API, 20 Solidity, 5 real local-chain integration and **134 browser/visual checks passed**, covering 42 reviewed images; 6 duplicate screenshot cases deliberately skip outside the two baseline viewports. 8 October three-run Lighthouse medians: mobile **99/100/100/100**, desktop **100/100/100/100** (performance/accessibility/best-practices/SEO). Both profiles pass their unchanged budgets; the earlier mobile failure is retained in the dated audit history. The 53-row ledger records **30 scoped passes, 21 partial requirements and 2 blocked release requirements**. The independent GitHub CI run and all 134 public-hosted browser checks also pass. Service/wallet fixtures are test-only; this is not completed live Sepolia acceptance or an independent security audit. [Latest verification evidence](docs/audit-evidence/release-2026-10-08/publication-summary.json).
+https://github.com/user-attachments/assets/5c672d81-3517-4d91-a5ab-e75984ca00b1
 
-## Start and validate
+**23 seconds · 1080p · sound included.** The walkthrough shows the published website and an actual metadata-review interaction using clearly labeled sample input. It does not show a completed upload or blockchain transaction.
 
-Use Node **24.19.0**, npm 11 and the committed npm lock. Local commands below follow this workspace's RTK instructions; CI uses npm directly because its isolated runner does not have RTK installed.
+[Download the video](docs/media/verifychain-intro.mp4) · [Preview image](docs/media/verifychain-intro-poster.jpg) · [Media credits](docs/media/README.md)
 
-```sh
-rtk npm ci
-rtk npm run dev
-rtk npm run check
-rtk npm run abi:export
-rtk npx playwright install chromium webkit
-rtk npm run test:e2e
+## Release status
+
+The website is published at **[verifychain-murex.vercel.app](https://verifychain-murex.vercel.app)**. The current release is a Sepolia preview with live integrations pending.
+
+| Area                                 | Current state                                                                                                |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| Website and application UI           | Published on Vercel; public hosted browser checks recorded on 8 October 2026                                 |
+| Local application and contract tests | Passing in the dated release evidence below                                                                  |
+| Active Sepolia contracts             | Awaiting a new deployment of the repaired source; the active manifest has no addresses                       |
+| Live verification and writes         | Unavailable until the RPC, matching contracts, Redis quotas, and Pinata storage are configured and validated |
+| Public-chain acceptance              | Blocked until actual registration and checkpoint receipts, matching metadata, and device checks are recorded |
+
+The application shows unavailable states and disables writes when dependencies are missing. Archived addresses are preserved as historical evidence and are not used as a fallback. See the [active manifest](deployments/manifest.json), [53 acceptance requirements](docs/QA_ACCEPTANCE_MATRIX.md), and [implementation ledger](docs/IMPLEMENTATION_PROGRESS.md).
+
+## What you can build with it
+
+| Workflow                  | Implemented behavior                                                                                                                                                         | Entry point                                                            |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Public product passport   | Look up an ID or scan a same-origin QR label; inspect registration, revocation, metadata integrity, and chain context                                                        | `/verify`                                                              |
+| Manufacturer registration | Register a company name from an injected wallet; identity remains explicitly self-registered                                                                                 | `/dashboard/register-manufacturer`                                     |
+| Product registration      | Enter details, review canonical bytes and hash, authorize metadata upload, simulate the contract call, approve the transaction, and generate a QR label after receipt checks | `/dashboard/register-product`                                          |
+| Supply-chain checkpoints  | Inspect typed checkpoints and let globally authorized handlers record activity                                                                                               | `/dashboard/supply-chain`                                              |
+| History and analytics     | Filter and paginate up to the latest 100 wallet-submitted opinions for an entered ID; export escaped CSV                                                                     | `/dashboard/verification-history`, `/dashboard/verification-analytics` |
+| Wallet overview           | Inspect up to the latest 100 registrations returned for the connected wallet                                                                                                 | `/dashboard`                                                           |
+| Evidence and preferences  | Export available passport evidence as JSON, CSV, or PDF; save device-local theme and spacing preferences                                                                     | Passport results, `/dashboard/settings`                                |
+
+These workflows are implemented in source; live-dependent steps require the services listed above. Legacy `/dashboard/verify-product?id=…` links remain supported. Read-only lookups do not submit observation transactions.
+
+### From product details to a passport
+
+1. **Prepare:** normalize the product fields into the `verifychain.product.v1` schema.
+2. **Review:** inspect the exact canonical JSON and its Keccak-256 commitment before authorizing storage.
+3. **Register:** sign the upload challenge, store metadata through the server, simulate the write, and approve it in the wallet.
+4. **Inspect:** confirm the expected receipt/event after two confirmations, then open or download the public QR label.
+
+Rejected signatures, wrong networks, reverted calls, and unresolved receipts have explicit states. An uncertain transaction is reconciled by its hash before another attempt.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Consumer[Consumer] --> UI[Next.js application]
+    Operator[Manufacturer or handler] --> Wallet[Injected wallet]
+    Wallet -->|Approve writes| Contracts[Sepolia contracts]
+    UI -->|Public reads and upload requests| API[Next.js route handlers]
+    API -->|Validated reads| RPC[Sepolia RPC]
+    RPC --> Contracts
+    API -->|Signed metadata upload| Pinata[Pinata and IPFS]
+    API -->|Quotas and one-use nonces| Redis[Upstash Redis]
+    API -->|Commitment and integrity result| UI
 ```
 
-`check` runs lint, strict types, domain/API-boundary tests, real Hardhat tests, an isolated application/contract integration test and the production build. Browser tests require the production build; the runner starts its own server at port 3100. Hosted smoke uses `E2E_BASE_URL`. Most verdict browser tests replace HTTP responses deliberately; the local integration runner deploys real contracts on an isolated chain and replaces only configuration and metadata retrieval. No runtime demo fallback exists.
+The diagram describes the intended configured runtime. RPC, storage, and contract availability remain subject to the release status above.
 
-The isolated local chain uses Sepolia's numeric chain ID solely to exercise the application's selected chain boundary. It is **not Sepolia**, and no local account or local receipt is public release proof. The test runner shuts it down afterward.
+| Layer                      | Technology and responsibility                                                           |
+| -------------------------- | --------------------------------------------------------------------------------------- |
+| Application                | Next.js 15 App Router, React 19, strict TypeScript, responsive CSS, Lucide icons        |
+| Wallet and chain           | wagmi, viem, and TanStack Query; one shared wallet state across workspace navigation    |
+| Input and evidence         | Zod validation, canonical JSON, Keccak-256 commitments, QR labels, JSON/CSV/PDF exports |
+| Contracts                  | Solidity 0.8.20, OpenZeppelin, and Hardhat                                              |
+| Storage and abuse controls | Server-side Pinata JSON pinning and shared Upstash Redis quotas                         |
+| Verification               | Vitest, Hardhat tests, local-chain integration, Playwright, axe, and Lighthouse CI      |
+| Hosting                    | Vercel for the Next.js application; GitHub Actions for independent quality gates        |
 
-Visual baselines use pinned Chromium. Never automatically update them to hide a regression. Inspect differences and record an intentional design change before approving replacements. Accessibility tests supplement, rather than replace, real keyboard, screen-reader and device review.
+### Contract boundaries
 
-## Implemented workflows
+| Contract                                                   | Responsibility                                                                                             |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| [ProductRegistry](contracts/ProductRegistry.sol)           | Manufacturer registrations, product commitments, authorized metadata updates, and revocation               |
+| [VerificationRegistry](contracts/VerificationRegistry.sol) | Wallet-submitted observations and aggregate statistics; opinions are not physical verification             |
+| [SupplyChainTracker](contracts/SupplyChainTracker.sol)     | Authorized handler checkpoints and supply-chain state; handler permission is global, not exclusive custody |
 
-- `/verify?id=…`: public registration/revocation, metadata integrity, self-registered manufacturer identity and blockchain context. Old `/dashboard/verify-product?id=…` links still work.
-- Registration: product details → exact canonical review → signed IPFS upload → simulated write → wallet approval → two-confirmation receipt/event check → QR label.
-- Supply chain: typed checkpoints, empty/error states and explicit authorized handler writes. Handler authorization is global; it is not exclusive product custody.
-- Observations/history and analytics: up to the latest 100 actual wallet opinions for an entered ID, working filters, pagination and escaped CSV. Read-only lookups create no observation transactions.
-- Wallet overview: up to the latest 100 actual registrations belonging to the connected wallet.
-- Settings: device-local theme and spacing preferences, plus network and release information.
-- Evidence exports: JSON, CSV and PDF; QR SVG labels point to the public passport. Unknown receipts remain unavailable.
+`CounterfeitReporter` is quarantined and excluded from both the deploy script and the UI. Its source changes are not an independently audited financial product. Old immutable deployments do not inherit source repairs.
 
-Each active workspace uses **one SSR-safe wagmi provider and one QueryClient**, with a shared wallet configuration across route navigation. The public homepage loads theme/branding independently and does not initialize wallet discovery. It supports detected injected wallets through an original accessible connection control. RainbowKit, WalletConnect and unused bridge/storage/payment SDKs were removed to reduce unrelated code and dependencies. Browser wallets must inject an EIP-1193 provider; mobile deep-link/WalletConnect support is not claimed. Account and network changes remain explicit.
+## Quick start
 
-## Trust and data model
-
-Canonical schema `verifychain.product.v1` uses a fixed field order, normalized strings and UTF-8 JSON without whitespace. Keccak-256 commits those canonical bytes. Metadata includes product ID, name, description, category, serial and origin. Retrieved content must validate and agree with the product's ID/name and commitment. URI-only updates are replaced by authorized updates of **both URI and hash** in source v2; previously used commitments stay reserved. Updates do not undo revocation.
-
-Verdicts are `registered`, `revoked`, `not_found`, `integrity_mismatch`, `unavailable` and `invalid_input`. Metadata retrieval and manufacturer activity are independent evidence fields. Manufacturer names are self-registered. Observation booleans/confidence are submitted opinions, never ground truth. A copied QR can point to a real record.
-
-Reads take a fresh block snapshot, disable block-number caching and send `Cache-Control: no-store`; there is no public verdict cache. A known product's registration event is scanned only at its recorded registration block, matched to its indexed ID topic and deduplicated by transaction/log index. If that optional evidence cannot be resolved, no receipt is invented. Each request rereads current chain state; reorgs are not carried forward through a persistent index.
-
-## Configuration and security
-
-Copy `.env.example` to `.env.local` and configure it privately. Never put secrets into chat or commit them.
-
-| Variable | Scope | Purpose |
-| --- | --- | --- |
-| `APP_ORIGIN` | Server | Exact reviewed origin authorized for upload challenges |
-| `SEPOLIA_RPC_URL` | Server | HTTPS RPC for chain/code/read checks |
-| `PINATA_JWT` | Server | Real Pinata JSON pinning; never sent to a browser |
-| `UPLOAD_AUTH_SECRET` | Server | At least 32 random characters for challenge integrity |
-| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | Server | Shared quotas and one-use nonce consumption; required in production |
-| `NEXT_PUBLIC_SEPOLIA_RPC_URL` | Public | Browser read/simulation RPC; restrict provider origins |
-
-`/api/health/live` checks whether the application serves requests. `/api/health/ready` fails closed without quotas, a reachable Sepolia RPC and source-matching deployed code. Verification consumes a shared production quota. On Vercel, identity uses the platform-managed `x-vercel-forwarded-for`; other hosting uses a conservative global bucket until a trusted proxy adapter is implemented. Never expose an origin behind a proxy that accepts forged platform headers.
-
-Uploads require an origin/chain/address-bound signed challenge, five-minute expiry, a random nonce consumed atomically in shared Redis, per-wallet quota and bounded JSON. Development-only in-memory quota is bounded and is never used in production. Camera frames remain on-device. Uploaded metadata and on-chain records are public; do not enter personal/confidential content. Only fixed IPFS gateway URLs with CID-like payloads are fetched, not arbitrary contract-supplied HTTP URLs. Requests/timeouts and response bodies are bounded.
-
-Production scripts use per-request CSP nonces, no inline-script bypass and no eval. Inline styles are permitted for the theme/QR/scanner libraries. RPC connections are restricted to the configured HTTPS origin. Camera is limited to this origin; microphone/geolocation are disabled. Etherscan links are external evidence links, not embedded frames.
-
-## Contracts and release
-
-A new deployment is required. Source repairs do not patch old immutable contracts. The initial release deploys only ProductRegistry, VerificationRegistry and SupplyChainTracker.
-
-CounterfeitReporter is **quarantined**. Its replacement source returns principal once, maintains outstanding escrow separately from voluntarily funded reserves, permits expired insufficient-vote reports to release funds, rejects owner escrow withdrawals and handles failed/reentrant recipients. Unfunded bonus promises were deliberately retired rather than shifted to other participants' stakes. It is not an independently audited financial product, and is excluded from the deploy script and UI.
-
-After the owner reviews the concrete release and approves testnet deployment, configure local-only deployment credentials from `.env.contracts.example` in `.env.local` (not on Vercel):
+Use **Node.js 24.19.0** from [`.nvmrc`](.nvmrc), **npm 11**, and the committed `package-lock.json`.
 
 ```sh
-rtk npm run contracts:compile
-rtk npm run abi:export
-rtk npx hardhat run scripts/deploy.cjs --network sepolia
-rtk node scripts/activate-manifest.mjs deployments/<reviewed-sepolia-v2-file>.json
-rtk npm run check
+git clone https://github.com/Kartik2004sharma/VerifyChain.git
+cd VerifyChain
+npm ci
+cp .env.example .env.local
+npm run dev
 ```
 
-The deploy script saves real receipts, blocks, code/source/ABI hashes and compiler settings into a new history file. It preserves the active manifest. Activation verifies the deployed code and receipt against compiled source identity before switching the manifest. Archive the previous manifest before deliberate activation. Do not blindly rerun a partially completed deployment; reconcile submitted hashes first.
+Open **[localhost:3000](http://localhost:3000)**. The interface and metadata review can be explored before live services are configured. Product lookups and wallet writes remain unavailable until the environment and deployment manifest validate; no runtime sample-data fallback is enabled.
 
-Vercel preparation: import this repository, use Node 24, `npm ci` and `npm run build`, and set server/public variables separately for Preview and Production. Set `APP_ORIGIN` to the exact reviewed preview origin for testing, then to the production origin for promotion. Do not configure deployment keys on the host. The website is published on the owner’s existing Vercel scope; no paid resource or testnet contract deployment was created.
+### Environment configuration
 
-After a reviewed preview exists:
+Configure values privately in `.env.local`. For Vercel, configure Preview and Production separately and set `APP_ORIGIN` to the exact origin being reviewed.
+
+| Variable                                                           | Scope           | Purpose                                                                                   |
+| ------------------------------------------------------------------ | --------------- | ----------------------------------------------------------------------------------------- |
+| `APP_ORIGIN`                                                       | Server          | Exact origin authorized to request upload challenges; no trailing slash                   |
+| `SEPOLIA_RPC_URL`                                                  | Server          | Dedicated HTTPS RPC for chain identity, deployed code, and contract reads                 |
+| `PINATA_JWT`                                                       | Server          | JSON metadata pinning; never exposed to the browser                                       |
+| `UPLOAD_AUTH_SECRET`                                               | Server          | At least 32 random characters for upload challenge integrity                              |
+| `UPSTASH_REDIS_REST_URL`                                           | Server          | HTTPS shared quota and nonce store; required in production                                |
+| `UPSTASH_REDIS_REST_TOKEN`                                         | Server          | Authentication for the shared quota store                                                 |
+| `NEXT_PUBLIC_SEPOLIA_RPC_URL`                                      | Browser, public | Read and simulation RPC; restrict provider origins because browser credentials are public |
+| `RELEASE_ORIGIN`, `RELEASE_PRODUCT_ID`, `RELEASE_TRANSACTION_HASH` | Release checks  | Actual hosted origin and user-approved registration evidence                              |
+
+Deployment-only credentials are documented in [`.env.contracts.example`](.env.contracts.example). Keep the deployer's private key local; never add it to Vercel, browser variables, source control, or chat. Environment files are ignored by Git.
+
+## Verification
 
 ```sh
-rtk npm run test:e2e
-# For hosted smoke, set E2E_BASE_URL to the reviewed preview first.
-rtk npm run release:check
+# Lint, strict types, unit/API tests, Solidity tests,
+# isolated local-chain integration, and production build
+npm run check
+
+# Regenerate the reviewed contract interfaces
+npm run abi:export
+
+# Browser, visual, and accessibility checks against a production build
+npx playwright install chromium webkit
+npm run test:e2e
 ```
 
-`release:check` requires a verified HTTPS `RELEASE_ORIGIN`, real `RELEASE_PRODUCT_ID` and user-approved `RELEASE_TRANSACTION_HASH`, in addition to the server RPC. It verifies manifest/code/deployment receipts, hosted liveness/readiness and retrievable matching product metadata. It exits nonzero on missing evidence. Public-chain camera, wallet rejection/network changes and checkpoint receipt checks still need real devices/wallet approval.
+The browser runner starts its own production server on port **3100**. Run `npm run build` first if you have not run `npm run check`. Set `E2E_BASE_URL` to test a reviewed hosted deployment instead.
 
-Rollback the web deployment to the last known-good host revision and its reviewed environment/manifest. Hosting rollback cannot undo chain writes. Contract replacement requires a separately versioned manifest and migration/compatibility review.
+**Recorded release snapshot — 8 October 2026:**
+
+| Check                                               | Recorded result                                                     |
+| --------------------------------------------------- | ------------------------------------------------------------------- |
+| Clean install, lint, strict types, production build | Passed                                                              |
+| Unit and API tests                                  | 42 passed                                                           |
+| Solidity tests                                      | 20 passed                                                           |
+| Real isolated local-chain integration               | 5 passed                                                            |
+| Public hosted browser checks                        | 134 passed, 0 failed; 6 duplicate visual cases deliberately skipped |
+| Reviewed visual images                              | 42                                                                  |
+| Mobile Lighthouse median, three runs                | 99 performance / 100 accessibility / 100 best practices / 100 SEO   |
+| Desktop Lighthouse median, three runs               | 100 / 100 / 100 / 100                                               |
+| Acceptance ledger, 53 requirements                  | 30 scoped passes / 21 partial / 2 blocked                           |
+
+Evidence: [publication summary](docs/audit-evidence/release-2026-10-08/publication-summary.json), [independent CI run](https://github.com/Kartik2004sharma/VerifyChain/actions/runs/37814803951), and [implementation ledger](docs/IMPLEMENTATION_PROGRESS.md). These are dated results, not a claim that every future checkout passes unchanged.
+
+Most verdict browser tests intentionally replace HTTP responses. The integration runner deploys real contracts to an isolated local chain using Sepolia's numeric chain ID to exercise the selected-chain boundary; this does not constitute a public Sepolia deployment. Visual baselines use pinned Chromium and require review before intentional updates. Automated accessibility checks supplement real keyboard, screen-reader, zoom, and device review.
+
+## Trust, privacy, and security
+
+- **Separate evidence fields:** registration state, metadata integrity, manufacturer activity, and submitted opinions stay distinct. Verdicts are `registered`, `revoked`, `not_found`, `integrity_mismatch`, `unavailable`, and `invalid_input`.
+- **Exact metadata commitments:** fixed field order, normalized strings, and whitespace-free UTF-8 JSON produce the committed hash. Retrieved metadata must validate and agree with the recorded product ID, name, and commitment. Source v2 updates URI and hash together; previous commitments remain reserved, and updates do not undo revocation.
+- **Fresh chain reads:** each request uses a current block snapshot with no public verdict cache. Known registration evidence is scoped to its recorded block and indexed ID topic; unresolved optional receipts remain unavailable. There is no persistent event index.
+- **Scoped uploads:** origin-, chain-, and address-bound signed challenges expire after five minutes. Redis atomically consumes each nonce once; request bodies, timeouts, response sizes, and per-wallet quotas are bounded. Development-only in-memory quotas are never used in production.
+- **Controlled network boundaries:** metadata retrieval accepts fixed IPFS gateways with CID-like payloads instead of arbitrary contract-supplied HTTP URLs. Production scripts use per-request CSP nonces without an inline-script bypass or eval; inline styles remain allowed for theme, QR, and scanner libraries. RPC connections use the configured HTTPS origin.
+- **Public records, private camera:** uploaded metadata and on-chain records are public. Camera frames stay on-device. Enter no personal or confidential content in product metadata.
+
+Wallet support covers detected injected EIP-1193 providers. WalletConnect, mobile wallet deep links, mainnet, brand certification, image/file uploads, billing, and financial reporting are outside the current UI. Production client quotas trust Vercel's platform-managed forwarding header; other hosts use a conservative global bucket until a trusted proxy adapter is implemented. External alerting is not configured. This project has not received an independent security audit; remaining dependency decisions are documented in the [dependency review](docs/DEPENDENCY_REVIEW.md).
+
+## Deployment and operations
+
+The published site uses Vercel with **Node 24**, `npm ci`, and `npm run build`. Publishing the interface does not activate the contracts or storage services.
+
+1. Review the repaired source, contract policy, acceptance ledger, and deployment credentials.
+2. Deploy `ProductRegistry`, `VerificationRegistry`, and `SupplyChainTracker` to Sepolia with `scripts/deploy.cjs`. Preserve its deployment journal and reconcile any submitted hashes before retrying an interrupted run.
+3. Review the real receipts and activate the matching deployment history with `scripts/activate-manifest.mjs`. Activation validates source/ABI/code identity and receipts before updating the manifest. Archive the previous manifest and rebuild afterward.
+4. Configure the RPC, Pinata, upload authorization secret, Redis, and exact application origin in Vercel.
+5. Record real user-approved manufacturer/product and checkpoint transactions, verify retrievable matching metadata, and test the printed label and camera on an HTTPS mobile device.
+6. Run the release gate with the configured evidence and review the results before promotion.
+
+```sh
+# Load private local environment values for the standalone release checker
+node --env-file=.env.local scripts/release-check.mjs
+```
+
+The checker requires a verified HTTPS `RELEASE_ORIGIN`, a real `RELEASE_PRODUCT_ID`, and a user-approved `RELEASE_TRANSACTION_HASH`, along with a valid manifest and server RPC. Missing evidence exits nonzero. `npm run release:check` runs the same checker when the variables are already set in the calling environment.
+
+| Endpoint                                           | Purpose                                                                                                        |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `GET /api/health/live`                             | Application liveness                                                                                           |
+| `GET /api/health/ready`                            | Validated deployment manifest, reachable Sepolia RPC, and shared quota readiness; returns 503 when unavailable |
+| `POST /api/blockchain/verify`                      | Public product passport lookup from a `productId` JSON field                                                   |
+| `POST /api/metadata/challenge`                     | Origin-bound signed upload challenge                                                                           |
+| `POST /api/metadata/upload`                        | Authorized, bounded canonical metadata upload                                                                  |
+| `GET /api/products`, `/api/history`, `/api/supply` | Scoped product, observation, and checkpoint reads                                                              |
+
+Roll back the website to a known-good hosted revision with its reviewed environment and manifest. A hosting rollback cannot undo blockchain writes. Contract replacement needs a versioned manifest and a compatibility/migration review. Follow the [release handoff](docs/RELEASE_HANDOFF.md) for the full operational boundaries.
+
+## Repository guide
+
+```text
+app/                  Pages, layouts, and server API routes
+components/           Passport, wallet, registration, scanner, and workspace UI
+lib/domain/           Metadata schema, canonical hashing, verdicts, and QR parsing
+lib/server/           Chain reads, configuration, quotas, and upload authorization
+lib/contracts/        Exported ABIs and source identity
+contracts/            Solidity source, including quarantined research contracts
+deployments/          Active manifest and historical deployment evidence
+scripts/              Deployment, manifest activation, ABI export, and release checks
+tests/                Unit/API, browser/visual, and local-chain integration tests
+test/                 Solidity contract tests
+docs/                 Audit, design decisions, acceptance ledger, and release evidence
+docs/media/           Intro video, poster, and attribution
+```
+
+| Document                                                                      | Read it for                                              |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [Project audit](docs/PROJECT_AUDIT.md)                                        | Original gaps, risks, and source-grounded findings       |
+| [Implementation progress](docs/IMPLEMENTATION_PROGRESS.md)                    | Requirement-by-requirement results and unresolved work   |
+| [Acceptance matrix](docs/QA_ACCEPTANCE_MATRIX.md)                             | All 53 observable requirements and evidence expectations |
+| [UI redesign](docs/UI_REDESIGN.md) and [visual review](docs/VISUAL_REVIEW.md) | Interface decisions and visual verification              |
+| [Dependency review](docs/DEPENDENCY_REVIEW.md)                                | Advisory findings and compatibility decisions            |
+| [Release handoff](docs/RELEASE_HANDOFF.md)                                    | Live-service configuration, deployment, and rollback     |
+| [Master build prompt](docs/VERIFYCHAIN_MASTER_BUILD_PROMPT.md)                | The original implementation and acceptance contract      |
+
+## Contributing and credits
+
+Keep changes focused, describe the behavior they affect, and run the relevant checks. Never weaken an acceptance requirement or regenerate visual baselines merely to hide a failure. For security concerns, contact the maintainer privately and keep credentials and exploit details out of public issues.
+
+Built by **[Kartik Sharma](https://github.com/Kartik2004sharma)**. A repository license has not yet been specified; the video's third-party music and sound effects have separate [credits and license terms](docs/media/README.md).
