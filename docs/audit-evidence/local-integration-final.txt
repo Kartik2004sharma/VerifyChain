@@ -1,0 +1,13 @@
+
+> verifychain@1.0.0 test:integration
+> node scripts/local-integration.mjs
+
+
+ RUN  v4.1.11 /Users/kartik/CS50x2025/Projects/VerifyChain
+
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  23:37:27
+   Duration  743ms (transform 73ms, setup 0ms, import 328ms, tests 296ms, environment 0ms)
+

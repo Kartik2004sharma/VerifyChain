@@ -1,0 +1,7 @@
+.serena/
+docs/audit-evidence/
+test-results/
+playwright-report/
+.env*
+!.env.example
+!.env.contracts.example

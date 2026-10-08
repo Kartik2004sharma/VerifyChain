@@ -1,0 +1,22 @@
+{
+  "ProductRegistry": {
+    "sourceHash": "90532343144f596dac96b8881410eb305f95b7c74688e69721b398ad33ebb79c",
+    "abiHash": "c15f458805f2d035b70600a6e922123a3f38638c501f403d9f22c08e8db63de4",
+    "codeHash": "0xee3bcf4991f1256b410768bfb32aa61ee771b8b7360eaa1d568528844a6e5f85"
+  },
+  "VerificationRegistry": {
+    "sourceHash": "59a58bd5203aa07d12f9ac78ea8d690db3bc5e86bcad8527195239e540fa0871",
+    "abiHash": "64be078920711aa182af165c5f89ca84e76e002aef81fa1e90ee3b14a129fa3b",
+    "codeHash": "0x44c8a9780ef4ac9cea3be3bede3aebe8029de5a50b40d96ad47fef1c8d7d3740"
+  },
+  "SupplyChainTracker": {
+    "sourceHash": "54b8437d61ba3b88e17caa53258a275135595a5e4342c254d0740d4ba158e4d9",
+    "abiHash": "9a173eb8a45964d0bf529fcee91f7ee02194a61fab5894112c23205928ab7d9c",
+    "codeHash": "0x64ee8dfbd32349326bc6f52454731cd21b831adc2a01eaf5d9e7fa3e697921c5"
+  },
+  "CounterfeitReporter": {
+    "sourceHash": "9c446a3577417fc02a66f8475bcb50b1dc2ba43678460f15fb48f26eae8d2cd7",
+    "abiHash": "43b5e0d11134f7e5cc791358c101685fd75bbf3471360670cf4c1a69a2aed9cc",
+    "codeHash": "0x6ae5c03611edc9097dcdcb146ad42989e2ba6500d618bcbb44f27d1e41dcb7c3"
+  }
+}

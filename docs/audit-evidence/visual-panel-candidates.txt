@@ -1,0 +1,402 @@
+
+> verifychain@1.0.0 test:e2e
+> playwright test visual.spec.ts --project desktop --project mobile --update-snapshots=missing
+
+
+Running 4 tests using 2 workers
+
+  ✘  1 [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens light (5.7s)
+  ✘  2 [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens light (6.3s)
+  ✘  3 [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark (5.6s)
+  ✘  4 [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark (5.9s)
+
+
+  1) [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens light ───────────────────
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-registered-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-revoked-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-not-found-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-integrity-mismatch-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-unavailable-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    attachment #1: light-passport-registered-panel (image/png) ─────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-registered-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-desktop/light-passport-registered-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: light-passport-revoked-panel (image/png) ────────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-revoked-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-desktop/light-passport-revoked-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: light-passport-not-found-panel (image/png) ──────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-not-found-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-desktop/light-passport-not-found-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: light-passport-integrity-mismatch-panel (image/png) ─────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-integrity-mismatch-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-desktop/light-passport-integrity-mismatch-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: light-passport-unavailable-panel (image/png) ────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-unavailable-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-desktop/light-passport-unavailable-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-light-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual-reviewed-critical-screens-light-desktop/error-context.md
+
+    attachment #8: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-light-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/visual-reviewed-critical-screens-light-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark ────────────────────
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-registered-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-revoked-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-not-found-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-integrity-mismatch-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-unavailable-panel-desktop-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    attachment #1: dark-passport-registered-panel (image/png) ──────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-registered-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-desktop/dark-passport-registered-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: dark-passport-revoked-panel (image/png) ─────────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-revoked-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-desktop/dark-passport-revoked-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: dark-passport-not-found-panel (image/png) ───────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-not-found-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-desktop/dark-passport-not-found-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: dark-passport-integrity-mismatch-panel (image/png) ──────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-integrity-mismatch-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-desktop/dark-passport-integrity-mismatch-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: dark-passport-unavailable-panel (image/png) ─────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-unavailable-panel-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-desktop/dark-passport-unavailable-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-dark-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual-reviewed-critical-screens-dark-desktop/error-context.md
+
+    attachment #8: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-dark-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/visual-reviewed-critical-screens-dark-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens light ────────────────────
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-registered-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-revoked-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-not-found-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-integrity-mismatch-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/light-passport-unavailable-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    attachment #1: light-passport-registered-panel (image/png) ─────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-registered-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-mobile/light-passport-registered-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: light-passport-revoked-panel (image/png) ────────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-revoked-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-mobile/light-passport-revoked-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: light-passport-not-found-panel (image/png) ──────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-not-found-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-mobile/light-passport-not-found-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: light-passport-integrity-mismatch-panel (image/png) ─────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-integrity-mismatch-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-mobile/light-passport-integrity-mismatch-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: light-passport-unavailable-panel (image/png) ────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/light-passport-unavailable-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-light-mobile/light-passport-unavailable-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-light-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual-reviewed-critical-screens-light-mobile/error-context.md
+
+    attachment #8: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-light-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/visual-reviewed-critical-screens-light-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark ─────────────────────
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-registered-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-revoked-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-not-found-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-integrity-mismatch-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    Error: A snapshot doesn't exist at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts-snapshots/dark-passport-unavailable-panel-mobile-darwin.png, writing actual.
+
+      89 |           .click();
+      90 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 91 |       await expect(
+         |       ^
+      92 |         page.getByRole("region", { name: "Product passport" }),
+      93 |       ).toHaveScreenshot(`${theme}-passport-${status}-panel.png`, {
+      94 |         animations: "disabled",
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:91:7
+
+    attachment #1: dark-passport-registered-panel (image/png) ──────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-registered-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-mobile/dark-passport-registered-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: dark-passport-revoked-panel (image/png) ─────────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-revoked-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-mobile/dark-passport-revoked-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: dark-passport-not-found-panel (image/png) ───────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-not-found-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-mobile/dark-passport-not-found-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #4: dark-passport-integrity-mismatch-panel (image/png) ──────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-integrity-mismatch-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-mobile/dark-passport-integrity-mismatch-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #5: dark-passport-unavailable-panel (image/png) ─────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-unavailable-panel-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-mobile/dark-passport-unavailable-panel-actual.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #6: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-dark-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual-reviewed-critical-screens-dark-mobile/error-context.md
+
+    attachment #8: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-dark-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/visual-reviewed-critical-screens-dark-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens light ────────────────────
+    [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark ─────────────────────
+    [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens light ─────────────────────
+    [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark ──────────────────────

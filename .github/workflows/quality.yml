@@ -1,0 +1,33 @@
+name: VerifyChain quality
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  judge:
+    runs-on: macos-14
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run abi:export && git diff --exit-code -- lib/contracts/abis.ts lib/contracts/source-identity.json
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm run test:e2e
+      - name: Select pinned Chromium for performance checks
+        run: node -e 'require("node:fs").appendFileSync(process.env.GITHUB_ENV, "CHROME_PATH=" + require("playwright-core").chromium.executablePath() + "\n")'
+      - name: Three-run mobile performance gate
+        run: npx lhci autorun --config=lighthouserc.cjs --upload.outputDir=docs/audit-evidence/ci-lighthouse-mobile
+      - name: Three-run desktop performance gate
+        run: npx lhci autorun --config=lighthouserc.cjs --collect.settings.preset=desktop --upload.outputDir=docs/audit-evidence/ci-lighthouse-desktop
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quality-evidence
+          path: |
+            playwright-report/
+            test-results/
+            docs/audit-evidence/

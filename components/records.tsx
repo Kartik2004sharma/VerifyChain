@@ -1,0 +1,427 @@
+"use client";
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+import Link from "next/link";
+import {
+  ArrowUpRight,
+  PackagePlus,
+  ScanLine,
+  Download,
+  Route,
+  SlidersHorizontal,
+} from "lucide-react";
+import { PageHeading, Empty } from "./shell";
+import { productIdSchema, csvCell } from "@/lib/domain/metadata";
+import { download } from "./passport";
+type Observation = {
+  verifier: string;
+  timestamp: string;
+  result: boolean;
+  confidenceScore: number;
+  location: string;
+  proofHash: string;
+  blockNumber: string;
+};
+export function Overview() {
+  const { address } = useAccount();
+  const [ids, setIds] = useState<string[]>([]);
+  const [state, setState] = useState("idle");
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    setIds([]);
+    if (!address) {
+      setState("idle");
+      return;
+    }
+    const c = new AbortController();
+    setState("loading");
+    fetch(`/api/products?owner=${address}`, { signal: c.signal })
+      .then(async (r) => {
+        if (!r.ok) throw new Error();
+        setIds(await r.json());
+        setState("loaded");
+      })
+      .catch(() => {
+        if (!c.signal.aborted) setState("error");
+      });
+    return () => c.abort();
+  }, [address]);
+  return (
+    <>
+      <PageHeading
+        kicker="WORKSPACE / OVERVIEW"
+        title="Your product workspace."
+        description="Start with a product passport. Your wallet scopes the registrations shown below."
+        action={
+          <Link href="/dashboard/register-product" className="button">
+            <PackagePlus size={17} />
+            Register product
+          </Link>
+        }
+      />
+      <div className="overview-launchpad">
+        <div className="overview-banner">
+          <div>
+            <span className="eyebrow">START WITH THE EVIDENCE</span>
+            <h2>
+              One ID.
+              <br />A clearer picture.
+            </h2>
+            <p>Inspect a product’s public record. No wallet needed.</p>
+            <form action="/verify">
+              <label htmlFor="overview-id">Product ID</label>
+              <div className="input-action">
+                <input
+                  id="overview-id"
+                  name="id"
+                  placeholder="Enter a product ID"
+                  required
+                />
+                <button className="button" aria-label="Verify product ID">
+                  <ArrowUpRight size={20} />
+                </button>
+              </div>
+            </form>
+          </div>
+          <ScanLine
+            className="overview-symbol"
+            size={100}
+            strokeWidth={0.8}
+            aria-hidden="true"
+          />
+        </div>
+        <Link className="overview-create" href="/dashboard/register-product">
+          <span className="eyebrow">CREATE SOMETHING TRACEABLE</span>
+          <PackagePlus size={36} strokeWidth={1.3} />
+          <h3>
+            Give your product
+            <br />a public record.
+          </h3>
+          <p>Details. Commitment. Confirmation.</p>
+          <span className="text-link">
+            Start registration <ArrowUpRight size={17} />
+          </span>
+        </Link>
+      </div>
+      <section className="panel">
+        <div className="panel-heading">
+          <div>
+            <p className="eyebrow">WALLET REGISTRATIONS</p>
+            <h2>Your products</h2>
+          </div>
+          <span className="badge">
+            {state === "loaded" ? `${ids.length} shown` : "Sepolia testnet"}
+          </span>
+        </div>
+        {state === "idle" ? (
+          <Empty title="Connect to see your registrations">
+            Use the header wallet action, or verify any public product ID
+            without connecting.
+          </Empty>
+        ) : state === "loading" ? (
+          <p role="status">Loading wallet registrations…</p>
+        ) : state === "error" ? (
+          <Empty title="Registrations unavailable">
+            A verified deployment and reachable service are required. No sample
+            records are substituted.
+          </Empty>
+        ) : ids.length === 0 ? (
+          <Empty title="Your first record starts here">
+            This wallet has no registered products in the configured registry.
+          </Empty>
+        ) : (
+          <>
+            <label htmlFor="filter">Search product IDs</label>
+            <input
+              id="filter"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <div className="record-list">
+              {ids
+                .filter((id) => id.toLowerCase().includes(search.toLowerCase()))
+                .map((id) => (
+                  <Link key={id} href={`/verify?id=${encodeURIComponent(id)}`}>
+                    <span className="mono break">{id}</span>
+                    <span>
+                      Inspect passport <ArrowUpRight size={15} />
+                    </span>
+                  </Link>
+                ))}
+            </div>
+            <p className="muted">
+              Up to the latest 100 IDs returned by this wallet’s registry
+              record.
+            </p>
+          </>
+        )}
+      </section>
+      <div className="two-columns">
+        <Link className="action-card" href="/dashboard/supply-chain">
+          <Route size={25} />
+          <span className="eyebrow">FOLLOW THE JOURNEY</span>
+          <h3>
+            Supply-chain checkpoints <ArrowUpRight size={18} />
+          </h3>
+          <p>Inspect actual handler submissions for a known product ID.</p>
+        </Link>
+        <Link className="action-card" href="/dashboard/settings">
+          <SlidersHorizontal size={25} />
+          <span className="eyebrow">INSPECT THE SETUP</span>
+          <h3>
+            Network & preferences <ArrowUpRight size={18} />
+          </h3>
+          <p>
+            See the configured contracts and choose your local display
+            preferences.
+          </p>
+        </Link>
+      </div>
+    </>
+  );
+}
+export function Observations({ analytics = false }: { analytics?: boolean }) {
+  const [id, setId] = useState("");
+  const [loadedId, setLoadedId] = useState("");
+  const [rows, setRows] = useState<Observation[]>([]);
+  const [state, setState] = useState("idle");
+  const [filter, setFilter] = useState("all");
+  const [query, setQuery] = useState("");
+  const [after, setAfter] = useState("");
+  const [page, setPage] = useState(0);
+  const pageSize = 10;
+  async function load() {
+    setRows([]);
+    setPage(0);
+    if (!productIdSchema.safeParse(id).success) {
+      setState("invalid");
+      return;
+    }
+    setState("loading");
+    try {
+      const r = await fetch(`/api/history?id=${encodeURIComponent(id.trim())}`);
+      if (!r.ok) throw new Error();
+      const values = await r.json();
+      setRows(values);
+      setLoadedId(id.trim());
+      setState("loaded");
+    } catch {
+      setState("error");
+    }
+  }
+  const filtered = rows.filter(
+    (r) =>
+      (filter === "all" || r.result === (filter === "positive")) &&
+      r.verifier.toLowerCase().includes(query.toLowerCase()) &&
+      (!after || Number(r.timestamp) * 1000 >= new Date(after).getTime()),
+  );
+  const positive = filtered.filter((r) => r.result).length;
+  const average = filtered.length
+    ? Math.floor(
+        filtered.reduce((n, r) => n + Number(r.confidenceScore), 0) /
+          filtered.length,
+      )
+    : null;
+  return (
+    <>
+      <PageHeading
+        kicker={
+          analytics
+            ? "ANALYTICS / SCOPED OBSERVATIONS"
+            : "HISTORY / WALLET OBSERVATIONS"
+        }
+        title={
+          analytics ? "Count what was submitted." : "Read the observations."
+        }
+        description="These are wallet-submitted opinions, not physical verification or certified counterfeit findings. At most the latest 100 observations are shown."
+      />
+      <section className="panel">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            void load();
+          }}
+        >
+          <label htmlFor="observation-id">Product ID</label>
+          <div className="input-action">
+            <input
+              id="observation-id"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              required
+            />
+            <button className="button" disabled={state === "loading"}>
+              Load observations
+            </button>
+          </div>
+        </form>
+        {state === "error" && (
+          <p role="status" className="error">
+            Observation service unavailable. No fixed statistics are shown.
+          </p>
+        )}
+        {state === "invalid" && (
+          <p role="status" className="error">
+            Enter a valid product ID.
+          </p>
+        )}
+        {state === "loaded" && (
+          <>
+            <div className="filters">
+              <div>
+                <label htmlFor="result-filter">Submitted result</label>
+                <select
+                  id="result-filter"
+                  value={filter}
+                  onChange={(e) => {
+                    setFilter(e.target.value);
+                    setPage(0);
+                  }}
+                >
+                  <option value="all">All observations</option>
+                  <option value="positive">Positive observations</option>
+                  <option value="negative">Negative observations</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="verifier-filter">Verifier address</label>
+                <input
+                  id="verifier-filter"
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setPage(0);
+                  }}
+                />
+              </div>
+              <div>
+                <label htmlFor="after-filter">From date</label>
+                <input
+                  id="after-filter"
+                  type="date"
+                  value={after}
+                  onChange={(e) => {
+                    setAfter(e.target.value);
+                    setPage(0);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="stat-grid">
+              {[
+                ["Observations", filtered.length],
+                ["Positive submissions", positive],
+                ["Negative submissions", filtered.length - positive],
+                [
+                  "Submitted score average",
+                  average === null ? "—" : `${average}/100`,
+                ],
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <span className="eyebrow">{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
+            </div>
+            {filtered.length ? (
+              <>
+                <div
+                  className="table-scroll"
+                  role="region"
+                  aria-label="Wallet observation records"
+                  tabIndex={0}
+                >
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Submitted at</th>
+                        <th>Verifier</th>
+                        <th>Opinion</th>
+                        <th>Score</th>
+                        <th>Block</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filtered
+                        .slice(page * pageSize, (page + 1) * pageSize)
+                        .map((r, i) => (
+                          <tr key={`${r.blockNumber}-${r.verifier}-${i}`}>
+                            <td>
+                              {new Date(
+                                Number(r.timestamp) * 1000,
+                              ).toLocaleString()}
+                            </td>
+                            <td className="mono break">{r.verifier}</td>
+                            <td>{r.result ? "Positive" : "Negative"}</td>
+                            <td>{r.confidenceScore}</td>
+                            <td className="mono">{r.blockNumber}</td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="button-row">
+                  <button
+                    className="button secondary"
+                    disabled={page === 0}
+                    onClick={() => setPage((v) => v - 1)}
+                  >
+                    Previous
+                  </button>
+                  <span>
+                    Page {page + 1} of {Math.ceil(filtered.length / pageSize)}
+                  </span>
+                  <button
+                    className="button secondary"
+                    disabled={(page + 1) * pageSize >= filtered.length}
+                    onClick={() => setPage((v) => v + 1)}
+                  >
+                    Next
+                  </button>
+                  <button
+                    className="button secondary"
+                    onClick={() =>
+                      download(
+                        "verifychain-observations.csv",
+                        [
+                          "Product ID,Verifier,Timestamp,Submitted result,Submitted confidence,Block,Chain",
+                          ...filtered.map((r) =>
+                            [
+                              loadedId,
+                              r.verifier,
+                              r.timestamp,
+                              r.result,
+                              r.confidenceScore,
+                              r.blockNumber,
+                              11155111,
+                            ]
+                              .map(csvCell)
+                              .join(","),
+                          ),
+                        ].join("\n"),
+                        "text/csv",
+                      )
+                    }
+                  >
+                    <Download size={15} />
+                    Export filtered CSV
+                  </button>
+                </div>
+              </>
+            ) : (
+              <Empty title="No matching observations">
+                Adjust your filters or check another ID. Read-only passport
+                lookups do not create observations.
+              </Empty>
+            )}
+          </>
+        )}
+        {state === "idle" && (
+          <Empty title="Start with a product ID">
+            Load the actual observation records stored for one product.
+          </Empty>
+        )}
+      </section>
+    </>
+  );
+}

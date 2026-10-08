@@ -1,0 +1,17 @@
+Vercel CLI 63.1.0
+
+  Directory       ~/CS50x2025/Projects/VerifyChain
+
+Searching for existing projects…
+
+  Detected Next.js (Build Command: next build, Output Directory: Next.js default)
+
+✓ Created         kartik2004sharmas-projects/verifychain
+> Connecting GitHub repository: https://github.com/Kartik2004sharma/VerifyChain
+> Connected
+
+Retrieving project…
+> Downloading a fresh `VERCEL_OIDC_TOKEN` for verifychain
+Downloading
+
+✓ Created         .env.local file and added it to .gitignore

@@ -1,0 +1,4 @@
+
+> verifychain@1.0.0 release:check
+> node scripts/release-check.mjs
+

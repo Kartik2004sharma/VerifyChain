@@ -181,22 +181,9 @@ contract ProductRegistry is Ownable, ReentrancyGuard {
         bytes32 dataHash,
         string memory metadataURI
     ) external productNotExists(productId) nonReentrant {
-        // Auto-register manufacturer if not already registered
-        if (!manufacturers[msg.sender].isRegistered) {
-            manufacturers[msg.sender] = Manufacturer({
-                companyName: _addressToString(msg.sender),
-                isRegistered: true,
-                isActive: true,
-                registrationTime: block.timestamp,
-                productCount: 0,
-                reputationScore: 50
-            });
-            emit ManufacturerRegistered(msg.sender, manufacturers[msg.sender].companyName, block.timestamp);
-        }
-        
-        // Ensure manufacturer is active
+        require(manufacturers[msg.sender].isRegistered, "Not a registered manufacturer");
         require(manufacturers[msg.sender].isActive, "Manufacturer account is not active");
-        
+
         // Validation
         require(bytes(productId).length > 0, "Product ID cannot be empty");
         require(bytes(productId).length <= 100, "Product ID too long");
@@ -204,7 +191,7 @@ contract ProductRegistry is Ownable, ReentrancyGuard {
         require(bytes(name).length <= 200, "Product name too long");
         require(dataHash != bytes32(0), "Data hash cannot be empty");
         require(!usedHashes[dataHash], "Data hash already used");
-        require(bytes(metadataURI).length > 0, "Metadata URI cannot be empty");
+        require(bytes(metadataURI).length > 0 && bytes(metadataURI).length <= 500, "Invalid metadata URI");
         
         // Create product
         products[productId] = Product({
@@ -265,6 +252,9 @@ contract ProductRegistry is Ownable, ReentrancyGuard {
         require(productIds.length <= 50, "Maximum 50 products per batch");
         
         for (uint256 i = 0; i < productIds.length; i++) {
+            require(bytes(productIds[i]).length > 0 && bytes(productIds[i]).length <= 100, "Invalid product ID");
+            require(bytes(names[i]).length > 0 && bytes(names[i]).length <= 200, "Invalid product name");
+            require(bytes(metadataURIs[i]).length > 0 && bytes(metadataURIs[i]).length <= 500, "Invalid metadata URI");
             require(!products[productIds[i]].exists, "Product already exists");
             require(dataHashes[i] != bytes32(0), "Data hash cannot be empty");
             require(!usedHashes[dataHashes[i]], "Data hash already used");
@@ -295,6 +285,7 @@ contract ProductRegistry is Ownable, ReentrancyGuard {
         }
         
         manufacturers[msg.sender].productCount += productIds.length;
+        _productCounter += productIds.length;
         
         // Update reputation based on batch size
         uint256 reputationIncrease = productIds.length / 10; // 1 point per 10 products
@@ -307,16 +298,22 @@ contract ProductRegistry is Ownable, ReentrancyGuard {
      * @dev Update product metadata URI
      * @param productId Product to update
      * @param newMetadataURI New metadata URI
+     * @param newDataHash New canonical metadata commitment
      */
     function updateProductMetadata(
         string memory productId,
-        string memory newMetadataURI
+        string memory newMetadataURI,
+        bytes32 newDataHash
     ) external onlyManufacturer productExists(productId) {
         require(
             products[productId].manufacturer == msg.sender,
             "Only product manufacturer can update"
         );
-        require(bytes(newMetadataURI).length > 0, "Metadata URI cannot be empty");
+        require(bytes(newMetadataURI).length > 0 && bytes(newMetadataURI).length <= 500, "Invalid metadata URI");
+        require(newDataHash != bytes32(0), "Data hash cannot be empty");
+        require(newDataHash == products[productId].dataHash || !usedHashes[newDataHash], "Data hash already used");
+        usedHashes[newDataHash] = true;
+        products[productId].dataHash = newDataHash;
         
         products[productId].metadataURI = newMetadataURI;
         
@@ -456,6 +453,17 @@ contract ProductRegistry is Ownable, ReentrancyGuard {
         return manufacturerProducts[manufacturer];
     }
     
+    function getManufacturerProductsPage(address manufacturer, uint256 offset, uint256 limit) external view returns (string[] memory) {
+        require(limit > 0 && limit <= 100, "Invalid page size");
+        string[] storage ids = manufacturerProducts[manufacturer];
+        if (offset >= ids.length) return new string[](0);
+        uint256 count = ids.length - offset;
+        if (count > limit) count = limit;
+        string[] memory page = new string[](count);
+        for (uint256 i; i < count; i++) page[i] = ids[offset + i];
+        return page;
+    }
+
     /**
      * @dev Get total number of registered products
      * @return Total product count

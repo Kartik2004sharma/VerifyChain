@@ -1,0 +1,13 @@
+
+> verifychain@1.0.0 test
+> vitest run
+
+
+ RUN  v4.1.11 /Users/kartik/CS50x2025/Projects/VerifyChain
+
+
+ Test Files  5 passed (5)
+      Tests  42 passed (42)
+   Start at  23:35:56
+   Duration  2.02s (transform 525ms, setup 0ms, import 3.28s, tests 497ms, environment 1.16s)
+

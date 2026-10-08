@@ -1,0 +1,38 @@
+
+> verifychain@1.0.0 contracts:test
+> hardhat test
+
+[dotenv@17.3.1] injecting env (0) from .env.local -- tip: ⚙️  suppress all logs with { quiet: true }
+
+
+  ProductRegistry — R07 C01
+    ✔ requires explicit active identity on single and batch writes (92ms)
+    ✔ reconciles global/manufacturer totals and retains original string IDs across batches (93ms)
+    ✔ rejects batch invalid bytes (0/4/8) atomically
+    ✔ rejects batch invalid bytes (101/4/8) atomically
+    ✔ rejects batch invalid bytes (1/0/8) atomically
+    ✔ rejects batch invalid bytes (1/201/8) atomically
+    ✔ rejects batch invalid bytes (1/4/0) atomically
+    ✔ rejects batch invalid bytes (1/4/501) atomically
+    ✔ rejects duplicate IDs/hash, zero hash and over-limit arrays (47ms)
+    ✔ updates both commitment and URI only for the registrant; revocation remains revoked
+
+  VerificationRegistry — C02
+    ✔ reconciles sums and averages over mixed single/batch observations (39ms)
+    ✔ does not authenticate caller opinions and enforces boundaries
+
+  SupplyChainTracker — C03
+    ✔ rejects unauthorized/revoked handlers including edits
+    ✔ preserves sequence/hash continuity, product isolation and completion rules
+    ✔ validates action, location and proof
+
+  CounterfeitReporter quarantined escrow v2 — C04 C05
+    ✔ rejects repeated winner claims and keeps principal accounting solvent without bonuses (50ms)
+    ✔ refunds incorrect votes only once and reconciles reserves (109ms)
+    ✔ releases stalled reports permissionlessly after deadline, retaining all refunds (153ms)
+    ✔ cancels unused reports and forbids owner escrow withdrawals or reporter voting (39ms)
+    ✔ failed and reentrant recipient cannot consume another stake or corrupt liabilities (63ms)
+
+
+  20 passing (3s)
+

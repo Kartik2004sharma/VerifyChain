@@ -1,0 +1,3093 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@ethersproject/abi": {
+      "name": "@ethersproject/abi",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/hash"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-verify",
+        "hardhat",
+        "hardhat-gas-reporter"
+      ],
+      "range": "5.0.10 - 5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/abi"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@ethersproject/abstract-provider": {
+      "name": "@ethersproject/abstract-provider",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/transactions"
+      ],
+      "effects": [
+        "@ethersproject/abstract-signer"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@ethersproject/abstract-provider"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@ethersproject/abstract-signer": {
+      "name": "@ethersproject/abstract-signer",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abstract-provider"
+      ],
+      "effects": [
+        "@ethersproject/hash"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@ethersproject/abstract-signer"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@ethersproject/hash": {
+      "name": "@ethersproject/hash",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abstract-signer"
+      ],
+      "effects": [
+        "@ethersproject/abi"
+      ],
+      "range": "5.0.6 - 5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/hash"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@ethersproject/signing-key": {
+      "name": "@ethersproject/signing-key",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "elliptic"
+      ],
+      "effects": [
+        "@ethersproject/transactions"
+      ],
+      "range": "<=5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/signing-key"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@ethersproject/transactions": {
+      "name": "@ethersproject/transactions",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/signing-key"
+      ],
+      "effects": [
+        "@ethersproject/abstract-provider"
+      ],
+      "range": "<=5.8.0",
+      "nodes": [
+        "node_modules/@ethersproject/transactions"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@fastify/busboy": {
+      "name": "@fastify/busboy",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240982,
+          "name": "@fastify/busboy",
+          "dependency": "@fastify/busboy",
+          "title": "@fastify/busboy vulnerable to Denial of Service via prototype-named multipart part header",
+          "url": "https://github.com/advisories/GHSA-x8mw-p69m-v3mx",
+          "severity": "high",
+          "cwe": [
+            "CWE-754"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=1.0.0 <3.2.1"
+        }
+      ],
+      "effects": [
+        "undici"
+      ],
+      "range": "1.0.0 - 3.2.0",
+      "nodes": [
+        "node_modules/@fastify/busboy"
+      ],
+      "fixAvailable": {
+        "name": "hardhat",
+        "version": "3.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@gemini-wallet/core": {
+      "name": "@gemini-wallet/core",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@metamask/rpc-errors"
+      ],
+      "effects": [
+        "@wagmi/connectors"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@gemini-wallet/core"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@humanfs/node": {
+      "name": "@humanfs/node",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1158499,
+          "name": "@humanfs/node",
+          "dependency": "@humanfs/node",
+          "title": "humanfs: Recursive copy follows symlinked files and copies data from outside the source tree",
+          "url": "https://github.com/advisories/GHSA-p498-v437-472g",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<0.16.8"
+        }
+      ],
+      "effects": [],
+      "range": "<0.16.8",
+      "nodes": [
+        "node_modules/@humanfs/node"
+      ],
+      "fixAvailable": true
+    },
+    "@lhci/cli": {
+      "name": "@lhci/cli",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@lhci/utils",
+        "inquirer",
+        "lighthouse",
+        "proxy-agent",
+        "tmp",
+        "uuid"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@lhci/cli"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@lhci/utils": {
+      "name": "@lhci/utils",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "lighthouse"
+      ],
+      "effects": [
+        "@lhci/cli"
+      ],
+      "range": ">=0.13.0",
+      "nodes": [
+        "node_modules/@lhci/utils"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@metamask/rpc-errors": {
+      "name": "@metamask/rpc-errors",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@metamask/utils"
+      ],
+      "effects": [
+        "@gemini-wallet/core"
+      ],
+      "range": ">=6.3.1",
+      "nodes": [
+        "node_modules/@metamask/eth-json-rpc-provider/node_modules/@metamask/rpc-errors",
+        "node_modules/@metamask/json-rpc-engine/node_modules/@metamask/rpc-errors",
+        "node_modules/@metamask/providers/node_modules/@metamask/rpc-errors",
+        "node_modules/@metamask/rpc-errors"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@metamask/sdk": {
+      "name": "@metamask/sdk",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@metamask/sdk-communication-layer",
+        "uuid"
+      ],
+      "effects": [
+        "@wagmi/connectors"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@metamask/sdk"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@metamask/sdk-communication-layer": {
+      "name": "@metamask/sdk-communication-layer",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "uuid"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@metamask/sdk-communication-layer"
+      ],
+      "fixAvailable": true
+    },
+    "@metamask/utils": {
+      "name": "@metamask/utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "uuid"
+      ],
+      "effects": [
+        "@metamask/rpc-errors"
+      ],
+      "range": ">=8.4.0",
+      "nodes": [
+        "node_modules/@metamask/eth-json-rpc-provider/node_modules/@metamask/json-rpc-engine/node_modules/@metamask/utils",
+        "node_modules/@metamask/eth-json-rpc-provider/node_modules/@metamask/rpc-errors/node_modules/@metamask/utils",
+        "node_modules/@metamask/json-rpc-engine/node_modules/@metamask/rpc-errors/node_modules/@metamask/utils",
+        "node_modules/@metamask/json-rpc-engine/node_modules/@metamask/utils",
+        "node_modules/@metamask/json-rpc-middleware-stream/node_modules/@metamask/utils",
+        "node_modules/@metamask/providers/node_modules/@metamask/rpc-errors/node_modules/@metamask/utils",
+        "node_modules/@metamask/providers/node_modules/@metamask/utils",
+        "node_modules/@metamask/utils"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@next/eslint-plugin-next": {
+      "name": "@next/eslint-plugin-next",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "fast-glob"
+      ],
+      "effects": [
+        "eslint-config-next"
+      ],
+      "range": ">=14.3.0-canary.0",
+      "nodes": [
+        "node_modules/@next/eslint-plugin-next"
+      ],
+      "fixAvailable": {
+        "name": "eslint-config-next",
+        "version": "14.2.35",
+        "isSemVerMajor": true
+      }
+    },
+    "@nomicfoundation/hardhat-chai-matchers": {
+      "name": "@nomicfoundation/hardhat-chai-matchers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@nomicfoundation/hardhat-ethers",
+        "hardhat"
+      ],
+      "effects": [],
+      "range": "<=2.1.2",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-chai-matchers"
+      ],
+      "fixAvailable": true
+    },
+    "@nomicfoundation/hardhat-ethers": {
+      "name": "@nomicfoundation/hardhat-ethers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "hardhat"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-chai-matchers"
+      ],
+      "range": "<=3.1.3",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-ethers"
+      ],
+      "fixAvailable": true
+    },
+    "@nomicfoundation/hardhat-ignition": {
+      "name": "@nomicfoundation/hardhat-ignition",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@nomicfoundation/hardhat-verify",
+        "hardhat"
+      ],
+      "effects": [],
+      "range": "<=0.15.16",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-ignition"
+      ],
+      "fixAvailable": true
+    },
+    "@nomicfoundation/hardhat-ignition-ethers": {
+      "name": "@nomicfoundation/hardhat-ignition-ethers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@nomicfoundation/hardhat-ethers",
+        "@nomicfoundation/hardhat-ignition",
+        "hardhat"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": "<=0.15.17",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-ignition-ethers"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@nomicfoundation/hardhat-network-helpers": {
+      "name": "@nomicfoundation/hardhat-network-helpers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "ethereumjs-util",
+        "hardhat"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": "<=1.1.2",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-network-helpers"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@nomicfoundation/hardhat-toolbox": {
+      "name": "@nomicfoundation/hardhat-toolbox",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@nomicfoundation/hardhat-chai-matchers",
+        "@nomicfoundation/hardhat-ethers",
+        "@nomicfoundation/hardhat-ignition-ethers",
+        "@nomicfoundation/hardhat-network-helpers",
+        "@nomicfoundation/hardhat-verify",
+        "@typechain/hardhat",
+        "hardhat",
+        "hardhat-gas-reporter",
+        "solidity-coverage"
+      ],
+      "effects": [],
+      "range": "<=6.1.2",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-toolbox"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@nomicfoundation/hardhat-verify": {
+      "name": "@nomicfoundation/hardhat-verify",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abi",
+        "hardhat",
+        "undici"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-ignition",
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": "<=3.1.1",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-verify"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@puppeteer/browsers": {
+      "name": "@puppeteer/browsers",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "extract-zip",
+        "proxy-agent"
+      ],
+      "effects": [
+        "puppeteer-core"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@puppeteer/browsers"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "@reown/appkit": {
+      "name": "@reown/appkit",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@reown/appkit-controllers",
+        "@reown/appkit-pay",
+        "@reown/appkit-scaffold-ui",
+        "@reown/appkit-ui",
+        "@reown/appkit-utils",
+        "@walletconnect/universal-provider"
+      ],
+      "effects": [
+        "@walletconnect/ethereum-provider"
+      ],
+      "range": "<=1.8.8",
+      "nodes": [
+        "node_modules/@reown/appkit"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@reown/appkit-controllers": {
+      "name": "@reown/appkit-controllers",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@walletconnect/universal-provider"
+      ],
+      "effects": [
+        "@reown/appkit",
+        "@reown/appkit-pay",
+        "@reown/appkit-scaffold-ui",
+        "@reown/appkit-ui",
+        "@reown/appkit-utils"
+      ],
+      "range": "<=1.8.8",
+      "nodes": [
+        "node_modules/@reown/appkit-controllers"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@reown/appkit-pay": {
+      "name": "@reown/appkit-pay",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@reown/appkit-controllers",
+        "@reown/appkit-ui",
+        "@reown/appkit-utils"
+      ],
+      "effects": [
+        "@reown/appkit"
+      ],
+      "range": "<=1.8.8",
+      "nodes": [
+        "node_modules/@reown/appkit-pay"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@reown/appkit-scaffold-ui": {
+      "name": "@reown/appkit-scaffold-ui",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@reown/appkit-controllers",
+        "@reown/appkit-ui",
+        "@reown/appkit-utils"
+      ],
+      "effects": [],
+      "range": "<=1.8.8",
+      "nodes": [
+        "node_modules/@reown/appkit-scaffold-ui"
+      ],
+      "fixAvailable": true
+    },
+    "@reown/appkit-ui": {
+      "name": "@reown/appkit-ui",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@reown/appkit-controllers"
+      ],
+      "effects": [
+        "@reown/appkit",
+        "@reown/appkit-scaffold-ui"
+      ],
+      "range": "1.7.1-449657bc8f95adcfd295a2e883c4bcd439045044.0 - 1.8.8",
+      "nodes": [
+        "node_modules/@reown/appkit-ui"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@reown/appkit-utils": {
+      "name": "@reown/appkit-utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@reown/appkit-controllers",
+        "@walletconnect/universal-provider"
+      ],
+      "effects": [
+        "@reown/appkit-scaffold-ui"
+      ],
+      "range": "<=1.8.8",
+      "nodes": [
+        "node_modules/@reown/appkit-utils"
+      ],
+      "fixAvailable": true
+    },
+    "@sentry/node": {
+      "name": "@sentry/node",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "cookie"
+      ],
+      "effects": [
+        "hardhat"
+      ],
+      "range": "4.0.0-beta.0 - 7.74.2-alpha.1",
+      "nodes": [
+        "node_modules/@sentry/node"
+      ],
+      "fixAvailable": {
+        "name": "hardhat",
+        "version": "3.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@typechain/hardhat": {
+      "name": "@typechain/hardhat",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "hardhat"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@typechain/hardhat"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/eslint-plugin": {
+      "name": "@typescript-eslint/eslint-plugin",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/type-utils",
+        "@typescript-eslint/utils"
+      ],
+      "effects": [],
+      "range": "8.2.1-alpha.0 - 8.47.1-alpha.9",
+      "nodes": [
+        "node_modules/@typescript-eslint/eslint-plugin"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/parser": {
+      "name": "@typescript-eslint/parser",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/typescript-estree"
+      ],
+      "effects": [],
+      "range": "8.2.1-alpha.0 - 8.47.1-alpha.9",
+      "nodes": [
+        "node_modules/@typescript-eslint/parser"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/type-utils": {
+      "name": "@typescript-eslint/type-utils",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/typescript-estree",
+        "@typescript-eslint/utils"
+      ],
+      "effects": [
+        "@typescript-eslint/eslint-plugin"
+      ],
+      "range": "8.2.1-alpha.0 - 8.47.1-alpha.9",
+      "nodes": [
+        "node_modules/@typescript-eslint/type-utils"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/typescript-estree": {
+      "name": "@typescript-eslint/typescript-estree",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "fast-glob"
+      ],
+      "effects": [
+        "@typescript-eslint/parser",
+        "@typescript-eslint/type-utils",
+        "@typescript-eslint/utils"
+      ],
+      "range": "8.2.1-alpha.0 - 8.47.1-alpha.9",
+      "nodes": [
+        "node_modules/@typescript-eslint/typescript-estree"
+      ],
+      "fixAvailable": true
+    },
+    "@typescript-eslint/utils": {
+      "name": "@typescript-eslint/utils",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@typescript-eslint/typescript-estree"
+      ],
+      "effects": [],
+      "range": "8.2.1-alpha.0 - 8.47.1-alpha.9",
+      "nodes": [
+        "node_modules/@typescript-eslint/utils"
+      ],
+      "fixAvailable": true
+    },
+    "@wagmi/connectors": {
+      "name": "@wagmi/connectors",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@gemini-wallet/core",
+        "@metamask/sdk",
+        "@walletconnect/ethereum-provider"
+      ],
+      "effects": [
+        "wagmi"
+      ],
+      "range": "<=0.2.7 || 0.3.10-cjs - 4.0.0-rc.3 || 4.0.1 - 7.2.1",
+      "nodes": [
+        "node_modules/@wagmi/connectors"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@walletconnect/core": {
+      "name": "@walletconnect/core",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@walletconnect/utils"
+      ],
+      "effects": [],
+      "range": "1.2.3-1.3.0-rc.0.0 - 2.17.5-rc-1 || 2.18.0-canary-tvf-1 - 2.21.8",
+      "nodes": [
+        "node_modules/@reown/appkit-controllers/node_modules/@walletconnect/core",
+        "node_modules/@reown/appkit-utils/node_modules/@walletconnect/core",
+        "node_modules/@reown/appkit/node_modules/@walletconnect/core",
+        "node_modules/@walletconnect/core"
+      ],
+      "fixAvailable": true
+    },
+    "@walletconnect/ethereum-provider": {
+      "name": "@walletconnect/ethereum-provider",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@reown/appkit",
+        "@walletconnect/sign-client",
+        "@walletconnect/universal-provider",
+        "@walletconnect/utils"
+      ],
+      "effects": [
+        "@wagmi/connectors"
+      ],
+      "range": "<=2.17.5-rc-1 || 2.18.0-canary-ak-1 - 2.21.10",
+      "nodes": [
+        "node_modules/@walletconnect/ethereum-provider"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@walletconnect/sign-client": {
+      "name": "@walletconnect/sign-client",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@walletconnect/core",
+        "@walletconnect/utils"
+      ],
+      "effects": [
+        "@walletconnect/ethereum-provider"
+      ],
+      "range": "<=2.17.5-rc-1 || 2.18.0-canary-tvf-1 - 2.21.8",
+      "nodes": [
+        "node_modules/@reown/appkit-controllers/node_modules/@walletconnect/sign-client",
+        "node_modules/@reown/appkit-utils/node_modules/@walletconnect/sign-client",
+        "node_modules/@reown/appkit/node_modules/@walletconnect/sign-client",
+        "node_modules/@walletconnect/sign-client"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@walletconnect/universal-provider": {
+      "name": "@walletconnect/universal-provider",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@walletconnect/sign-client",
+        "@walletconnect/utils"
+      ],
+      "effects": [
+        "@reown/appkit",
+        "@reown/appkit-controllers",
+        "@reown/appkit-utils",
+        "@walletconnect/ethereum-provider"
+      ],
+      "range": "<=2.17.5-rc-1 || 2.18.0-canary-tvf-1 - 2.21.8",
+      "nodes": [
+        "node_modules/@reown/appkit-controllers/node_modules/@walletconnect/universal-provider",
+        "node_modules/@reown/appkit-utils/node_modules/@walletconnect/universal-provider",
+        "node_modules/@reown/appkit/node_modules/@walletconnect/universal-provider",
+        "node_modules/@walletconnect/universal-provider"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@walletconnect/utils": {
+      "name": "@walletconnect/utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "query-string"
+      ],
+      "effects": [
+        "@walletconnect/core",
+        "@walletconnect/ethereum-provider",
+        "@walletconnect/sign-client",
+        "@walletconnect/universal-provider"
+      ],
+      "range": "1.2.3-1.3.0-rc.0.0 - 2.17.5-rc-1 || 2.18.0-canary-ell-1 - 2.21.8",
+      "nodes": [
+        "node_modules/@reown/appkit-controllers/node_modules/@walletconnect/utils",
+        "node_modules/@reown/appkit-utils/node_modules/@walletconnect/utils",
+        "node_modules/@reown/appkit/node_modules/@walletconnect/utils",
+        "node_modules/@walletconnect/utils"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "adm-zip": {
+      "name": "adm-zip",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1123686,
+          "name": "adm-zip",
+          "dependency": "adm-zip",
+          "title": "adm-zip: Crafted ZIP file triggers 4GB memory allocation",
+          "url": "https://github.com/advisories/GHSA-xcpc-8h2w-3j85",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-789"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<0.6.0"
+        },
+        {
+          "source": 1239030,
+          "name": "adm-zip",
+          "dependency": "adm-zip",
+          "title": "adm-zip: Uncontrolled memory allocation via the declared uncompressed size (DoS)",
+          "url": "https://github.com/advisories/GHSA-7q85-xj36-vmfc",
+          "severity": "high",
+          "cwe": [
+            "CWE-789"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<0.6.1"
+        },
+        {
+          "source": 1240032,
+          "name": "adm-zip",
+          "dependency": "adm-zip",
+          "title": "adm-zip: Decompression-bomb protection (fix for CVE-2026-39244) can be bypassed by declaring uncompressed size as 0",
+          "url": "https://github.com/advisories/GHSA-rcw4-f5rp-g42v",
+          "severity": "high",
+          "cwe": [
+            "CWE-409"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=0.6.0"
+        },
+        {
+          "source": 1240034,
+          "name": "adm-zip",
+          "dependency": "adm-zip",
+          "title": "adm-zip extraction preserves SUID/SGID bits from untrusted ZIPs -> local privilege escalation",
+          "url": "https://github.com/advisories/GHSA-j5f4-cc29-5x44",
+          "severity": "high",
+          "cwe": [
+            "CWE-732"
+          ],
+          "cvss": {
+            "score": 7.1,
+            "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+          },
+          "range": "<=0.6.0"
+        },
+        {
+          "source": 1240064,
+          "name": "adm-zip",
+          "dependency": "adm-zip",
+          "title": "adm-zip: Duplicate ZIP entry names: getEntry() and extractAllTo() resolve to different content",
+          "url": "https://github.com/advisories/GHSA-p634-w6r4-rjp2",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-436",
+            "CWE-696"
+          ],
+          "cvss": {
+            "score": 5.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": "<=0.6.0"
+        },
+        {
+          "source": 1240065,
+          "name": "adm-zip",
+          "dependency": "adm-zip",
+          "title": "adm-zip: getDataAsync() bypasses the maxOutputLength size guard enforced by the synchronous getData() path",
+          "url": "https://github.com/advisories/GHSA-c6fg-446q-cg94",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<=0.6.0"
+        },
+        {
+          "source": 1240066,
+          "name": "adm-zip",
+          "dependency": "adm-zip",
+          "title": "adm-zip: Unhandled error event in async DEFLATE decompression crashes Node.js process (DoS)",
+          "url": "https://github.com/advisories/GHSA-8238-w5pm-2374",
+          "severity": "high",
+          "cwe": [
+            "CWE-248",
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=0.6.0"
+        }
+      ],
+      "effects": [
+        "hardhat"
+      ],
+      "range": "<=0.6.0",
+      "nodes": [
+        "node_modules/adm-zip"
+      ],
+      "fixAvailable": {
+        "name": "hardhat",
+        "version": "3.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    "ajv": {
+      "name": "ajv",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1113715,
+          "name": "ajv",
+          "dependency": "ajv",
+          "title": "ajv has ReDoS when using `$data` option",
+          "url": "https://github.com/advisories/GHSA-2g4f-4pwh-qvx6",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=7.0.0-alpha.0 <8.18.0"
+        }
+      ],
+      "effects": [],
+      "range": "7.0.0-alpha.0 - 8.17.1",
+      "nodes": [
+        "node_modules/table/node_modules/ajv"
+      ],
+      "fixAvailable": true
+    },
+    "basic-ftp": {
+      "name": "basic-ftp",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240853,
+          "name": "basic-ftp",
+          "dependency": "basic-ftp",
+          "title": "basic-ftp: Quadratic-time CPU denial of service in Client.list() Unix directory-listing parser (RE_LINE backtracking)",
+          "url": "https://github.com/advisories/GHSA-c475-qrg2-pj4r",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=6.2.0"
+        }
+      ],
+      "effects": [
+        "get-uri"
+      ],
+      "range": "<=6.2.0",
+      "nodes": [
+        "node_modules/basic-ftp"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "bn.js": {
+      "name": "bn.js",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1113441,
+          "name": "bn.js",
+          "dependency": "bn.js",
+          "title": "bn.js affected by an infinite loop",
+          "url": "https://github.com/advisories/GHSA-378v-28hj-76wf",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": ">=5.0.0 <5.2.3"
+        },
+        {
+          "source": 1113442,
+          "name": "bn.js",
+          "dependency": "bn.js",
+          "title": "bn.js affected by an infinite loop",
+          "url": "https://github.com/advisories/GHSA-378v-28hj-76wf",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<4.12.3"
+        }
+      ],
+      "effects": [
+        "ethjs-unit",
+        "number-to-bn"
+      ],
+      "range": ">=5.0.0 <5.2.3 || <4.12.3",
+      "nodes": [
+        "node_modules/bn.js",
+        "node_modules/elliptic/node_modules/bn.js",
+        "node_modules/ethjs-unit/node_modules/bn.js",
+        "node_modules/number-to-bn/node_modules/bn.js"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "brace-expansion": {
+      "name": "brace-expansion",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1115540,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: Zero-step sequence causes process hang and memory exhaustion",
+          "url": "https://github.com/advisories/GHSA-f886-m6hf-6m8v",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+          },
+          "range": "<1.1.13"
+        },
+        {
+          "source": 1115541,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: Zero-step sequence causes process hang and memory exhaustion",
+          "url": "https://github.com/advisories/GHSA-f886-m6hf-6m8v",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=2.0.0 <2.0.3"
+        },
+        {
+          "source": 1123896,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via exponential-time expansion of consecutive non-expanding {} groups",
+          "url": "https://github.com/advisories/GHSA-3jxr-9vmj-r5cp",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": ">=2.0.0 <2.1.2"
+        },
+        {
+          "source": 1123897,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via exponential-time expansion of consecutive non-expanding {} groups",
+          "url": "https://github.com/advisories/GHSA-3jxr-9vmj-r5cp",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<1.1.16"
+        },
+        {
+          "source": 1130588,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via unbounded expansion length causing an out-of-memory process crash",
+          "url": "https://github.com/advisories/GHSA-mh99-v99m-4gvg",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<1.1.17"
+        },
+        {
+          "source": 1130589,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via unbounded expansion length causing an out-of-memory process crash",
+          "url": "https://github.com/advisories/GHSA-mh99-v99m-4gvg",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=2.0.0 <2.1.3"
+        },
+        {
+          "source": 1130736,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
+          "url": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=2.0.0 <2.1.4"
+        },
+        {
+          "source": 1130737,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
+          "url": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<1.1.18"
+        },
+        {
+          "source": 1240100,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: Quadratic-time expansion of the `{a},b}` rewrite causes CPU denial of service",
+          "url": "https://github.com/advisories/GHSA-q2hr-2g5m-vwhr",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<1.1.21"
+        },
+        {
+          "source": 1240101,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: Quadratic-time expansion of the `{a},b}` rewrite causes CPU denial of service",
+          "url": "https://github.com/advisories/GHSA-q2hr-2g5m-vwhr",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": ">=2.0.0 <2.1.7"
+        },
+        {
+          "source": 1240104,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via uncontrolled recursion on nested brace groups causing stack exhaustion",
+          "url": "https://github.com/advisories/GHSA-qhr7-859c-m2p7",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<1.1.20"
+        },
+        {
+          "source": 1240105,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via uncontrolled recursion on nested brace groups causing stack exhaustion",
+          "url": "https://github.com/advisories/GHSA-qhr7-859c-m2p7",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=2.0.0 <2.1.6"
+        },
+        {
+          "source": 1240108,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via uncontrolled recursion in parseCommaParts causing stack exhaustion",
+          "url": "https://github.com/advisories/GHSA-6j4f-fj2g-mc7p",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<1.1.19"
+        },
+        {
+          "source": 1240109,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via uncontrolled recursion in parseCommaParts causing stack exhaustion",
+          "url": "https://github.com/advisories/GHSA-6j4f-fj2g-mc7p",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=2.0.0 <2.1.5"
+        }
+      ],
+      "effects": [],
+      "range": "<=1.1.20 || 2.0.0 - 2.1.6",
+      "nodes": [
+        "node_modules/brace-expansion",
+        "node_modules/minimatch/node_modules/brace-expansion"
+      ],
+      "fixAvailable": true
+    },
+    "braces": {
+      "name": "braces",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240992,
+          "name": "braces",
+          "dependency": "braces",
+          "title": "braces vulnerable to stack-exhaustion denial of service through deeply nested patterns",
+          "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+          "severity": "high",
+          "cwe": [
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=3.0.3"
+        }
+      ],
+      "effects": [
+        "chokidar",
+        "micromatch"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/braces"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "chokidar": {
+      "name": "chokidar",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "braces"
+      ],
+      "effects": [
+        "mocha"
+      ],
+      "range": "2.0.0 - 3.6.0",
+      "nodes": [
+        "node_modules/mocha/node_modules/chokidar"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "cookie": {
+      "name": "cookie",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1103907,
+          "name": "cookie",
+          "dependency": "cookie",
+          "title": "cookie accepts cookie name, path, and domain with out of bounds characters",
+          "url": "https://github.com/advisories/GHSA-pxg6-pf52-xh8x",
+          "severity": "low",
+          "cwe": [
+            "CWE-74"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<0.7.0"
+        }
+      ],
+      "effects": [
+        "@sentry/node"
+      ],
+      "range": "<0.7.0",
+      "nodes": [
+        "node_modules/cookie"
+      ],
+      "fixAvailable": {
+        "name": "hardhat",
+        "version": "3.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    "decode-uri-component": {
+      "name": "decode-uri-component",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1147955,
+          "name": "decode-uri-component",
+          "dependency": "decode-uri-component",
+          "title": "decode-uri-component: Denial of service via exponential decoding of malformed percent-encoded input",
+          "url": "https://github.com/advisories/GHSA-vcc3-ghjq-m6fr",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-405",
+            "CWE-407",
+            "CWE-1176"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=0.4.2"
+        }
+      ],
+      "effects": [
+        "query-string"
+      ],
+      "range": "<=0.4.2",
+      "nodes": [
+        "node_modules/decode-uri-component"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "diff": {
+      "name": "diff",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1112704,
+          "name": "diff",
+          "dependency": "diff",
+          "title": "jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch",
+          "url": "https://github.com/advisories/GHSA-73rr-hh4g-fpgx",
+          "severity": "low",
+          "cwe": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=4.0.0 <4.0.4"
+        },
+        {
+          "source": 1112705,
+          "name": "diff",
+          "dependency": "diff",
+          "title": "jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch",
+          "url": "https://github.com/advisories/GHSA-73rr-hh4g-fpgx",
+          "severity": "low",
+          "cwe": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=5.0.0 <5.2.2"
+        },
+        {
+          "source": 1112706,
+          "name": "diff",
+          "dependency": "diff",
+          "title": "jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch",
+          "url": "https://github.com/advisories/GHSA-73rr-hh4g-fpgx",
+          "severity": "low",
+          "cwe": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=6.0.0 <8.0.3"
+        }
+      ],
+      "effects": [
+        "mocha"
+      ],
+      "range": "4.0.0 - 4.0.3 || 5.0.0 - 5.2.1 || 6.0.0 - 8.0.2",
+      "nodes": [
+        "node_modules/diff",
+        "node_modules/hardhat/node_modules/diff",
+        "node_modules/ts-node/node_modules/diff"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "elliptic": {
+      "name": "elliptic",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1112030,
+          "name": "elliptic",
+          "dependency": "elliptic",
+          "title": "Elliptic Uses a Cryptographic Primitive with a Risky Implementation",
+          "url": "https://github.com/advisories/GHSA-848j-6mx2-7j84",
+          "severity": "low",
+          "cwe": [
+            "CWE-1240"
+          ],
+          "cvss": {
+            "score": 5.6,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L"
+          },
+          "range": "<=6.6.1"
+        }
+      ],
+      "effects": [
+        "@ethersproject/signing-key",
+        "secp256k1"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/elliptic"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "eslint-config-next": {
+      "name": "eslint-config-next",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@next/eslint-plugin-next"
+      ],
+      "effects": [],
+      "range": ">=14.3.0-canary.0",
+      "nodes": [
+        "node_modules/eslint-config-next"
+      ],
+      "fixAvailable": {
+        "name": "eslint-config-next",
+        "version": "14.2.35",
+        "isSemVerMajor": true
+      }
+    },
+    "ethereum-cryptography": {
+      "name": "ethereum-cryptography",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "secp256k1"
+      ],
+      "effects": [
+        "ethereumjs-util"
+      ],
+      "range": "0.1.0 - 0.1.3",
+      "nodes": [
+        "node_modules/ethereumjs-util/node_modules/ethereum-cryptography"
+      ],
+      "fixAvailable": true
+    },
+    "ethereumjs-util": {
+      "name": "ethereumjs-util",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "ethereum-cryptography"
+      ],
+      "effects": [],
+      "range": "4.5.1 || 5.2.1 || 6.2.1 || >=7.0.3",
+      "nodes": [
+        "node_modules/ethereumjs-util"
+      ],
+      "fixAvailable": true
+    },
+    "ethjs-unit": {
+      "name": "ethjs-unit",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "bn.js",
+        "number-to-bn"
+      ],
+      "effects": [
+        "web3-utils"
+      ],
+      "range": ">=0.1.3",
+      "nodes": [
+        "node_modules/ethjs-unit"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "external-editor": {
+      "name": "external-editor",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "tmp"
+      ],
+      "effects": [
+        "inquirer"
+      ],
+      "range": ">=1.1.1",
+      "nodes": [
+        "node_modules/external-editor"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "extract-zip": {
+      "name": "extract-zip",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1139346,
+          "name": "extract-zip",
+          "dependency": "extract-zip",
+          "title": "extract-zip unvalidated symlink path traversal",
+          "url": "https://github.com/advisories/GHSA-jmr9-qjv8-65gv",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 8.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+          },
+          "range": "<=2.0.1"
+        },
+        {
+          "source": 1193685,
+          "name": "extract-zip",
+          "dependency": "extract-zip",
+          "title": "extract-zip allows arbitrary file writes through symlink archive entries",
+          "url": "https://github.com/advisories/GHSA-7pqw-9j4j-h8q3",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 8.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+          },
+          "range": "<=2.0.1"
+        }
+      ],
+      "effects": [
+        "@puppeteer/browsers"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/extract-zip"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "fast-glob": {
+      "name": "fast-glob",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "micromatch"
+      ],
+      "effects": [
+        "@next/eslint-plugin-next",
+        "@typescript-eslint/typescript-estree",
+        "globby"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@typescript-eslint/typescript-estree/node_modules/fast-glob",
+        "node_modules/fast-glob"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "fast-uri": {
+      "name": "fast-uri",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1124064,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to host confusion via literal backslash authority delimiter",
+          "url": "https://github.com/advisories/GHSA-v2hh-gcrm-f6hx",
+          "severity": "high",
+          "cwe": [
+            "CWE-436"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=3.0.0 <=3.1.3"
+        },
+        {
+          "source": 1130720,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to host confusion via backslash authority introducer",
+          "url": "https://github.com/advisories/GHSA-7p8r-x3mc-p8w7",
+          "severity": "high",
+          "cwe": [
+            "CWE-436"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=3.0.0 <3.1.5"
+        },
+        {
+          "source": 1145559,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to path traversal via percent-encoded dot segments",
+          "url": "https://github.com/advisories/GHSA-q3j6-qgpj-74h6",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=3.0.0 <=3.1.0"
+        },
+        {
+          "source": 1153168,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to host confusion via percent-encoded authority delimiters",
+          "url": "https://github.com/advisories/GHSA-v39h-62p7-jpjc",
+          "severity": "high",
+          "cwe": [
+            "CWE-140",
+            "CWE-436"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=3.0.0 <=3.1.1"
+        },
+        {
+          "source": 1158524,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to server-side request forgery via malformed IPv6 normalization",
+          "url": "https://github.com/advisories/GHSA-f65p-4m7j-42xc",
+          "severity": "high",
+          "cwe": [
+            "CWE-20",
+            "CWE-918"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=3.0.0 <3.1.6"
+        },
+        {
+          "source": 1158530,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to host confusion via percent-encoded scheme normalization",
+          "url": "https://github.com/advisories/GHSA-jqff-g426-hqxp",
+          "severity": "high",
+          "cwe": [
+            "CWE-177"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=3.0.0 <3.1.6"
+        },
+        {
+          "source": 1204921,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to host confusion via failed IDN canonicalization",
+          "url": "https://github.com/advisories/GHSA-4c8g-83qw-93j6",
+          "severity": "high",
+          "cwe": [
+            "CWE-436",
+            "CWE-551"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=3.0.0 <3.1.3"
+        },
+        {
+          "source": 1239943,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to authority injection via an unvalidated port in serialize",
+          "url": "https://github.com/advisories/GHSA-qw65-cvwx-89v3",
+          "severity": "high",
+          "cwe": [
+            "CWE-116"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": ">=3.0.0 <3.1.7"
+        },
+        {
+          "source": 1240091,
+          "name": "fast-uri",
+          "dependency": "fast-uri",
+          "title": "fast-uri vulnerable to inconsistent host case normalization via percent-encoded octets",
+          "url": "https://github.com/advisories/GHSA-hrr3-gc8f-f4qj",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-178"
+          ],
+          "cvss": {
+            "score": 4.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+          },
+          "range": ">=3.0.0 <3.1.8"
+        }
+      ],
+      "effects": [],
+      "range": "3.0.0 - 3.1.7",
+      "nodes": [
+        "node_modules/fast-uri"
+      ],
+      "fixAvailable": true
+    },
+    "fflate": {
+      "name": "fflate",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1164782,
+          "name": "fflate",
+          "dependency": "fflate",
+          "title": "fflate unzipSync can enter an infinite loop when parsing malformed ZIP64 archives",
+          "url": "https://github.com/advisories/GHSA-px8p-9vwx-vf98",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=0.8.0 <0.8.3"
+        }
+      ],
+      "effects": [],
+      "range": "0.8.0 - 0.8.2",
+      "nodes": [
+        "node_modules/fflate"
+      ],
+      "fixAvailable": true
+    },
+    "flatted": {
+      "name": "flatted",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1114526,
+          "name": "flatted",
+          "dependency": "flatted",
+          "title": "flatted vulnerable to unbounded recursion DoS in parse() revive phase",
+          "url": "https://github.com/advisories/GHSA-25h7-pfq9-p65f",
+          "severity": "high",
+          "cwe": [
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<3.4.0"
+        },
+        {
+          "source": 1115357,
+          "name": "flatted",
+          "dependency": "flatted",
+          "title": "Prototype Pollution via parse() in NodeJS flatted",
+          "url": "https://github.com/advisories/GHSA-rf6f-7fwh-wjgh",
+          "severity": "high",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=3.4.1"
+        }
+      ],
+      "effects": [],
+      "range": "<=3.4.1",
+      "nodes": [
+        "node_modules/flatted"
+      ],
+      "fixAvailable": true
+    },
+    "get-uri": {
+      "name": "get-uri",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "basic-ftp"
+      ],
+      "effects": [
+        "pac-proxy-agent"
+      ],
+      "range": ">=5.0.0",
+      "nodes": [
+        "node_modules/get-uri"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "glob": {
+      "name": "glob",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1109842,
+          "name": "glob",
+          "dependency": "glob",
+          "title": "glob CLI: Command injection via -c/--cmd executes matches with shell:true",
+          "url": "https://github.com/advisories/GHSA-5j98-mcp5-4vw2",
+          "severity": "high",
+          "cwe": [
+            "CWE-78"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": ">=10.2.0 <10.5.0"
+        }
+      ],
+      "effects": [],
+      "range": "10.2.0 - 10.4.5",
+      "nodes": [
+        "node_modules/hardhat-gas-reporter/node_modules/glob"
+      ],
+      "fixAvailable": true
+    },
+    "globby": {
+      "name": "globby",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "fast-glob"
+      ],
+      "effects": [
+        "solidity-coverage"
+      ],
+      "range": ">=8.0.0",
+      "nodes": [
+        "node_modules/globby"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "hardhat": {
+      "name": "hardhat",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@ethersproject/abi",
+        "@sentry/node",
+        "adm-zip",
+        "solc",
+        "undici",
+        "uuid"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-chai-matchers",
+        "@nomicfoundation/hardhat-ethers",
+        "@nomicfoundation/hardhat-ignition",
+        "@nomicfoundation/hardhat-ignition-ethers",
+        "@nomicfoundation/hardhat-network-helpers",
+        "@nomicfoundation/hardhat-toolbox",
+        "@typechain/hardhat",
+        "hardhat-gas-reporter",
+        "solidity-coverage"
+      ],
+      "range": "0.1.0-rc.0 - 3.11.1",
+      "nodes": [
+        "node_modules/hardhat"
+      ],
+      "fixAvailable": {
+        "name": "hardhat",
+        "version": "3.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    "hardhat-gas-reporter": {
+      "name": "hardhat-gas-reporter",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@ethersproject/abi",
+        "hardhat"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/hardhat-gas-reporter"
+      ],
+      "fixAvailable": true
+    },
+    "immutable": {
+      "name": "immutable",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1117067,
+          "name": "immutable",
+          "dependency": "immutable",
+          "title": "Immutable is vulnerable to Prototype Pollution",
+          "url": "https://github.com/advisories/GHSA-wf6x-7x77-mvgw",
+          "severity": "high",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 9.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": ">=4.0.0-rc.1 <4.3.8"
+        },
+        {
+          "source": 1164796,
+          "name": "immutable",
+          "dependency": "immutable",
+          "title": "Immutable: Hash-collision algorithmic complexity denial of service in Immutable.Map/Set",
+          "url": "https://github.com/advisories/GHSA-xvcm-6775-5m9r",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=4.0.0-beta.1 <4.3.9"
+        },
+        {
+          "source": 1224658,
+          "name": "immutable",
+          "dependency": "immutable",
+          "title": "Immutable.js `List` 32-bit trie overflow → unrecoverable DoS",
+          "url": "https://github.com/advisories/GHSA-v56q-mh7h-f735",
+          "severity": "high",
+          "cwe": [
+            "CWE-190",
+            "CWE-400",
+            "CWE-835",
+            "CWE-1284"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=4.0.0-rc.1 <4.3.9"
+        }
+      ],
+      "effects": [],
+      "range": "4.0.0-rc.1 - 4.3.8",
+      "nodes": [
+        "node_modules/immutable"
+      ],
+      "fixAvailable": true
+    },
+    "inquirer": {
+      "name": "inquirer",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "external-editor"
+      ],
+      "effects": [
+        "@lhci/cli"
+      ],
+      "range": "3.0.0 - 8.2.6 || 9.0.0 - 9.3.7",
+      "nodes": [
+        "node_modules/inquirer"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "js-yaml": {
+      "name": "js-yaml",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1112714,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "js-yaml has prototype pollution in merge (<<)",
+          "url": "https://github.com/advisories/GHSA-mh29-5h37-fv8m",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-1321"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<3.14.2"
+        },
+        {
+          "source": 1121859,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "JS-YAML: Quadratic-complexity DoS in merge key handling via repeated aliases",
+          "url": "https://github.com/advisories/GHSA-h67p-54hq-rp68",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<3.15.0"
+        },
+        {
+          "source": 1123912,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "js-yaml: YAML merge-key chains can force quadratic CPU consumption",
+          "url": "https://github.com/advisories/GHSA-52cp-r559-cp3m",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=3.0.0 <3.15.0"
+        },
+        {
+          "source": 1138114,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE-2026-59870 fix not backported",
+          "url": "https://github.com/advisories/GHSA-5p4m-2wfm-xmqj",
+          "severity": "high",
+          "cwe": [
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=3.0.0 <3.15.1"
+        },
+        {
+          "source": 1193726,
+          "name": "js-yaml",
+          "dependency": "js-yaml",
+          "title": "js-yaml: maxTotalMergeKeys does not limit CPU use for empty merge sources",
+          "url": "https://github.com/advisories/GHSA-2883-xcg3-v3hh",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=3.0.0 <3.15.2"
+        }
+      ],
+      "effects": [],
+      "range": "<=3.15.1",
+      "nodes": [
+        "node_modules/sc-istanbul/node_modules/js-yaml"
+      ],
+      "fixAvailable": true
+    },
+    "lighthouse": {
+      "name": "lighthouse",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "puppeteer-core"
+      ],
+      "effects": [
+        "@lhci/cli",
+        "@lhci/utils"
+      ],
+      "range": "10.1.1-dev.20230414 - 10.1.1-dev.20230503 || 10.2.0-dev.20230504 - 13.3.0",
+      "nodes": [
+        "node_modules/lighthouse"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "micromatch": {
+      "name": "micromatch",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "braces"
+      ],
+      "effects": [
+        "fast-glob"
+      ],
+      "range": ">=0.2.0",
+      "nodes": [
+        "node_modules/micromatch"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "minimatch": {
+      "name": "minimatch",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1113461,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+          "url": "https://github.com/advisories/GHSA-3ppc-4f35-3m26",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=5.0.0 <5.1.7"
+        },
+        {
+          "source": 1113465,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+          "url": "https://github.com/advisories/GHSA-3ppc-4f35-3m26",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=9.0.0 <9.0.6"
+        },
+        {
+          "source": 1113540,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
+          "url": "https://github.com/advisories/GHSA-7r86-cg39-jmmj",
+          "severity": "high",
+          "cwe": [
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=5.0.0 <5.1.8"
+        },
+        {
+          "source": 1113544,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
+          "url": "https://github.com/advisories/GHSA-7r86-cg39-jmmj",
+          "severity": "high",
+          "cwe": [
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=9.0.0 <9.0.7"
+        },
+        {
+          "source": 1113548,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions",
+          "url": "https://github.com/advisories/GHSA-23c5-xmqv-rm74",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=5.0.0 <5.1.8"
+        },
+        {
+          "source": 1113552,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions",
+          "url": "https://github.com/advisories/GHSA-23c5-xmqv-rm74",
+          "severity": "high",
+          "cwe": [
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=9.0.0 <9.0.7"
+        }
+      ],
+      "effects": [],
+      "range": "5.0.0 - 5.1.7 || 9.0.0 - 9.0.6",
+      "nodes": [
+        "node_modules/@typescript-eslint/typescript-estree/node_modules/minimatch",
+        "node_modules/glob/node_modules/minimatch",
+        "node_modules/hardhat-gas-reporter/node_modules/minimatch",
+        "node_modules/mocha/node_modules/minimatch"
+      ],
+      "fixAvailable": true
+    },
+    "mocha": {
+      "name": "mocha",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "chokidar",
+        "diff",
+        "serialize-javascript"
+      ],
+      "effects": [
+        "solidity-coverage"
+      ],
+      "range": "7.0.0-esm1 - 12.0.0-beta-3",
+      "nodes": [
+        "node_modules/hardhat/node_modules/mocha",
+        "node_modules/mocha"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "number-to-bn": {
+      "name": "number-to-bn",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "bn.js"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/number-to-bn"
+      ],
+      "fixAvailable": true
+    },
+    "pac-proxy-agent": {
+      "name": "pac-proxy-agent",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "get-uri"
+      ],
+      "effects": [
+        "proxy-agent"
+      ],
+      "range": ">=6.0.0",
+      "nodes": [
+        "node_modules/pac-proxy-agent"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "proxy-agent": {
+      "name": "proxy-agent",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "pac-proxy-agent"
+      ],
+      "effects": [
+        "@lhci/cli",
+        "@puppeteer/browsers"
+      ],
+      "range": ">=6.0.0",
+      "nodes": [
+        "node_modules/proxy-agent"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "puppeteer-core": {
+      "name": "puppeteer-core",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@puppeteer/browsers"
+      ],
+      "effects": [
+        "lighthouse"
+      ],
+      "range": "19.8.4 - 24.43.1",
+      "nodes": [
+        "node_modules/puppeteer-core"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "query-string": {
+      "name": "query-string",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "decode-uri-component"
+      ],
+      "effects": [
+        "@walletconnect/utils"
+      ],
+      "range": "5.0.0 - 9.4.1",
+      "nodes": [
+        "node_modules/query-string"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "secp256k1": {
+      "name": "secp256k1",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "elliptic"
+      ],
+      "effects": [
+        "ethereum-cryptography"
+      ],
+      "range": ">=2.0.0",
+      "nodes": [
+        "node_modules/secp256k1"
+      ],
+      "fixAvailable": true
+    },
+    "serialize-javascript": {
+      "name": "serialize-javascript",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1113686,
+          "name": "serialize-javascript",
+          "dependency": "serialize-javascript",
+          "title": "Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()",
+          "url": "https://github.com/advisories/GHSA-5c6j-r48x-rmvq",
+          "severity": "high",
+          "cwe": [
+            "CWE-96"
+          ],
+          "cvss": {
+            "score": 8.1,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          },
+          "range": "<=7.0.2"
+        },
+        {
+          "source": 1119440,
+          "name": "serialize-javascript",
+          "dependency": "serialize-javascript",
+          "title": "Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects",
+          "url": "https://github.com/advisories/GHSA-qj8w-gfj5-8c6v",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-834"
+          ],
+          "cvss": {
+            "score": 5.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=5.0.0 <7.0.5"
+        }
+      ],
+      "effects": [
+        "mocha"
+      ],
+      "range": "<=7.0.4",
+      "nodes": [
+        "node_modules/serialize-javascript"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "solc": {
+      "name": "solc",
+      "severity": "low",
+      "isDirect": false,
+      "via": [
+        "tmp"
+      ],
+      "effects": [],
+      "range": "0.5.1 - 0.8.36",
+      "nodes": [
+        "node_modules/solc"
+      ],
+      "fixAvailable": true
+    },
+    "solidity-coverage": {
+      "name": "solidity-coverage",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "globby",
+        "hardhat",
+        "mocha",
+        "web3-utils"
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-toolbox"
+      ],
+      "range": ">=0.7.0-beta.0",
+      "nodes": [
+        "node_modules/solidity-coverage"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    },
+    "tmp": {
+      "name": "tmp",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1109537,
+          "name": "tmp",
+          "dependency": "tmp",
+          "title": "tmp allows arbitrary temporary file / directory write via symbolic link `dir` parameter",
+          "url": "https://github.com/advisories/GHSA-52f5-9888-hmc6",
+          "severity": "low",
+          "cwe": [
+            "CWE-59"
+          ],
+          "cvss": {
+            "score": 2.5,
+            "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<=0.2.3"
+        },
+        {
+          "source": 1120654,
+          "name": "tmp",
+          "dependency": "tmp",
+          "title": "tmp has Path Traversal via unsanitized prefix/postfix that enables directory escape",
+          "url": "https://github.com/advisories/GHSA-ph9p-34f9-6g65",
+          "severity": "high",
+          "cwe": [
+            "CWE-22"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<0.2.6"
+        }
+      ],
+      "effects": [
+        "@lhci/cli",
+        "external-editor",
+        "solc"
+      ],
+      "range": "<=0.2.5",
+      "nodes": [
+        "node_modules/@lhci/cli/node_modules/tmp",
+        "node_modules/tmp"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "undici": {
+      "name": "undici",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@fastify/busboy",
+        {
+          "source": 1112496,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici has an unbounded decompression chain in HTTP responses on Node.js Fetch API via Content-Encoding leads to resource exhaustion",
+          "url": "https://github.com/advisories/GHSA-g9mf-h72j-4rw9",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 5.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<6.23.0"
+        },
+        {
+          "source": 1114594,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici has an HTTP Request/Response Smuggling issue",
+          "url": "https://github.com/advisories/GHSA-2mjp-6q6p-2qxm",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-444"
+          ],
+          "cvss": {
+            "score": 6.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+          },
+          "range": "<6.24.0"
+        },
+        {
+          "source": 1114638,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici has Unbounded Memory Consumption in WebSocket permessage-deflate Decompression",
+          "url": "https://github.com/advisories/GHSA-vrm6-8vpv-qv8q",
+          "severity": "high",
+          "cwe": [
+            "CWE-409"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<6.24.0"
+        },
+        {
+          "source": 1114640,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici has Unhandled Exception in WebSocket Client Due to Invalid server_max_window_bits Validation",
+          "url": "https://github.com/advisories/GHSA-v9p9-hfj2-hcw8",
+          "severity": "high",
+          "cwe": [
+            "CWE-248"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<6.24.0"
+        },
+        {
+          "source": 1114642,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "Undici has CRLF Injection in undici via `upgrade` option",
+          "url": "https://github.com/advisories/GHSA-4992-7rv2-5pvq",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-93"
+          ],
+          "cvss": {
+            "score": 4.6,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N"
+          },
+          "range": "<6.24.0"
+        },
+        {
+          "source": 1121242,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "undici vulnerable to HTTP header injection via Set-Cookie percent-decoding",
+          "url": "https://github.com/advisories/GHSA-p88m-4jfj-68fv",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-93"
+          ],
+          "cvss": {
+            "score": 5.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": "<6.27.0"
+        },
+        {
+          "source": 1121245,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "undici WebSocket client vulnerable to denial of service via fragment count bypass",
+          "url": "https://github.com/advisories/GHSA-vxpw-j846-p89q",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<6.27.0"
+        },
+        {
+          "source": 1121255,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "undici vulnerable to Set-Cookie SameSite attribute downgrade via permissive substring matching",
+          "url": "https://github.com/advisories/GHSA-g8m3-5g58-fq7m",
+          "severity": "low",
+          "cwe": [
+            "CWE-183"
+          ],
+          "cvss": {
+            "score": 3.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<6.27.0"
+        },
+        {
+          "source": 1130716,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "undici vulnerable to downstream response desynchronization via retry interceptor",
+          "url": "https://github.com/advisories/GHSA-8xcm-r25x-g524",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-444"
+          ],
+          "cvss": {
+            "score": 4.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+          },
+          "range": "<6.28.0"
+        },
+        {
+          "source": 1130727,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "undici vulnerable to CRLF Injection via blob-like body 'type' property",
+          "url": "https://github.com/advisories/GHSA-m8rv-5g2x-5cg5",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-93"
+          ],
+          "cvss": {
+            "score": 4.2,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N"
+          },
+          "range": "<6.28.0"
+        },
+        {
+          "source": 1130732,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "undici vulnerable to cookie attribute injection via unsanitized domain and unparsed setCookie fields",
+          "url": "https://github.com/advisories/GHSA-v3r7-h72x-cjcm",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-74"
+          ],
+          "cvss": {
+            "score": 4.8,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+          },
+          "range": "<6.28.0"
+        },
+        {
+          "source": 1137243,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "undici vulnerable to HTTP response queue poisoning via keep-alive socket reuse",
+          "url": "https://github.com/advisories/GHSA-35p6-xmwp-9g52",
+          "severity": "low",
+          "cwe": [
+            "CWE-367"
+          ],
+          "cvss": {
+            "score": 3.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<6.27.0"
+        },
+        {
+          "source": 1240039,
+          "name": "undici",
+          "dependency": "undici",
+          "title": "undici vulnerable to downstream response splitting via retry interceptor",
+          "url": "https://github.com/advisories/GHSA-r53p-7pc4-xj5r",
+          "severity": "low",
+          "cwe": [
+            "CWE-444"
+          ],
+          "cvss": {
+            "score": 3.7,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+          },
+          "range": "<6.28.1"
+        }
+      ],
+      "effects": [
+        "@nomicfoundation/hardhat-verify",
+        "hardhat"
+      ],
+      "range": "<=6.28.0",
+      "nodes": [
+        "node_modules/@nomicfoundation/hardhat-verify/node_modules/undici",
+        "node_modules/hardhat/node_modules/undici"
+      ],
+      "fixAvailable": {
+        "name": "hardhat",
+        "version": "3.18.1",
+        "isSemVerMajor": true
+      }
+    },
+    "uuid": {
+      "name": "uuid",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1119441,
+          "name": "uuid",
+          "dependency": "uuid",
+          "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+          "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-787",
+            "CWE-1285"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+          },
+          "range": "<11.1.1"
+        }
+      ],
+      "effects": [
+        "@lhci/cli",
+        "@metamask/sdk",
+        "@metamask/sdk-communication-layer",
+        "@metamask/utils",
+        "hardhat"
+      ],
+      "range": "<11.1.1",
+      "nodes": [
+        "node_modules/@metamask/eth-json-rpc-provider/node_modules/uuid",
+        "node_modules/@metamask/json-rpc-engine/node_modules/uuid",
+        "node_modules/@metamask/json-rpc-middleware-stream/node_modules/uuid",
+        "node_modules/@metamask/providers/node_modules/uuid",
+        "node_modules/@metamask/utils/node_modules/uuid",
+        "node_modules/uuid"
+      ],
+      "fixAvailable": {
+        "name": "@lhci/cli",
+        "version": "0.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "wagmi": {
+      "name": "wagmi",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "@wagmi/connectors"
+      ],
+      "effects": [],
+      "range": "<=0.0.0-wc-links-20240926225814 || 2.0.0-alpha.0 - 2.0.0-rc.3 || 2.0.1 - 3.5.0",
+      "nodes": [
+        "node_modules/wagmi"
+      ],
+      "fixAvailable": {
+        "name": "wagmi",
+        "version": "3.7.7",
+        "isSemVerMajor": true
+      }
+    },
+    "web3-utils": {
+      "name": "web3-utils",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "ethjs-unit",
+        "number-to-bn"
+      ],
+      "effects": [
+        "solidity-coverage"
+      ],
+      "range": "1.0.0-beta.8 - 3.0.0-rc.5",
+      "nodes": [
+        "node_modules/web3-utils"
+      ],
+      "fixAvailable": {
+        "name": "@nomicfoundation/hardhat-toolbox",
+        "version": "7.0.0",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 16,
+      "moderate": 37,
+      "high": 37,
+      "critical": 0,
+      "total": 90
+    },
+    "dependencies": {
+      "prod": 601,
+      "dev": 1033,
+      "optional": 116,
+      "peer": 250,
+      "peerOptional": 0,
+      "total": 1687
+    }
+  }
+}

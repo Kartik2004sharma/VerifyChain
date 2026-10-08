@@ -58,7 +58,7 @@ contract SupplyChainTracker is Ownable, ReentrancyGuard {
     }
     
     modifier validActionType(string memory action) {
-        require(isValidAction[action] || bytes(action).length == 0, "Invalid action type");
+        require(isValidAction[action], "Invalid action type");
         _;
     }
     
@@ -102,9 +102,10 @@ contract SupplyChainTracker is Ownable, ReentrancyGuard {
     }
     
     function initializeSupplyChain(string memory productId, string memory location, string memory action, bytes32 proofHash, string memory notes) external onlyAuthorizedHandler validActionType(action) nonReentrant {
-        require(bytes(productId).length > 0, "Product ID cannot be empty");
+        require(bytes(productId).length > 0 && bytes(productId).length <= 100, "Invalid product ID");
         require(!supplyChainInfo[productId].exists, "Supply chain already exists");
-        require(bytes(location).length > 0, "Location cannot be empty");
+        require(bytes(location).length > 0 && bytes(location).length <= 200, "Invalid location");
+        require(bytes(notes).length <= 500, "Notes too long");
         require(proofHash != bytes32(0), "Proof hash cannot be empty");
         
         SupplyChainStep memory firstStep = SupplyChainStep({
@@ -143,7 +144,8 @@ contract SupplyChainTracker is Ownable, ReentrancyGuard {
     
     function addSupplyChainStep(string memory productId, string memory location, string memory action, bytes32 proofHash, string memory notes) external onlyAuthorizedHandler supplyChainExists(productId) validActionType(action) nonReentrant {
         require(!supplyChainInfo[productId].isComplete, "Supply chain already completed");
-        require(bytes(location).length > 0, "Location cannot be empty");
+        require(bytes(location).length > 0 && bytes(location).length <= 200, "Invalid location");
+        require(bytes(notes).length <= 500, "Notes too long");
         require(proofHash != bytes32(0), "Proof hash cannot be empty");
         
         SupplyChainInfo storage info = supplyChainInfo[productId];
@@ -209,7 +211,7 @@ contract SupplyChainTracker is Ownable, ReentrancyGuard {
     function updateStepNotes(string memory productId, uint256 stepNumber, string memory newNotes) external supplyChainExists(productId) {
         require(stepNumber > 0 && stepNumber <= supplyChains[productId].length, "Invalid step number");
         SupplyChainStep storage step = supplyChains[productId][stepNumber - 1];
-        require(step.handler == msg.sender || msg.sender == owner(), "Only handler or owner can update");
+        require((step.handler == msg.sender && authorizedHandlers[msg.sender]) || msg.sender == owner(), "Only active handler or owner can update");
         require(bytes(newNotes).length <= 500, "Notes too long");
         step.notes = newNotes;
     }

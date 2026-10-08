@@ -1,0 +1,52 @@
+{
+  "conditions": "Local Next production build, macOS arm64, pinned Chromium 1208 (Playwright 1.58.2), homepage, three runs per profile; synthetic evidence not field INP. No service credentials; live reads remain unavailable.",
+  "source_revision": "source-revision.json",
+  "budget": {
+    "performance": 90,
+    "accessibility": 95,
+    "best-practices": 95,
+    "seo": 95
+  },
+  "profiles": {
+    "mobile": {
+      "command_exit": 0,
+      "median": {
+        "performance": 98.0,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "reports": [
+        "docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_07.report.json",
+        "docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_19.report.json",
+        "docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_30.report.json"
+      ],
+      "lighthouse_version": "12.6.1",
+      "metrics_median": {
+        "largest-contentful-paint": 2371.4002,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 62
+      }
+    },
+    "desktop": {
+      "command_exit": 0,
+      "median": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "reports": [
+        "docs/audit-evidence/lighthouse-desktop-verified/127_0_0_1--2026_10_04_18_24_04.report.json",
+        "docs/audit-evidence/lighthouse-desktop-verified/127_0_0_1--2026_10_04_18_24_16.report.json",
+        "docs/audit-evidence/lighthouse-desktop-verified/127_0_0_1--2026_10_04_18_24_27.report.json"
+      ],
+      "lighthouse_version": "12.6.1",
+      "metrics_median": {
+        "largest-contentful-paint": 530.1419999999999,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: 'Connect wallet', exact: true }) to be visible[22m
+
+    at settled (/Users/kartik/CS50x2025/Projects/VerifyChain/scripts/review-redesign.mjs:55:12)
+    at async file:///Users/kartik/CS50x2025/Projects/VerifyChain/scripts/review-redesign.mjs:77:7 {
+  name: 'TimeoutError'
+}
+
+Node.js v24.19.0

@@ -1,0 +1,125 @@
+
+> verifychain@1.0.0 test:e2e
+> playwright test visual.spec.ts --project desktop --project mobile
+
+
+Running 4 tests using 2 workers
+
+  ✓  1 [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens light (6.3s)
+  ✓  2 [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens light (7.4s)
+  ✘  3 [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark (3.4s)
+  ✘  4 [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark (4.8s)
+
+
+  1) [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark ────────────────────
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveScreenshot[2m([22m[32mexpected[39m[2m)[22m failed
+
+      12898 pixels (ratio 0.01 of all image pixels) are different.
+
+      Snapshot: dark-passport-registered.png
+
+    Call log:
+    [2m  - Expect "toHaveScreenshot(dark-passport-registered.png)" with timeout 5000ms[22m
+    [2m    - verifying given screenshot expectation[22m
+    [2m  - taking page screenshot[22m
+    [2m    - disabled all CSS animations[22m
+    [2m  - waiting for fonts to load...[22m
+    [2m  - fonts loaded[22m
+    [2m  - 12898 pixels (ratio 0.01 of all image pixels) are different.[22m
+    [2m  - waiting 100ms before taking screenshot[22m
+    [2m  - taking page screenshot[22m
+    [2m    - disabled all CSS animations[22m
+    [2m  - waiting for fonts to load...[22m
+    [2m  - fonts loaded[22m
+    [2m  - captured a stable screenshot[22m
+    [2m  - 12898 pixels (ratio 0.01 of all image pixels) are different.[22m
+
+
+      88 |           .click();
+      89 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 90 |       await expect(page).toHaveScreenshot(`${theme}-passport-${status}.png`, {
+         |                          ^
+      91 |         fullPage: true,
+      92 |         animations: "disabled",
+      93 |         maxDiffPixelRatio: 0.005,
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:90:26
+
+    attachment #1: dark-passport-registered (image/png) ────────────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-registered-desktop-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-desktop/dark-passport-registered-actual.png
+    Diff:     test-results/visual-reviewed-critical-screens-dark-desktop/dark-passport-registered-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-dark-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual-reviewed-critical-screens-dark-desktop/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-dark-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/visual-reviewed-critical-screens-dark-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark ─────────────────────
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveScreenshot[2m([22m[32mexpected[39m[2m)[22m failed
+
+      4829 pixels (ratio 0.01 of all image pixels) are different.
+
+      Snapshot: dark-passport-registered.png
+
+    Call log:
+    [2m  - Expect "toHaveScreenshot(dark-passport-registered.png)" with timeout 5000ms[22m
+    [2m    - verifying given screenshot expectation[22m
+    [2m  - taking page screenshot[22m
+    [2m    - disabled all CSS animations[22m
+    [2m  - waiting for fonts to load...[22m
+    [2m  - fonts loaded[22m
+    [2m  - 4829 pixels (ratio 0.01 of all image pixels) are different.[22m
+    [2m  - waiting 100ms before taking screenshot[22m
+    [2m  - taking page screenshot[22m
+    [2m    - disabled all CSS animations[22m
+    [2m  - waiting for fonts to load...[22m
+    [2m  - fonts loaded[22m
+    [2m  - captured a stable screenshot[22m
+    [2m  - 4829 pixels (ratio 0.01 of all image pixels) are different.[22m
+
+
+      88 |           .click();
+      89 |       await page.evaluate(() => window.scrollTo(0, 0));
+    > 90 |       await expect(page).toHaveScreenshot(`${theme}-passport-${status}.png`, {
+         |                          ^
+      91 |         fullPage: true,
+      92 |         animations: "disabled",
+      93 |         maxDiffPixelRatio: 0.005,
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/visual.spec.ts:90:26
+
+    attachment #1: dark-passport-registered (image/png) ────────────────────────────────────────────
+    Expected: tests/e2e/visual.spec.ts-snapshots/dark-passport-registered-mobile-darwin.png
+    Received: test-results/visual-reviewed-critical-screens-dark-mobile/dark-passport-registered-actual.png
+    Diff:     test-results/visual-reviewed-critical-screens-dark-mobile/dark-passport-registered-diff.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-dark-mobile/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual-reviewed-critical-screens-dark-mobile/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/visual-reviewed-critical-screens-dark-mobile/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/visual-reviewed-critical-screens-dark-mobile/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [desktop] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark ─────────────────────
+    [mobile] › tests/e2e/visual.spec.ts:27:7 › reviewed critical screens dark ──────────────────────
+  2 passed (15.3s)

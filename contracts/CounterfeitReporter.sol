@@ -40,13 +40,17 @@ contract CounterfeitReporter is Ownable, ReentrancyGuard {
     mapping(uint256 => CounterfeitReport) private reports;
     mapping(string => uint256[]) private productReports;
     mapping(uint256 => Vote[]) private reportVotes;
+    mapping(uint256 => mapping(address => Vote)) private voterRecords;
     mapping(uint256 => mapping(address => bool)) private hasVoted;
     mapping(address => uint256[]) private reporterReports;
     mapping(address => uint256) private reporterAccuracy;
     mapping(address => uint256) private totalReports;
     mapping(address => uint256) private accurateReports;
     
-    uint256 public rewardPool;
+    uint256 public rewardPool; // Only voluntary funding, never participant escrow.
+    uint256 public outstandingStakes;
+    mapping(uint256 => mapping(address => bool)) public claimed;
+    mapping(uint256 => bool) public cancelled;
     
     event CounterfeitReported(uint256 indexed reportId, string indexed productId, address indexed reporter, uint256 stake, uint256 timestamp);
     event ReportVoted(uint256 indexed reportId, address indexed voter, bool votedFor, uint256 stake, uint256 timestamp);
@@ -79,6 +83,7 @@ contract CounterfeitReporter is Ownable, ReentrancyGuard {
         require(bytes(reason).length <= 500, "Reason too long");
         require(msg.value >= minimumStake, "Insufficient stake");
         
+        outstandingStakes += msg.value;
         reportCounter++;
         
         reports[reportCounter] = CounterfeitReport({
@@ -110,6 +115,7 @@ contract CounterfeitReporter is Ownable, ReentrancyGuard {
         require(msg.value >= minimumStake / 2, "Insufficient voting stake");
         require(msg.sender != reports[reportId].reporter, "Reporter cannot vote on own report");
         
+        outstandingStakes += msg.value;
         Vote memory newVote = Vote({
             voter: msg.sender,
             votedFor: voteFor,
@@ -118,6 +124,7 @@ contract CounterfeitReporter is Ownable, ReentrancyGuard {
         });
         
         reportVotes[reportId].push(newVote);
+        voterRecords[reportId][msg.sender] = newVote;
         hasVoted[reportId][msg.sender] = true;
         
         if (voteFor) {
@@ -163,98 +170,67 @@ contract CounterfeitReporter is Ownable, ReentrancyGuard {
         }
         reporterAccuracy[report.reporter] = (accurateReports[report.reporter] * 100) / totalReports[report.reporter];
         
-        uint256 totalStaked = report.stake;
-        Vote[] memory votes = reportVotes[reportId];
-        
-        for (uint256 i = 0; i < votes.length; i++) {
-            totalStaked += votes[i].stake;
-        }
-        
-        rewardPool += totalStaked;
-        
         emit ReportResolved(reportId, report.productId, isCounterfeit, block.timestamp);
     }
     
+    // Source v2 deliberately returns principal only. No authenticity bounty promises.
     function claimReward(uint256 reportId) external reportExists(reportId) nonReentrant {
-        CounterfeitReport storage report = reports[reportId];
-        require(report.resolved, "Report not resolved yet");
-        
-        uint256 reward = 0;
-        
-        if (msg.sender == report.reporter) {
-            require(report.stake > 0, "No stake to claim");
-            
-            if (report.isCounterfeit) {
-                reward = report.stake + (report.stake * 50 / 100);
-                report.stake = 0;
-            } else {
-                revert("Report was incorrect, stake forfeited");
+        require(reports[reportId].resolved, "Report not resolved yet");
+        require(!claimed[reportId][msg.sender], "Already claimed");
+        if (!cancelled[reportId]) {
+            if (msg.sender != reports[reportId].reporter) {
+                require(hasVoted[reportId][msg.sender] && voterRecords[reportId][msg.sender].votedFor == reports[reportId].isCounterfeit, "Use incorrect vote refund");
             }
-        } else {
-            require(hasVoted[reportId][msg.sender], "Did not vote on this report");
-            
-            Vote[] memory votes = reportVotes[reportId];
-            for (uint256 i = 0; i < votes.length; i++) {
-                if (votes[i].voter == msg.sender) {
-                    if (votes[i].votedFor == report.isCounterfeit) {
-                        reward = votes[i].stake + (votes[i].stake * 20 / 100);
-                    }
-                    break;
-                }
-            }
-            
-            require(reward > 0, "Vote was incorrect or already claimed");
         }
-        
-        require(rewardPool >= reward, "Insufficient reward pool");
-        rewardPool -= reward;
-        report.rewardClaimed += reward;
-        
-        (bool success, ) = payable(msg.sender).call{value: reward}("");
-        require(success, "Transfer failed");
-        
-        emit RewardClaimed(reportId, msg.sender, reward, block.timestamp);
+        _refund(reportId);
     }
-    
+
     function returnIncorrectVoteStake(uint256 reportId) external reportExists(reportId) nonReentrant {
-        CounterfeitReport storage report = reports[reportId];
-        require(report.resolved, "Report not resolved yet");
+        require(reports[reportId].resolved, "Report not resolved yet");
         require(hasVoted[reportId][msg.sender], "Did not vote on this report");
-        
-        Vote[] memory votes = reportVotes[reportId];
-        uint256 stakeToReturn = 0;
-        
-        for (uint256 i = 0; i < votes.length; i++) {
-            if (votes[i].voter == msg.sender) {
-                if (votes[i].votedFor != report.isCounterfeit) {
-                    stakeToReturn = votes[i].stake / 2;
-                }
-                break;
-            }
+        bool incorrect = voterRecords[reportId][msg.sender].votedFor != reports[reportId].isCounterfeit;
+        require(incorrect || cancelled[reportId], "Use correct vote claim");
+        _refund(reportId);
+    }
+
+    function _refund(uint256 reportId) private {
+        require(!claimed[reportId][msg.sender], "Already claimed");
+        uint256 amount;
+        if (msg.sender == reports[reportId].reporter) {
+            amount = reports[reportId].stake;
+            reports[reportId].stake = 0;
+        } else {
+            Vote storage vote = voterRecords[reportId][msg.sender];
+            amount = vote.stake;
+            vote.stake = 0;
         }
-        
-        require(stakeToReturn > 0, "Vote was correct or stake already claimed");
-        
-        (bool success, ) = payable(msg.sender).call{value: stakeToReturn}("");
+        require(amount > 0, "No stake to claim");
+        claimed[reportId][msg.sender] = true;
+        outstandingStakes -= amount;
+        reports[reportId].rewardClaimed += amount;
+        (bool success,) = payable(msg.sender).call{value: amount}("");
         require(success, "Transfer failed");
-        
-        emit StakeReturned(reportId, msg.sender, stakeToReturn, block.timestamp);
+        emit StakeReturned(reportId, msg.sender, amount, block.timestamp);
     }
-    
+
     function cancelReport(uint256 reportId) external reportExists(reportId) notResolved(reportId) nonReentrant {
-        CounterfeitReport storage report = reports[reportId];
-        require(msg.sender == report.reporter, "Only reporter can cancel");
-        require(report.votesFor + report.votesAgainst == 0, "Cannot cancel after voting started");
-        
-        uint256 stakeToReturn = report.stake;
-        report.stake = 0;
-        report.resolved = true;
-        report.status = ReportStatus.Rejected;
-        
-        (bool success, ) = payable(msg.sender).call{value: stakeToReturn}("");
-        require(success, "Transfer failed");
+        require(msg.sender == reports[reportId].reporter, "Only reporter can cancel");
+        require(reports[reportId].votesFor + reports[reportId].votesAgainst == 0, "Cannot cancel after voting started");
+        reports[reportId].resolved = true;
+        reports[reportId].status = ReportStatus.Rejected;
+        cancelled[reportId] = true;
+        _refund(reportId);
     }
-    
+
+    // Anyone can release a stalled report after its deadline. All participants reclaim principal.
+    function expireReport(uint256 reportId) external reportExists(reportId) notResolved(reportId) {
+        require(block.timestamp > reports[reportId].votingDeadline, "Voting period not ended");
+        require(reports[reportId].votesFor + reports[reportId].votesAgainst < minimumVotes, "Use resolution");
+        reports[reportId].resolved = true;
+        reports[reportId].status = ReportStatus.Rejected;
+        cancelled[reportId] = true;
+    }
+
     function updateMinimumStake(uint256 newMinimumStake) external onlyOwner {
         require(newMinimumStake > 0, "Stake must be positive");
         minimumStake = newMinimumStake;
@@ -275,8 +251,9 @@ contract CounterfeitReporter is Ownable, ReentrancyGuard {
         rewardPool += msg.value;
     }
     
-    function emergencyWithdraw(uint256 amount) external onlyOwner {
-        require(amount <= address(this).balance, "Insufficient balance");
+    function emergencyWithdraw(uint256 amount) external onlyOwner nonReentrant {
+        require(amount <= rewardPool, "Cannot withdraw escrow");
+        rewardPool -= amount;
         (bool success, ) = payable(owner()).call{value: amount}("");
         require(success, "Transfer failed");
     }
@@ -342,7 +319,7 @@ contract CounterfeitReporter is Ownable, ReentrancyGuard {
         uint256 authenticCount = 0;
         for (uint256 i = 0; i < reportIds.length; i++) {
             CounterfeitReport memory report = reports[reportIds[i]];
-            if (report.resolved) {
+            if (report.resolved && !cancelled[reportIds[i]]) {
                 if (report.isCounterfeit) {
                     counterfeitCount++;
                 } else {
@@ -355,7 +332,7 @@ contract CounterfeitReporter is Ownable, ReentrancyGuard {
     
     function calculatePotentialReward(uint256 reportId) external view reportExists(reportId) returns (uint256 potentialReward) {
         uint256 voteStake = minimumStake / 2;
-        return voteStake + (voteStake * 20 / 100);
+        return voteStake;
     }
     
     function getRewardPoolBalance() external view returns (uint256) {

@@ -16,7 +16,7 @@ contract VerificationRegistry is Ownable, ReentrancyGuard {
     struct VerificationRecord {
         address verifier;           // Who verified the product
         uint256 timestamp;          // When verification occurred
-        bool result;                // True = authentic, False = counterfeit
+        bool result;                // Wallet-submitted observation; not independently attested
         uint8 confidenceScore;      // 0-100 confidence score
         string location;            // Optional: verification location
         bytes32 proofHash;         // Hash of verification proof data
@@ -38,6 +38,7 @@ contract VerificationRegistry is Ownable, ReentrancyGuard {
     
     // productId => verification statistics
     mapping(string => VerificationStats) private productStats;
+    mapping(string => uint256) private confidenceTotals;
     
     // verifier address => count of verifications performed
     mapping(address => uint256) private verifierStats;
@@ -107,7 +108,7 @@ contract VerificationRegistry is Ownable, ReentrancyGuard {
         string memory location,
         bytes32 proofHash
     ) external nonReentrant validConfidenceScore(confidenceScore) {
-        require(bytes(productId).length > 0, "Product ID cannot be empty");
+        require(bytes(productId).length > 0 && bytes(productId).length <= 100, "Invalid product ID");
         require(proofHash != bytes32(0), "Proof hash cannot be empty");
         
         // Create verification record
@@ -135,8 +136,8 @@ contract VerificationRegistry is Ownable, ReentrancyGuard {
         stats.lastVerificationTime = block.timestamp;
         
         // Update average confidence score
-        uint256 totalScore = stats.averageConfidenceScore * (stats.totalVerifications - 1);
-        stats.averageConfidenceScore = (totalScore + confidenceScore) / stats.totalVerifications;
+        confidenceTotals[productId] += confidenceScore;
+        stats.averageConfidenceScore = confidenceTotals[productId] / stats.totalVerifications;
         
         // Update verifier stats
         if (!hasVerified[msg.sender][productId]) {
@@ -191,6 +192,7 @@ contract VerificationRegistry is Ownable, ReentrancyGuard {
         require(productIds.length <= 50, "Maximum 50 verifications per batch");
         
         for (uint256 i = 0; i < productIds.length; i++) {
+            require(bytes(productIds[i]).length > 0 && bytes(productIds[i]).length <= 100, "Invalid product ID");
             require(confidenceScores[i] <= 100, "Invalid confidence score");
             require(proofHashes[i] != bytes32(0), "Invalid proof hash");
             
@@ -218,6 +220,8 @@ contract VerificationRegistry is Ownable, ReentrancyGuard {
                 emit CounterfeitReported(productIds[i], msg.sender, block.timestamp);
             }
             stats.lastVerificationTime = block.timestamp;
+            confidenceTotals[productIds[i]] += confidenceScores[i];
+            stats.averageConfidenceScore = confidenceTotals[productIds[i]] / stats.totalVerifications;
             
             if (!hasVerified[msg.sender][productIds[i]]) {
                 verifierProducts[msg.sender].push(productIds[i]);

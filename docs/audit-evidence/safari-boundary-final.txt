@@ -1,0 +1,13 @@
+[2m[WebServer] [22m(node:43649) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:43667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [webkit] › tests/e2e/passports.spec.ts:324:5 › camera denial leaves manual entry usable (1.7s)
+  ✓  2 [webkit] › tests/e2e/passports.spec.ts:382:5 › skip link is usable by keyboard and API not-found shows no registrant (614ms)
+
+  2 passed (4.7s)

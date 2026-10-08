@@ -1,0 +1,49 @@
+{
+  "profiles": {
+    "mobile": {
+      "exit": 0,
+      "median": {
+        "performance": 99.0,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "reports": [
+        "lighthouse-mobile/127_0_0_1--2026_10_08_17_01_26.report.json",
+        "lighthouse-mobile/127_0_0_1--2026_10_08_17_01_37.report.json",
+        "lighthouse-mobile/127_0_0_1--2026_10_08_17_01_48.report.json"
+      ],
+      "metrics_median": {
+        "largest-contentful-paint": 2182.154,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 9.999999999999773
+      }
+    },
+    "desktop": {
+      "exit": 0,
+      "median": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "reports": [
+        "lighthouse-desktop/127_0_0_1--2026_10_08_17_02_10.report.json",
+        "lighthouse-desktop/127_0_0_1--2026_10_08_17_02_21.report.json",
+        "lighthouse-desktop/127_0_0_1--2026_10_08_17_02_32.report.json"
+      ],
+      "metrics_median": {
+        "largest-contentful-paint": 506.238,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 0
+      }
+    }
+  },
+  "conditions": "Three serialized local production homepage runs per profile, pinned Chromium, default Lighthouse throttling; synthetic metrics, not field INP. Earlier failed results retained separately.",
+  "budgets": {
+    "performance": 90,
+    "accessibility": 95,
+    "best-practices": 95,
+    "seo": 95
+  }
+}

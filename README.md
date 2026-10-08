@@ -1,286 +1,105 @@
-# 🛡️ VerifyChain - Blockchain Product Authentication System
+# VerifyChain
 
-A decentralized product authentication and counterfeit detection platform built on Ethereum blockchain.
+An evidence-first product passport application on **Ethereum Sepolia testnet**. Consumers inspect registrations without a wallet. Manufacturers review canonical metadata, authorize a server-side IPFS upload, and explicitly sign a registration. Authorized handlers record checkpoints. Registration does **not** certify a brand or the physical item.
 
-## 🌟 Features
+Repository: [Kartik2004sharma/VerifyChain](https://github.com/Kartik2004sharma/VerifyChain).
 
-### Product Authentication
-- **Blockchain Registration**: Register products permanently on the blockchain
-- **QR Code Verification**: Scan products to verify authenticity
-- **Manufacturer Management**: Register as a manufacturer and manage your products
-- **Real-time Verification**: Instant verification with confidence scores
+## Current release state
 
-### Supply Chain Tracking
-- **Multi-step Tracking**: Track products through the entire supply chain
-- **Location Verification**: GPS-based location tracking for each step
-- **Status Updates**: Real-time status updates (In Transit, Delivered, etc.)
-- **Event History**: Complete audit trail of all supply chain events
+The application and repaired contract source are implemented locally. There is **no verified hosted release or active Sepolia deployment for this source**. `deployments/manifest.json` intentionally has no active addresses. Old addresses and historical files are preserved for investigation, not silently reused. Lookups show unavailable and writes stay disabled until configuration is validated.
 
-### Analytics & Reporting
-- **Global Statistics**: View verification trends and success rates
-- **Manufacturer Dashboard**: Track your products and verifications
-- **Counterfeit Detection**: Identify and report counterfeit products
-- **Blockchain Activity**: Real-time activity feed from the blockchain
+Read [implementation progress](docs/IMPLEMENTATION_PROGRESS.md), [the audit](docs/PROJECT_AUDIT.md) and [all 53 acceptance requirements](docs/QA_ACCEPTANCE_MATRIX.md). A successful test fixture is not public-chain evidence.
 
-## 🚀 Quick Start
+## Local verification
 
-### Prerequisites
-- Node.js 18+ and npm
-- MetaMask wallet
-- Sepolia testnet ETH (for gas fees)
-- Get free Sepolia ETH from [Sepolia Faucet](https://sepoliafaucet.com/)
+Clean install, lint, strict types and production build pass. Tests: 42 unit/API, 20 Solidity, 5 real local-chain integration and **134 browser/visual checks passed**, covering 42 reviewed images; 6 duplicate screenshot cases deliberately skip outside the two baseline viewports. 8 October three-run Lighthouse medians: mobile **99/100/100/100**, desktop **100/100/100/100** (performance/accessibility/best-practices/SEO). Both profiles pass their unchanged budgets; the earlier mobile failure is retained in the dated audit history. The 53-row ledger records **27 local passes, 21 partial requirements and 5 blocked release requirements**. This is local evidence, not hosted/Sepolia acceptance or an independent audit. [Latest verification evidence](docs/audit-evidence/release-2026-10-08/preflight-summary.json).
 
-### Installation
+## Start and validate
 
-```bash
-# Clone the repository
-git clone https://github.com/Kartik2004sharma/Cardfi.git
-cd Cardfi
+Use Node **24.19.0**, npm 11 and the committed npm lock. Local commands below follow this workspace's RTK instructions; CI uses npm directly because its isolated runner does not have RTK installed.
 
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env.local
-# Edit .env.local with your values:
-# - Add your WalletConnect Project ID from https://cloud.walletconnect.com/
-
-# Run development server (optimized)
-npm run dev:fast
+```sh
+rtk npm ci
+rtk npm run dev
+rtk npm run check
+rtk npm run abi:export
+rtk npx playwright install chromium webkit
+rtk npm run test:e2e
 ```
 
-Visit `http://localhost:3000` to see the application.
+`check` runs lint, strict types, domain/API-boundary tests, real Hardhat tests, an isolated application/contract integration test and the production build. Browser tests require the production build; the runner starts its own server at port 3100. Hosted smoke uses `E2E_BASE_URL`. Most verdict browser tests replace HTTP responses deliberately; the local integration runner deploys real contracts on an isolated chain and replaces only configuration and metadata retrieval. No runtime demo fallback exists.
 
-### First-Time Setup
+The isolated local chain uses Sepolia's numeric chain ID solely to exercise the application's selected chain boundary. It is **not Sepolia**, and no local account or local receipt is public release proof. The test runner shuts it down afterward.
 
-1. **Connect MetaMask** - Click "Connect Wallet" in the navigation
-2. **Switch to Sepolia** - Make sure you're on Sepolia testnet
-3. **Get Test ETH** - Use the faucet link above if needed
-4. **Register as Manufacturer** - Go to Dashboard → Register Manufacturer
-5. **Start Registering Products** - Now you can add products to the blockchain!
+Visual baselines use pinned Chromium. Never automatically update them to hide a regression. Inspect differences and record an intentional design change before approving replacements. Accessibility tests supplement, rather than replace, real keyboard, screen-reader and device review.
 
-## 🏗️ Tech Stack
+## Implemented workflows
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS, Radix UI
-- **Blockchain**: Ethereum, Wagmi, Viem, RainbowKit
-- **Smart Contracts**: Solidity, Hardhat
-- **Network**: Sepolia Testnet
+- `/verify?id=…`: public registration/revocation, metadata integrity, self-registered manufacturer identity and blockchain context. Old `/dashboard/verify-product?id=…` links still work.
+- Registration: product details → exact canonical review → signed IPFS upload → simulated write → wallet approval → two-confirmation receipt/event check → QR label.
+- Supply chain: typed checkpoints, empty/error states and explicit authorized handler writes. Handler authorization is global; it is not exclusive product custody.
+- Observations/history and analytics: up to the latest 100 actual wallet opinions for an entered ID, working filters, pagination and escaped CSV. Read-only lookups create no observation transactions.
+- Wallet overview: up to the latest 100 actual registrations belonging to the connected wallet.
+- Settings: device-local theme and spacing preferences, plus network and release information.
+- Evidence exports: JSON, CSV and PDF; QR SVG labels point to the public passport. Unknown receipts remain unavailable.
 
-## 📦 Smart Contracts
+Each active workspace uses **one SSR-safe wagmi provider and one QueryClient**, with a shared wallet configuration across route navigation. The public homepage loads theme/branding independently and does not initialize wallet discovery. It supports detected injected wallets through an original accessible connection control. RainbowKit, WalletConnect and unused bridge/storage/payment SDKs were removed to reduce unrelated code and dependencies. Browser wallets must inject an EIP-1193 provider; mobile deep-link/WalletConnect support is not claimed. Account and network changes remain explicit.
 
-### Deployed Contracts (Sepolia Testnet)
+## Trust and data model
 
-| Contract | Address | Purpose |
-|----------|---------|---------|
-| ProductRegistry | `0x2BD03E56dEd1C4A37fc933FCaAe010183451B768` | Product registration |
-| VerificationRegistry | `0xEAaA8fF50c4833d79b5699DeC2DB10e8c9304E0D` | Verification records |
-| SupplyChainTracker | `0xe949FcAe3C78187E6e961F00E9D6F29776405913` | Supply chain tracking |
-| CounterfeitReporter | `0xd67A6d895Ef32B6d17a10e03CA09EeaE091040F4` | Counterfeit reporting |
+Canonical schema `verifychain.product.v1` uses a fixed field order, normalized strings and UTF-8 JSON without whitespace. Keccak-256 commits those canonical bytes. Metadata includes product ID, name, description, category, serial and origin. Retrieved content must validate and agree with the product's ID/name and commitment. URI-only updates are replaced by authorized updates of **both URI and hash** in source v2; previously used commitments stay reserved. Updates do not undo revocation.
 
-## 📱 User Guide
+Verdicts are `registered`, `revoked`, `not_found`, `integrity_mismatch`, `unavailable` and `invalid_input`. Metadata retrieval and manufacturer activity are independent evidence fields. Manufacturer names are self-registered. Observation booleans/confidence are submitted opinions, never ground truth. A copied QR can point to a real record.
 
-### For Manufacturers
+Reads take a fresh block snapshot, disable block-number caching and send `Cache-Control: no-store`; there is no public verdict cache. A known product's registration event is scanned only at its recorded registration block, matched to its indexed ID topic and deduplicated by transaction/log index. If that optional evidence cannot be resolved, no receipt is invented. Each request rereads current chain state; reorgs are not carried forward through a persistent index.
 
-1. **Register as Manufacturer**
-   - Go to Dashboard → Register Manufacturer
-   - Enter your company name
-   - Approve the transaction in MetaMask
+## Configuration and security
 
-2. **Register Products**
-   - Go to Dashboard → Register Product
-   - Fill in product details (name, category, description)
-   - Upload product image (optional)
-   - Submit to blockchain
+Copy `.env.example` to `.env.local` and configure it privately. Never put secrets into chat or commit them.
 
-3. **Track Your Products**
-   - View all registered products in your dashboard
-   - Monitor verification statistics
-   - See recent verifications
+| Variable | Scope | Purpose |
+| --- | --- | --- |
+| `APP_ORIGIN` | Server | Exact reviewed origin authorized for upload challenges |
+| `SEPOLIA_RPC_URL` | Server | HTTPS RPC for chain/code/read checks |
+| `PINATA_JWT` | Server | Real Pinata JSON pinning; never sent to a browser |
+| `UPLOAD_AUTH_SECRET` | Server | At least 32 random characters for challenge integrity |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | Server | Shared quotas and one-use nonce consumption; required in production |
+| `NEXT_PUBLIC_SEPOLIA_RPC_URL` | Public | Browser read/simulation RPC; restrict provider origins |
 
-### For Consumers
+`/api/health/live` checks whether the application serves requests. `/api/health/ready` fails closed without quotas, a reachable Sepolia RPC and source-matching deployed code. Verification consumes a shared production quota. On Vercel, identity uses the platform-managed `x-vercel-forwarded-for`; other hosting uses a conservative global bucket until a trusted proxy adapter is implemented. Never expose an origin behind a proxy that accepts forged platform headers.
 
-1. **Verify Products**
-   - Go to Dashboard → Verify Product
-   - Enter product ID or scan QR code
-   - View verification result with confidence score
-   - Check blockchain proof
+Uploads require an origin/chain/address-bound signed challenge, five-minute expiry, a random nonce consumed atomically in shared Redis, per-wallet quota and bounded JSON. Development-only in-memory quota is bounded and is never used in production. Camera frames remain on-device. Uploaded metadata and on-chain records are public; do not enter personal/confidential content. Only fixed IPFS gateway URLs with CID-like payloads are fetched, not arbitrary contract-supplied HTTP URLs. Requests/timeouts and response bodies are bounded.
 
-2. **View Supply Chain**
-   - Access supply chain tracker
-   - See complete product journey
-   - Verify each step's authenticity
+Production scripts use per-request CSP nonces, no inline-script bypass and no eval. Inline styles are permitted for the theme/QR/scanner libraries. RPC connections are restricted to the configured HTTPS origin. Camera is limited to this origin; microphone/geolocation are disabled. Etherscan links are external evidence links, not embedded frames.
 
-## 🛠️ Development
+## Contracts and release
 
-### Project Structure
+A new deployment is required. Source repairs do not patch old immutable contracts. The initial release deploys only ProductRegistry, VerificationRegistry and SupplyChainTracker.
 
-```
-verifychain/
-├── app/                    # Next.js app directory
-│   ├── dashboard/         # Dashboard pages
-│   └── api/              # API routes
-├── components/            # React components
-│   ├── dashboard/        # Dashboard-specific components
-│   └── ui/              # Reusable UI components
-├── contracts/            # Solidity smart contracts
-├── hooks/               # Custom React hooks
-│   └── blockchain/     # Blockchain interaction hooks
-├── lib/                 # Utility libraries
-│   ├── contracts/      # Contract ABIs and configs
-│   └── blockchain-verification.ts
-└── public/             # Static assets
+CounterfeitReporter is **quarantined**. Its replacement source returns principal once, maintains outstanding escrow separately from voluntarily funded reserves, permits expired insufficient-vote reports to release funds, rejects owner escrow withdrawals and handles failed/reentrant recipients. Unfunded bonus promises were deliberately retired rather than shifted to other participants' stakes. It is not an independently audited financial product, and is excluded from the deploy script and UI.
+
+After the owner reviews the concrete release and approves testnet deployment, configure local-only deployment credentials from `.env.contracts.example` in `.env.local` (not on Vercel):
+
+```sh
+rtk npm run contracts:compile
+rtk npm run abi:export
+rtk npx hardhat run scripts/deploy.cjs --network sepolia
+rtk node scripts/activate-manifest.mjs deployments/<reviewed-sepolia-v2-file>.json
+rtk npm run check
 ```
 
-### Available Scripts
+The deploy script saves real receipts, blocks, code/source/ABI hashes and compiler settings into a new history file. It preserves the active manifest. Activation verifies the deployed code and receipt against compiled source identity before switching the manifest. Archive the previous manifest before deliberate activation. Do not blindly rerun a partially completed deployment; reconcile submitted hashes first.
 
-```bash
-# Development with optimizations
-npm run dev:fast
+Vercel preparation: import this repository, use Node 24, `npm ci` and `npm run build`, and set server/public variables separately for Preview and Production. Set `APP_ORIGIN` to the exact reviewed preview origin for testing, then to the production origin for promotion. Do not configure deployment keys on the host. No paid resource or public publication has been performed by this build.
 
-# Standard development
-npm run dev
+After a reviewed preview exists:
 
-# Production build
-npm run build
-
-# Start production server
-npm start
-
-# Clean cache
-npm run clean
-
-# Lint code
-npm run lint
+```sh
+rtk npm run test:e2e
+# For hosted smoke, set E2E_BASE_URL to the reviewed preview first.
+rtk npm run release:check
 ```
 
-### Smart Contract Development
+`release:check` requires a verified HTTPS `RELEASE_ORIGIN`, real `RELEASE_PRODUCT_ID` and user-approved `RELEASE_TRANSACTION_HASH`, in addition to the server RPC. It verifies manifest/code/deployment receipts, hosted liveness/readiness and retrievable matching product metadata. It exits nonzero on missing evidence. Public-chain camera, wallet rejection/network changes and checkpoint receipt checks still need real devices/wallet approval.
 
-```bash
-# Compile contracts
-npx hardhat compile
-
-# Run tests
-npx hardhat test
-
-# Deploy to Sepolia
-npx hardhat run scripts/deploy.js --network sepolia
-```
-
-## 🔐 Security
-
-- All product data is stored on-chain
-- IPFS integration for metadata storage
-- Cryptographic hashing for data integrity
-- Multi-signature verification support
-- Event-based audit trail
-
-## 📊 Performance Optimizations
-
-- Turbopack for faster builds
-- Dynamic imports for heavy components
-- Optimized package imports
-- React Server Components
-- Edge runtime support
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is for educational and research purposes.
-
-## � Deployment
-
-### Deploy to Vercel (Recommended)
-
-VerifyChain is optimized for Vercel deployment:
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-```
-
-Or use the Vercel dashboard:
-1. Push code to GitHub
-2. Go to [vercel.com](https://vercel.com) and import your repository
-3. Add environment variables in Vercel dashboard:
-   - `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID`
-   - `NEXT_PUBLIC_ENABLE_TESTNETS=true`
-4. Deploy! 🎉
-
-**Note**: Smart contracts are already deployed on Sepolia testnet - no need to redeploy them!
-
-### Deploy to Netlify (Alternative)
-
-```bash
-# Install Netlify CLI
-npm i -g netlify-cli
-
-# Deploy
-netlify deploy --prod
-```
-
-### Environment Variables Required
-
-Make sure to set these in your deployment platform:
-- `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` - Get from [WalletConnect Cloud](https://cloud.walletconnect.com/)
-- `NEXT_PUBLIC_ENABLE_TESTNETS=true` - Enable testnet support
-
-## �🔗 Important Links
-
-- **Live Demo**: [Deploy and add your link here]
-- **Sepolia Etherscan**: [https://sepolia.etherscan.io/](https://sepolia.etherscan.io/)
-- **WalletConnect Cloud**: [https://cloud.walletconnect.com/](https://cloud.walletconnect.com/)
-- **Sepolia Faucet**: [https://sepoliafaucet.com/](https://sepoliafaucet.com/)
-- **MetaMask**: [https://metamask.io/](https://metamask.io/)
-
-## 🔧 Troubleshooting
-
-### Common Issues
-
-**MetaMask "Failed to fetch" Error**
-- This is normal when the page loads before wallet connection
-- Simply connect your wallet and the error will disappear
-
-**WagmiProvider Error**
-- Refresh the page after connecting your wallet
-- Make sure you're accessing the site through localhost:3000
-
-**No Products Found**
-- Register a product first using "Register Product" page
-- Make sure you're connected to Sepolia testnet
-- Check that the transaction was confirmed on the blockchain
-
-**Slow Performance**
-- Use `npm run dev:fast` for optimized development
-- Clear browser cache and restart the dev server
-- Ensure you have at least 8GB RAM available
-
-### Getting Help
-
-- Check browser console for error messages
-- Verify you're on Sepolia testnet in MetaMask
-- Ensure you have enough ETH for gas fees
-- Check [Sepolia Etherscan](https://sepolia.etherscan.io/) for transaction status
-
-## 👨‍💻 Author
-
-**Kartik Sharma**
-- GitHub: [@Kartik2004sharma](https://github.com/Kartik2004sharma)
-- GitHub: [@JeeyaSharma](https://github.com/JeeyaSharma)
-
-
----
-
-Built with ❤️ using Next.js, Ethereum, and Web3 technologies
+Rollback the web deployment to the last known-good host revision and its reviewed environment/manifest. Hosting rollback cannot undo chain writes. Contract replacement requires a separately versioned manifest and migration/compatibility review.

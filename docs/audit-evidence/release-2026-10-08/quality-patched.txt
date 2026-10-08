@@ -1,0 +1,132 @@
+
+> verifychain@1.0.0 check
+> npm run lint && npm run typecheck && npm test && npm run contracts:test && npm run test:integration && npm run build
+
+
+> verifychain@1.0.0 lint
+> eslint app components lib tests scripts middleware.ts next.config.ts
+
+
+> verifychain@1.0.0 typecheck
+> tsc --noEmit
+
+
+> verifychain@1.0.0 test
+> vitest run
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v4.1.11 /Users/kartik/CS50x2025/Projects/VerifyChain
+
+
+ Test Files  5 passed (5)
+      Tests  42 passed (42)
+   Start at  22:29:04
+   Duration  1.03s (transform 210ms, setup 0ms, import 1.44s, tests 255ms, environment 579ms)
+
+
+> verifychain@1.0.0 contracts:test
+> hardhat test
+
+[dotenv@17.3.1] injecting env (1) from .env.local -- tip: ⚡️ secrets for agents: https://dotenvx.com/as2
+
+
+  ProductRegistry — R07 C01
+    ✔ requires explicit active identity on single and batch writes
+    ✔ reconciles global/manufacturer totals and retains original string IDs across batches
+    ✔ rejects batch invalid bytes (0/4/8) atomically
+    ✔ rejects batch invalid bytes (101/4/8) atomically
+    ✔ rejects batch invalid bytes (1/0/8) atomically
+    ✔ rejects batch invalid bytes (1/201/8) atomically
+    ✔ rejects batch invalid bytes (1/4/0) atomically
+    ✔ rejects batch invalid bytes (1/4/501) atomically
+    ✔ rejects duplicate IDs/hash, zero hash and over-limit arrays
+    ✔ updates both commitment and URI only for the registrant; revocation remains revoked
+
+  VerificationRegistry — C02
+    ✔ reconciles sums and averages over mixed single/batch observations
+    ✔ does not authenticate caller opinions and enforces boundaries
+
+  SupplyChainTracker — C03
+    ✔ rejects unauthorized/revoked handlers including edits
+    ✔ preserves sequence/hash continuity, product isolation and completion rules
+    ✔ validates action, location and proof
+
+  CounterfeitReporter quarantined escrow v2 — C04 C05
+    ✔ rejects repeated winner claims and keeps principal accounting solvent without bonuses
+    ✔ refunds incorrect votes only once and reconciles reserves
+    ✔ releases stalled reports permissionlessly after deadline, retaining all refunds
+    ✔ cancels unused reports and forbids owner escrow withdrawals or reporter voting
+    ✔ failed and reentrant recipient cannot consume another stake or corrupt liabilities
+
+
+  20 passing (1s)
+
+
+> verifychain@1.0.0 test:integration
+> node scripts/local-integration.mjs
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.integration.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v4.1.11 /Users/kartik/CS50x2025/Projects/VerifyChain
+
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  22:29:09
+   Duration  499ms (transform 50ms, setup 0ms, import 174ms, tests 246ms, environment 0ms)
+
+
+> verifychain@1.0.0 build
+> next build
+
+   ▲ Next.js 15.5.27
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 2.7s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ƒ /                                      583 B         109 kB
+├ ƒ /_not-found                             1 kB         104 kB
+├ ƒ /api/blockchain/verify                 152 B         103 kB
+├ ƒ /api/health/live                       152 B         103 kB
+├ ƒ /api/health/ready                      152 B         103 kB
+├ ƒ /api/history                           152 B         103 kB
+├ ƒ /api/metadata/challenge                152 B         103 kB
+├ ƒ /api/metadata/upload                   152 B         103 kB
+├ ƒ /api/products                          152 B         103 kB
+├ ƒ /api/supply                            152 B         103 kB
+├ ƒ /dashboard                             187 B         161 kB
+├ ƒ /dashboard/analytics                   192 B         161 kB
+├ ƒ /dashboard/register-manufacturer       197 B         263 kB
+├ ƒ /dashboard/register-product            197 B         263 kB
+├ ƒ /dashboard/settings                  2.91 kB         121 kB
+├ ƒ /dashboard/supply-chain               4.9 kB         253 kB
+├ ƒ /dashboard/verification-analytics      192 B         161 kB
+├ ƒ /dashboard/verification-history        192 B         161 kB
+├ ƒ /dashboard/verify-product              181 B         157 kB
+└ ƒ /verify                                732 B         177 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/1255-8dc91b756d944555.js      46.2 kB
+  ├ chunks/4bd1b696-100b9d70ed4e49c1.js  54.2 kB
+  └ other shared chunks (total)           2.3 kB
+
+
+ƒ Middleware                             34.2 kB
+
+ƒ  (Dynamic)  server-rendered on demand
+

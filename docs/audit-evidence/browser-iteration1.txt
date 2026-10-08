@@ -1,0 +1,25 @@
+
+> verifychain@1.0.0 test:e2e
+> playwright test
+
+Error: Cannot find module 'axe-core'
+Require stack:
+- /Users/kartik/CS50x2025/Projects/VerifyChain/node_modules/@axe-core/playwright/dist/index.js
+- /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/passports.spec.ts
+- /Users/kartik/CS50x2025/Projects/VerifyChain/node_modules/playwright/lib/transform/transform.js
+- /Users/kartik/CS50x2025/Projects/VerifyChain/node_modules/playwright/lib/common/configLoader.js
+- /Users/kartik/CS50x2025/Projects/VerifyChain/node_modules/playwright/lib/program.js
+- /Users/kartik/CS50x2025/Projects/VerifyChain/node_modules/@playwright/test/cli.js
+
+   at passports.spec.ts:2
+
+  1 | import { test, expect, type Page } from "@playwright/test";
+> 2 | import AxeBuilder from "@axe-core/playwright";
+    | ^
+  3 | const fixture = {
+  4 |   productId: "VC-001",
+  5 |   chainId: 11155111,
+    at Object.<anonymous> (/Users/kartik/CS50x2025/Projects/VerifyChain/node_modules/@axe-core/playwright/dist/index.js:38:31)
+    at Object.<anonymous> (/Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/passports.spec.ts:2:1)
+Error: No tests found
+

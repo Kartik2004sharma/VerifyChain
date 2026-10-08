@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-05",
+  "source_revision": "source-revision.json",
+  "quality": {
+    "full_quality_exit": 0,
+    "final_build_exit": 0,
+    "format_exit": 0,
+    "unit_api": 42,
+    "contracts": 20,
+    "local_chain_integration": 5,
+    "report": "quality-performance-repair.txt",
+    "format_report": "format-provider-final.txt"
+  },
+  "browser": {
+    "exit": 0,
+    "passed": 134,
+    "skipped": 6,
+    "failed": 0,
+    "skip_reason": "Duplicate screenshot cases outside pinned desktop/mobile Chromium baseline projects; behaviors still run across all five projects.",
+    "approved_images": 42,
+    "projects": [
+      "desktop",
+      "laptop",
+      "tablet",
+      "mobile",
+      "webkit"
+    ],
+    "report": "browser-provider-final.txt",
+    "provider_boundary_focused": 10
+  },
+  "performance": {
+    "report": "performance-summary.json",
+    "mobile_budget_exit": 1,
+    "desktop_budget_exit": 0,
+    "result": "Mobile performance 88 below 90 budget; accessibility/best-practices/SEO 100. Desktop all budgets pass."
+  },
+  "release": "No public deployment or signatures; external release blockers remain.",
+  "completed_at_utc": "2026-10-05T18:32:37.491164+00:00"
+}

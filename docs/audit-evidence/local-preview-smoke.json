@@ -1,0 +1,12 @@
+{
+  "origin": "http://127.0.0.1:3100",
+  "public_deployment": false,
+  "statuses": {
+    "/": 200,
+    "/verify": 200,
+    "/api/health/live": 200,
+    "/api/health/ready": 503
+  },
+  "expected": "Liveness succeeds; readiness fails closed without configured live services and source-matching deployments.",
+  "browser_panel": "Queued in Codex; local URL directly available."
+}

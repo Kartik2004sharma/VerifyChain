@@ -1,0 +1,131 @@
+
+> verifychain@1.0.0 check
+> npm run lint && npm run typecheck && npm test && npm run contracts:test && npm run test:integration && npm run build
+
+
+> verifychain@1.0.0 lint
+> eslint app components lib tests scripts middleware.ts next.config.ts
+
+
+/Users/kartik/CS50x2025/Projects/VerifyChain/components/providers.tsx
+  9:3  warning  'nonce' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+
+> verifychain@1.0.0 typecheck
+> tsc --noEmit
+
+
+> verifychain@1.0.0 test
+> vitest run
+
+
+ RUN  v4.1.11 /Users/kartik/CS50x2025/Projects/VerifyChain
+
+
+ Test Files  5 passed (5)
+      Tests  42 passed (42)
+   Start at  23:33:42
+   Duration  1.45s (transform 310ms, setup 0ms, import 2.32s, tests 384ms, environment 862ms)
+
+
+> verifychain@1.0.0 contracts:test
+> hardhat test
+
+[dotenv@17.3.1] injecting env (0) from .env.local -- tip: 🤖 agentic secret storage: https://dotenvx.com/as2
+
+
+  ProductRegistry — R07 C01
+    ✔ requires explicit active identity on single and batch writes
+    ✔ reconciles global/manufacturer totals and retains original string IDs across batches
+    ✔ rejects batch invalid bytes (0/4/8) atomically
+    ✔ rejects batch invalid bytes (101/4/8) atomically
+    ✔ rejects batch invalid bytes (1/0/8) atomically
+    ✔ rejects batch invalid bytes (1/201/8) atomically
+    ✔ rejects batch invalid bytes (1/4/0) atomically
+    ✔ rejects batch invalid bytes (1/4/501) atomically
+    ✔ rejects duplicate IDs/hash, zero hash and over-limit arrays
+    ✔ updates both commitment and URI only for the registrant; revocation remains revoked
+
+  VerificationRegistry — C02
+    ✔ reconciles sums and averages over mixed single/batch observations
+    ✔ does not authenticate caller opinions and enforces boundaries
+
+  SupplyChainTracker — C03
+    ✔ rejects unauthorized/revoked handlers including edits
+    ✔ preserves sequence/hash continuity, product isolation and completion rules
+    ✔ validates action, location and proof
+
+  CounterfeitReporter quarantined escrow v2 — C04 C05
+    ✔ rejects repeated winner claims and keeps principal accounting solvent without bonuses
+    ✔ refunds incorrect votes only once and reconciles reserves
+    ✔ releases stalled reports permissionlessly after deadline, retaining all refunds
+    ✔ cancels unused reports and forbids owner escrow withdrawals or reporter voting
+    ✔ failed and reentrant recipient cannot consume another stake or corrupt liabilities
+
+
+  20 passing (976ms)
+
+
+> verifychain@1.0.0 test:integration
+> node scripts/local-integration.mjs
+
+
+ RUN  v4.1.11 /Users/kartik/CS50x2025/Projects/VerifyChain
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  23:33:47
+   Duration  651ms (transform 71ms, setup 0ms, import 263ms, tests 270ms, environment 0ms)
+
+
+> verifychain@1.0.0 build
+> next build
+
+   ▲ Next.js 15.5.27
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 5.4s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ƒ /                                    1.75 kB         119 kB
+├ ƒ /_not-found                             1 kB         104 kB
+├ ƒ /api/blockchain/verify                 152 B         103 kB
+├ ƒ /api/health/live                       152 B         103 kB
+├ ƒ /api/health/ready                      152 B         103 kB
+├ ƒ /api/history                           152 B         103 kB
+├ ƒ /api/metadata/challenge                152 B         103 kB
+├ ƒ /api/metadata/upload                   152 B         103 kB
+├ ƒ /api/products                          152 B         103 kB
+├ ƒ /api/supply                            152 B         103 kB
+├ ƒ /dashboard                             186 B         158 kB
+├ ƒ /dashboard/analytics                   190 B         158 kB
+├ ƒ /dashboard/register-manufacturer       198 B         260 kB
+├ ƒ /dashboard/register-product            197 B         260 kB
+├ ƒ /dashboard/settings                  3.99 kB         121 kB
+├ ƒ /dashboard/supply-chain              4.69 kB         251 kB
+├ ƒ /dashboard/verification-analytics      190 B         158 kB
+├ ƒ /dashboard/verification-history        190 B         158 kB
+├ ƒ /dashboard/verify-product             2.4 kB         154 kB
+└ ƒ /verify                              2.41 kB         154 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/1255-8dc91b756d944555.js      46.2 kB
+  ├ chunks/4bd1b696-100b9d70ed4e49c1.js  54.2 kB
+  └ other shared chunks (total)           2.3 kB
+
+
+ƒ Middleware                             34.2 kB
+
+ƒ  (Dynamic)  server-rendered on demand
+

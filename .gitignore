@@ -52,3 +52,13 @@ artifacts/
 # OS
 .DS_Store
 Thumbs.db
+
+# Browser and tooling reports
+/test-results/
+/playwright-report/
+/.lighthouseci/
+/typechain-types/
+.env.contracts
+.env*
+!.env.example
+!.env.contracts.example

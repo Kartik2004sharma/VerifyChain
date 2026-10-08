@@ -1,0 +1,28 @@
+{
+  "environment": "isolated ephemeral Hardhat chain; synthetic test ETH; no public transactions",
+  "checks": [
+    {
+      "finding": "batch count mismatch",
+      "registeredBoth": true,
+      "globalCount": "0",
+      "manufacturerCount": "2",
+      "expectedGlobalCount": "2"
+    },
+    {
+      "finding": "winning voter can claim twice",
+      "firstReceiptStatus": 1,
+      "secondReceiptStatus": 1,
+      "totalContractOutflowETH": "0.012",
+      "expectedSecondClaim": "revert"
+    },
+    {
+      "finding": "incorrect voter can request refund twice",
+      "firstReceiptStatus": 1,
+      "secondReceiptStatus": 1,
+      "totalContractOutflowETH": "0.005",
+      "poolAccountingETH": "0.025",
+      "actualBalanceETH": "0.02",
+      "expectedSecondRefund": "revert"
+    }
+  ]
+}

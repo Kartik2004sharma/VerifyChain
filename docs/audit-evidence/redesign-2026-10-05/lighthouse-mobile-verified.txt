@@ -1,0 +1,28 @@
+✅  .lighthouseci/ directory writable
+✅  Configuration file found
+✅  Chrome installation found
+⚠️   GitHub token not set
+Healthcheck passed!
+
+Started a web server with "npm run start -- --hostname 127.0.0.1 --port 3100"...
+Running Lighthouse 3 time(s) on http://127.0.0.1:3100/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Done running Lighthouse!
+
+Checking assertions against 1 URL(s), 3 total run(s)
+
+1 result(s) for [1mhttp://127.0.0.1:3100/[0m :
+
+  [31m✘[0m  [1mcategories[0m.performance failure for [1mminScore[0m assertion
+        expected: >=[32m0.9[0m
+           found: [31m0.88[0m
+      [2mall values: 0.78, 0.91, 0.88[0m
+
+Assertion failed. Exiting with status code 1.
+
+Dumping 3 reports to disk at /Users/kartik/CS50x2025/Projects/VerifyChain/docs/audit-evidence/redesign-2026-10-05/lighthouse-mobile-verified...
+Done writing reports to disk.
+
+assert command failed. Exiting with status code 1.

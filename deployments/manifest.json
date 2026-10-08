@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "network": "sepolia",
+  "chainId": 11155111,
+  "status": "awaiting-new-deployment",
+  "contracts": {},
+  "note": "Legacy addresses remain archived and unverified. Deploy repaired source and populate receipts/code hashes using scripts/deploy.cjs."
+}

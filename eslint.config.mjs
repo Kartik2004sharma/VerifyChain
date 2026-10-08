@@ -1,16 +1,10 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
+const compat = new FlatCompat({ baseDirectory: import.meta.dirname });
+export default [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    files: ["scripts/**/*.cjs"],
+    rules: { "@typescript-eslint/no-require-imports": "off" },
+  },
+  { ignores: ["lib/contracts/abis.ts"] },
 ];
-
-export default eslintConfig;

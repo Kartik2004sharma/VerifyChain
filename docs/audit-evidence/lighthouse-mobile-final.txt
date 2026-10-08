@@ -1,0 +1,17 @@
+✅  .lighthouseci/ directory writable
+✅  Configuration file found
+✅  Chrome installation found
+⚠️   GitHub token not set
+Healthcheck passed!
+
+Started a web server with "npm run start -- --hostname 127.0.0.1 --port 3100"...
+Running Lighthouse 3 time(s) on http://127.0.0.1:3100/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Done running Lighthouse!
+
+
+Dumping 3 reports to disk at /Users/kartik/CS50x2025/Projects/VerifyChain/docs/audit-evidence/lighthouse-mobile-final...
+Done writing reports to disk.
+

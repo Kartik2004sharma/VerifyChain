@@ -1,0 +1,14 @@
+import { defineChain } from "viem";
+// Narrow Sepolia definition avoids importing unrelated experimental chain modules.
+export const sepolia = defineChain({
+  id: 11155111,
+  name: "Ethereum Sepolia",
+  nativeCurrency: { name: "Sepolia Ether", symbol: "ETH", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://ethereum-sepolia-rpc.publicnode.com"] },
+  },
+  blockExplorers: {
+    default: { name: "Etherscan", url: "https://sepolia.etherscan.io" },
+  },
+  testnet: true,
+});

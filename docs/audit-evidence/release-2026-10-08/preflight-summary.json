@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-08",
+  "source_revision": "source-revision.json",
+  "clean_install_exit": 0,
+  "quality_exit": 0,
+  "unit_api_tests": 42,
+  "contract_tests": 20,
+  "local_chain_integration_tests": 5,
+  "browser": {
+    "passed": 134,
+    "skipped": 6,
+    "failed": 0,
+    "reviewed_images": 42,
+    "report": "browser.txt",
+    "skip_reason": "Duplicate visual cases outside baseline viewports; route behavior runs on all five projects."
+  },
+  "production_dependencies": {
+    "info": 0,
+    "low": 0,
+    "moderate": 23,
+    "high": 0,
+    "critical": 0,
+    "total": 23
+  },
+  "live_release": {
+    "exit": 1,
+    "reason": "HTTPS Sepolia RPC required; matching manifest, Redis, Pinata and signed workflow evidence remain absent.",
+    "report": "live-release-check.txt"
+  },
+  "deployment_input": {
+    "framework": "Next.js",
+    "secrets_excluded": true,
+    "unrelated_local_metadata_excluded": true,
+    "report": "deploy-inputs.json"
+  },
+  "independent_ci": "pending push",
+  "hosting": "pending staged build and smoke",
+  "performance": {
+    "report": "performance-summary.json",
+    "mobile": {
+      "performance": 99.0,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "desktop": {
+      "performance": 100,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    }
+  },
+  "format_exit": 0,
+  "raw_evidence_note": "Generated logs and HTML retain their original whitespace; source diff is checked separately."
+}

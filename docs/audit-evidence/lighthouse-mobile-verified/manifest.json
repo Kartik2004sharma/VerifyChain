@@ -1,0 +1,38 @@
+[
+  {
+    "url": "http://127.0.0.1:3100/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/Users/kartik/CS50x2025/Projects/VerifyChain/docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_07.report.html",
+    "jsonPath": "/Users/kartik/CS50x2025/Projects/VerifyChain/docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_07.report.json",
+    "summary": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://127.0.0.1:3100/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/Users/kartik/CS50x2025/Projects/VerifyChain/docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_30.report.html",
+    "jsonPath": "/Users/kartik/CS50x2025/Projects/VerifyChain/docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_30.report.json",
+    "summary": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  },
+  {
+    "url": "http://127.0.0.1:3100/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/Users/kartik/CS50x2025/Projects/VerifyChain/docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_19.report.html",
+    "jsonPath": "/Users/kartik/CS50x2025/Projects/VerifyChain/docs/audit-evidence/lighthouse-mobile-verified/127_0_0_1--2026_10_04_18_23_19.report.json",
+    "summary": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    }
+  }
+]

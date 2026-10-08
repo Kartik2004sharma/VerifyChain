@@ -1,0 +1,5 @@
+WARNING: You are currently using Node.js v25.9.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+◇ injected env (0) from .env.local // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+Compiled 8 Solidity files successfully (evm target: paris).

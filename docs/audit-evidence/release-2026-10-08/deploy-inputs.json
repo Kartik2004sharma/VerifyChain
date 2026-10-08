@@ -1,0 +1,1554 @@
+{
+  "framework": {
+    "name": "Next.js",
+    "slug": "nextjs"
+  },
+  "basePath": "/Users/kartik/CS50x2025/Projects/VerifyChain",
+  "fileCount": 201,
+  "totalSize": 16102005,
+  "ignoredCount": 67,
+  "ignored": [
+    ".env.local",
+    ".git",
+    ".gitignore",
+    ".next",
+    ".serena/.gitignore",
+    ".serena/cache",
+    ".serena/memories",
+    ".serena/project.local.yml",
+    ".serena/project.yml",
+    ".vercel",
+    "docs/audit-evidence/abi-export-verified.txt",
+    "docs/audit-evidence/baseline.md",
+    "docs/audit-evidence/browser-additions.txt",
+    "docs/audit-evidence/browser-final.txt",
+    "docs/audit-evidence/browser-iteration1.txt",
+    "docs/audit-evidence/browser-iteration2.txt",
+    "docs/audit-evidence/browser-iteration3.txt",
+    "docs/audit-evidence/browser-verified.txt",
+    "docs/audit-evidence/build-final.txt",
+    "docs/audit-evidence/build.txt",
+    "docs/audit-evidence/clean-install-final.txt",
+    "docs/audit-evidence/clean-install.txt",
+    "docs/audit-evidence/contract-tests-final.txt",
+    "docs/audit-evidence/contract-tests.txt",
+    "docs/audit-evidence/contracts.txt",
+    "docs/audit-evidence/dependency-all.json",
+    "docs/audit-evidence/dependency-production.json",
+    "docs/audit-evidence/format.txt",
+    "docs/audit-evidence/full-quality-final.txt",
+    "docs/audit-evidence/full-quality-verified.txt",
+    "docs/audit-evidence/lighthouse",
+    "docs/audit-evidence/lighthouse-desktop-final",
+    "docs/audit-evidence/lighthouse-desktop-final.txt",
+    "docs/audit-evidence/lighthouse-desktop-verified",
+    "docs/audit-evidence/lighthouse-desktop-verified.txt",
+    "docs/audit-evidence/lighthouse-mobile-final",
+    "docs/audit-evidence/lighthouse-mobile-final.txt",
+    "docs/audit-evidence/lighthouse-mobile-verified",
+    "docs/audit-evidence/lighthouse-mobile-verified.txt",
+    "docs/audit-evidence/lighthouse-mobile.txt",
+    "docs/audit-evidence/lint-final.txt",
+    "docs/audit-evidence/lint.txt",
+    "docs/audit-evidence/local-contract-reproduction.json",
+    "docs/audit-evidence/local-integration-final.txt",
+    "docs/audit-evidence/local-preview-smoke.json",
+    "docs/audit-evidence/performance-summary.json",
+    "docs/audit-evidence/redesign-2026-10-05",
+    "docs/audit-evidence/release-2026-10-08",
+    "docs/audit-evidence/release-check-verified.txt",
+    "docs/audit-evidence/release-check.txt",
+    "docs/audit-evidence/retired-modules.json",
+    "docs/audit-evidence/safari-boundary-final.txt",
+    "docs/audit-evidence/safari-camera-diagnostic.txt",
+    "docs/audit-evidence/safari-repair.txt",
+    "docs/audit-evidence/source-revision.json",
+    "docs/audit-evidence/typecheck-final.txt",
+    "docs/audit-evidence/typecheck.txt",
+    "docs/audit-evidence/unit-tests-final.txt",
+    "docs/audit-evidence/visual-candidates",
+    "docs/audit-evidence/visual-candidates.txt",
+    "docs/audit-evidence/visual-panel-candidates.txt",
+    "docs/audit-evidence/visual-review-iteration2.txt",
+    "docs/audit-evidence/visual-review-verified.txt",
+    "docs/audit-evidence/visuals",
+    "node_modules",
+    "playwright-report/index.html",
+    "test-results/.playwright-artifacts-8"
+  ],
+  "directories": [
+    {
+      "path": "artifacts",
+      "fileCount": 25,
+      "size": 5847274
+    },
+    {
+      "path": "tests",
+      "fileCount": 51,
+      "size": 4364843
+    },
+    {
+      "path": ".lighthouseci",
+      "fileCount": 7,
+      "size": 3603343
+    },
+    {
+      "path": "package-lock.json",
+      "fileCount": 1,
+      "size": 852849
+    },
+    {
+      "path": "public",
+      "fileCount": 8,
+      "size": 566778
+    },
+    {
+      "path": "tsconfig.tsbuildinfo",
+      "fileCount": 1,
+      "size": 316320
+    },
+    {
+      "path": "app",
+      "fileCount": 23,
+      "size": 141195
+    },
+    {
+      "path": "docs",
+      "fileCount": 9,
+      "size": 95968
+    },
+    {
+      "path": "contracts",
+      "fileCount": 6,
+      "size": 84362
+    },
+    {
+      "path": "components",
+      "fileCount": 19,
+      "size": 80973
+    },
+    {
+      "path": "lib",
+      "fileCount": 10,
+      "size": 80696
+    },
+    {
+      "path": "scripts",
+      "fileCount": 7,
+      "size": 16768
+    },
+    {
+      "path": "test",
+      "fileCount": 1,
+      "size": 12029
+    },
+    {
+      "path": "README.md",
+      "fileCount": 1,
+      "size": 11166
+    },
+    {
+      "path": "cache",
+      "fileCount": 1,
+      "size": 9349
+    },
+    {
+      "path": "deploy.sh",
+      "fileCount": 1,
+      "size": 4482
+    },
+    {
+      "path": "package.json",
+      "fileCount": 1,
+      "size": 2349
+    },
+    {
+      "path": ".github",
+      "fileCount": 1,
+      "size": 1351
+    },
+    {
+      "path": "playwright.config.ts",
+      "fileCount": 1,
+      "size": 1344
+    },
+    {
+      "path": "hardhat.config.js",
+      "fileCount": 1,
+      "size": 1293
+    },
+    {
+      "path": "middleware.ts",
+      "fileCount": 1,
+      "size": 1134
+    },
+    {
+      "path": "deployments",
+      "fileCount": 3,
+      "size": 1103
+    },
+    {
+      "path": "lighthouserc.cjs",
+      "fileCount": 1,
+      "size": 904
+    },
+    {
+      "path": "next.config.ts",
+      "fileCount": 1,
+      "size": 702
+    },
+    {
+      "path": "tsconfig.json",
+      "fileCount": 1,
+      "size": 615
+    },
+    {
+      "path": ".env.example",
+      "fileCount": 1,
+      "size": 446
+    },
+    {
+      "path": "vitest.integration.config.ts",
+      "fileCount": 1,
+      "size": 441
+    },
+    {
+      "path": "components.json",
+      "fileCount": 1,
+      "size": 426
+    },
+    {
+      "path": "vitest.config.ts",
+      "fileCount": 1,
+      "size": 375
+    },
+    {
+      "path": "eslint.config.mjs",
+      "fileCount": 1,
+      "size": 349
+    },
+    {
+      "path": "next-env.d.ts",
+      "fileCount": 1,
+      "size": 262
+    },
+    {
+      "path": "global.d.ts",
+      "fileCount": 1,
+      "size": 156
+    },
+    {
+      "path": ".env.contracts.example",
+      "fileCount": 1,
+      "size": 110
+    },
+    {
+      "path": ".vercelignore",
+      "fileCount": 1,
+      "size": 107
+    },
+    {
+      "path": ".prettierignore",
+      "fileCount": 1,
+      "size": 95
+    },
+    {
+      "path": "postcss.config.mjs",
+      "fileCount": 1,
+      "size": 32
+    },
+    {
+      "path": ".node-version",
+      "fileCount": 1,
+      "size": 8
+    },
+    {
+      "path": ".nvmrc",
+      "fileCount": 1,
+      "size": 8
+    },
+    {
+      "path": ".serena",
+      "fileCount": 1,
+      "size": 0
+    },
+    {
+      "path": "contexts",
+      "fileCount": 1,
+      "size": 0
+    },
+    {
+      "path": "hooks",
+      "fileCount": 2,
+      "size": 0
+    },
+    {
+      "path": "playwright-report",
+      "fileCount": 1,
+      "size": 0
+    },
+    {
+      "path": "test-results",
+      "fileCount": 1,
+      "size": 0
+    }
+  ],
+  "largestFiles": [
+    {
+      "path": "artifacts/build-info/72b86f955728c3225b2dae57cbb91d61.json",
+      "size": 2158356,
+      "mode": 33188,
+      "sha": "c02af8da591c4bd4c91914b22a9948323c9ff4c0"
+    },
+    {
+      "path": "artifacts/build-info/08a339ba89b465399883ca0d69bde2da.json",
+      "size": 2157487,
+      "mode": 33188,
+      "sha": "3e2af5f449f3ebd8d0fd8756f5da15984f2c87c8"
+    },
+    {
+      "path": "package-lock.json",
+      "size": 852849,
+      "mode": 33188,
+      "sha": "1a40581fc8776175bc763b59c8aefb49f84d51b6"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225115544.html",
+      "size": 683004,
+      "mode": 33188,
+      "sha": "a4d1726cdb9ec1f159f914294644225e8490b823"
+    },
+    {
+      "path": "artifacts/build-info/654b760bb31fe6296881898b97c3a013.json",
+      "size": 667412,
+      "mode": 33188,
+      "sha": "40943903b9ee972ee50c1c8aa9de7c8f1ba88cb5"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225066723.html",
+      "size": 639189,
+      "mode": 33188,
+      "sha": "2fe780f1a4739a72157d2d777703b1d57da66197"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225095646.html",
+      "size": 628185,
+      "mode": 33188,
+      "sha": "9b20f3b52b4bd307d16c9b8c29274c2a94f42213"
+    },
+    {
+      "path": "artifacts/build-info/57f3ca54e8cb81ffb55df5ace37cc3bf.json",
+      "size": 590912,
+      "mode": 33188,
+      "sha": "f669a0cf80886a4db555b6ad6df1319e2c5c165f"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225115544.json",
+      "size": 582307,
+      "mode": 33188,
+      "sha": "0f3af8d638f5c891132d55b1c89752ecdd81243a"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225066723.json",
+      "size": 541084,
+      "mode": 33188,
+      "sha": "9eb22c98fea864e6b091c70f5703eeb2620df853"
+    }
+  ],
+  "files": [
+    {
+      "path": ".env.contracts.example",
+      "size": 110,
+      "mode": 33188,
+      "sha": "a423519244c9f52eb53d8c9701ade03ab41c46e1"
+    },
+    {
+      "path": ".env.example",
+      "size": 446,
+      "mode": 33188,
+      "sha": "674b1582699a9af90d0c094b6c16339462ea6613"
+    },
+    {
+      "path": ".github/workflows/quality.yml",
+      "size": 1351,
+      "mode": 33188,
+      "sha": "38af049d2be39fd3337972209998f8eec69621b6"
+    },
+    {
+      "path": ".lighthouseci/assertion-results.json",
+      "size": 2,
+      "mode": 33188,
+      "sha": "97d170e1550eee4afc0af065b78cda302a97674c"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225066723.html",
+      "size": 639189,
+      "mode": 33188,
+      "sha": "2fe780f1a4739a72157d2d777703b1d57da66197"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225066723.json",
+      "size": 541084,
+      "mode": 33188,
+      "sha": "9eb22c98fea864e6b091c70f5703eeb2620df853"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225095646.html",
+      "size": 628185,
+      "mode": 33188,
+      "sha": "9b20f3b52b4bd307d16c9b8c29274c2a94f42213"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225095646.json",
+      "size": 529572,
+      "mode": 33188,
+      "sha": "4022dfb512d1403a3a998def74d5cdf94b0173d5"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225115544.html",
+      "size": 683004,
+      "mode": 33188,
+      "sha": "a4d1726cdb9ec1f159f914294644225e8490b823"
+    },
+    {
+      "path": ".lighthouseci/lhr-1791225115544.json",
+      "size": 582307,
+      "mode": 33188,
+      "sha": "0f3af8d638f5c891132d55b1c89752ecdd81243a"
+    },
+    {
+      "path": ".node-version",
+      "size": 8,
+      "mode": 33188,
+      "sha": "6c8262b5f9bcc77b6eb6d856d3590b62fa2653cf"
+    },
+    {
+      "path": ".nvmrc",
+      "size": 8,
+      "mode": 33188,
+      "sha": "6c8262b5f9bcc77b6eb6d856d3590b62fa2653cf"
+    },
+    {
+      "path": ".prettierignore",
+      "size": 95,
+      "mode": 33188,
+      "sha": "118d88dd2412821b0d00fe6eab0a9c4d3e0dcc33"
+    },
+    {
+      "path": ".serena",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": ".vercelignore",
+      "size": 107,
+      "mode": 33188,
+      "sha": "121f112462514029e0459b67c4808e8ddb4f5057"
+    },
+    {
+      "path": "app/api/blockchain/verify/route.ts",
+      "size": 525,
+      "mode": 33188,
+      "sha": "a33f7c88cb620751ae5bdb18cb62f4a887905893"
+    },
+    {
+      "path": "app/api/health/live/route.ts",
+      "size": 109,
+      "mode": 33188,
+      "sha": "7177f0fce36673689bc804aa600d036286f1feed"
+    },
+    {
+      "path": "app/api/health/ready/route.ts",
+      "size": 447,
+      "mode": 33188,
+      "sha": "7a15bd082db4df11bd7025049a848d214fe8f2cc"
+    },
+    {
+      "path": "app/api/history/route.ts",
+      "size": 759,
+      "mode": 33188,
+      "sha": "7d402c4f7f6dbe06a7d12150b089ce1b098a5165"
+    },
+    {
+      "path": "app/api/metadata/challenge/route.ts",
+      "size": 385,
+      "mode": 33188,
+      "sha": "0b864d7390127fc584cfcf8aecd68517de04e28b"
+    },
+    {
+      "path": "app/api/metadata/upload/route.ts",
+      "size": 1453,
+      "mode": 33188,
+      "sha": "a49bff6d95ca5c36c1d4344acd7c790e84445efc"
+    },
+    {
+      "path": "app/api/products/route.ts",
+      "size": 552,
+      "mode": 33188,
+      "sha": "2f237adec421fd2bca7ca7d4b39804f9e6d44508"
+    },
+    {
+      "path": "app/api/supply/route.ts",
+      "size": 756,
+      "mode": 33188,
+      "sha": "f1e3bb7866d6438c6a03da787bf36d04abdf8938"
+    },
+    {
+      "path": "app/dashboard/analytics/page.tsx",
+      "size": 125,
+      "mode": 33188,
+      "sha": "6105c1286909cc0e40f33e09409a346736c51f2c"
+    },
+    {
+      "path": "app/dashboard/layout.tsx",
+      "size": 278,
+      "mode": 33188,
+      "sha": "086769aa47ddf1eef81603189e3a995192815ab3"
+    },
+    {
+      "path": "app/dashboard/page.tsx",
+      "size": 107,
+      "mode": 33188,
+      "sha": "99857af9eb369280ef96187712bfc6aedd482ee7"
+    },
+    {
+      "path": "app/dashboard/register-manufacturer/page.tsx",
+      "size": 120,
+      "mode": 33188,
+      "sha": "b44fa0e236163117a5dd72ed31342ae77041b040"
+    },
+    {
+      "path": "app/dashboard/register-product/page.tsx",
+      "size": 120,
+      "mode": 33188,
+      "sha": "5afbe211379b030f7ed30d5fcaf297c935bd44ab"
+    },
+    {
+      "path": "app/dashboard/settings/page.tsx",
+      "size": 108,
+      "mode": 33188,
+      "sha": "47e554011bfa65343b55359c422b78aae6fffc83"
+    },
+    {
+      "path": "app/dashboard/supply-chain/page.tsx",
+      "size": 102,
+      "mode": 33188,
+      "sha": "491f6d0184c3d477a90afc1be9cfe412bc71d442"
+    },
+    {
+      "path": "app/dashboard/verification-analytics/page.tsx",
+      "size": 125,
+      "mode": 33188,
+      "sha": "6105c1286909cc0e40f33e09409a346736c51f2c"
+    },
+    {
+      "path": "app/dashboard/verification-history/page.tsx",
+      "size": 115,
+      "mode": 33188,
+      "sha": "af61ec0ad2c61cdb62e1768213341b5337404a52"
+    },
+    {
+      "path": "app/dashboard/verify-product/page.tsx",
+      "size": 102,
+      "mode": 33188,
+      "sha": "c863d683fd8051c2481c8fefe91ad285caa64b70"
+    },
+    {
+      "path": "app/favicon.ico",
+      "size": 82482,
+      "mode": 33188,
+      "sha": "6cb8c9c90500595428362fe00f85ae5984dd6655"
+    },
+    {
+      "path": "app/globals.css",
+      "size": 41576,
+      "mode": 33188,
+      "sha": "b32fce24b157ab609b16810005e59dc3095c4a85"
+    },
+    {
+      "path": "app/layout.tsx",
+      "size": 1212,
+      "mode": 33188,
+      "sha": "0f61955ef094814bcaee8ff94087e3c1e02095b7"
+    },
+    {
+      "path": "app/page.tsx",
+      "size": 9342,
+      "mode": 33188,
+      "sha": "c98ae24ba73daa5d0a02c812b29130f0c3cd7abe"
+    },
+    {
+      "path": "app/verify/page.tsx",
+      "size": 295,
+      "mode": 33188,
+      "sha": "85144ca19b956bcd51aee3021c3b10059388b0a0"
+    },
+    {
+      "path": "artifacts/@openzeppelin/contracts/access/Ownable.sol/Ownable.dbg.json",
+      "size": 111,
+      "mode": 33188,
+      "sha": "edb10f5da65074d146206c56a9c2998d5fc84fa2"
+    },
+    {
+      "path": "artifacts/@openzeppelin/contracts/access/Ownable.sol/Ownable.json",
+      "size": 1771,
+      "mode": 33188,
+      "sha": "bf4b388ca4374b2aeb3d0ca7a44a180e88fd8995"
+    },
+    {
+      "path": "artifacts/@openzeppelin/contracts/utils/Context.sol/Context.dbg.json",
+      "size": 111,
+      "mode": 33188,
+      "sha": "edb10f5da65074d146206c56a9c2998d5fc84fa2"
+    },
+    {
+      "path": "artifacts/@openzeppelin/contracts/utils/Context.sol/Context.json",
+      "size": 244,
+      "mode": 33188,
+      "sha": "a0c3cefe9d68f65048781f6aaf45e38c9a37d188"
+    },
+    {
+      "path": "artifacts/@openzeppelin/contracts/utils/ReentrancyGuard.sol/ReentrancyGuard.dbg.json",
+      "size": 111,
+      "mode": 33188,
+      "sha": "c26677e679232907e38b63edfa7f18e783a4ee99"
+    },
+    {
+      "path": "artifacts/@openzeppelin/contracts/utils/ReentrancyGuard.sol/ReentrancyGuard.json",
+      "size": 363,
+      "mode": 33188,
+      "sha": "2d9acb0fa7b0f8391b8ad8c4a5b758759c35855f"
+    },
+    {
+      "path": "artifacts/@openzeppelin/contracts/utils/StorageSlot.sol/StorageSlot.dbg.json",
+      "size": 111,
+      "mode": 33188,
+      "sha": "edb10f5da65074d146206c56a9c2998d5fc84fa2"
+    },
+    {
+      "path": "artifacts/@openzeppelin/contracts/utils/StorageSlot.sol/StorageSlot.json",
+      "size": 542,
+      "mode": 33188,
+      "sha": "3e76adb0112a05494f4c961c72571413e0ddf1d5"
+    },
+    {
+      "path": "artifacts/build-info/08a339ba89b465399883ca0d69bde2da.json",
+      "size": 2157487,
+      "mode": 33188,
+      "sha": "3e2af5f449f3ebd8d0fd8756f5da15984f2c87c8"
+    },
+    {
+      "path": "artifacts/build-info/2839764eadb9ca327923442b2fa32b8b.json",
+      "size": 39515,
+      "mode": 33188,
+      "sha": "25a5857215fb56e17378afa9d869e6a883270240"
+    },
+    {
+      "path": "artifacts/build-info/57f3ca54e8cb81ffb55df5ace37cc3bf.json",
+      "size": 590912,
+      "mode": 33188,
+      "sha": "f669a0cf80886a4db555b6ad6df1319e2c5c165f"
+    },
+    {
+      "path": "artifacts/build-info/654b760bb31fe6296881898b97c3a013.json",
+      "size": 667412,
+      "mode": 33188,
+      "sha": "40943903b9ee972ee50c1c8aa9de7c8f1ba88cb5"
+    },
+    {
+      "path": "artifacts/build-info/72b86f955728c3225b2dae57cbb91d61.json",
+      "size": 2158356,
+      "mode": 33188,
+      "sha": "c02af8da591c4bd4c91914b22a9948323c9ff4c0"
+    },
+    {
+      "path": "artifacts/contracts/CounterfeitReporter.sol/CounterfeitReporter.dbg.json",
+      "size": 105,
+      "mode": 33188,
+      "sha": "3871c48a01b53fc0f4fda443f9e9f8d96986ed5c"
+    },
+    {
+      "path": "artifacts/contracts/CounterfeitReporter.sol/CounterfeitReporter.json",
+      "size": 65057,
+      "mode": 33188,
+      "sha": "e664e0b4084ce5d47461996dc384892c22c032ea"
+    },
+    {
+      "path": "artifacts/contracts/ProductRegistry.sol/ProductRegistry.dbg.json",
+      "size": 105,
+      "mode": 33188,
+      "sha": "812a2b0c5a9ce96a50760d3ee25506d22c3ef32f"
+    },
+    {
+      "path": "artifacts/contracts/ProductRegistry.sol/ProductRegistry.json",
+      "size": 51238,
+      "mode": 33188,
+      "sha": "58143bfbd8d1e1a4b6ef95ed21eccfd7def36c58"
+    },
+    {
+      "path": "artifacts/contracts/SupplyChainTracker.sol/SupplyChainTracker.dbg.json",
+      "size": 105,
+      "mode": 33188,
+      "sha": "75add002b57f8027e0585c2e0ae2bd33532db6ab"
+    },
+    {
+      "path": "artifacts/contracts/SupplyChainTracker.sol/SupplyChainTracker.json",
+      "size": 64206,
+      "mode": 33188,
+      "sha": "42c6d7c0891efe42543636da2a5e27cf40bba385"
+    },
+    {
+      "path": "artifacts/contracts/TestClaimReceiver.sol/IReporter.dbg.json",
+      "size": 105,
+      "mode": 33188,
+      "sha": "1ac443a21b59b71f0c7028c666bae9296c9f7023"
+    },
+    {
+      "path": "artifacts/contracts/TestClaimReceiver.sol/IReporter.json",
+      "size": 1235,
+      "mode": 33188,
+      "sha": "ca1fb2a299c03947f91b09c3a0b0f95dc833a9a2"
+    },
+    {
+      "path": "artifacts/contracts/TestClaimReceiver.sol/TestClaimReceiver.dbg.json",
+      "size": 105,
+      "mode": 33188,
+      "sha": "1ac443a21b59b71f0c7028c666bae9296c9f7023"
+    },
+    {
+      "path": "artifacts/contracts/TestClaimReceiver.sol/TestClaimReceiver.json",
+      "size": 4854,
+      "mode": 33188,
+      "sha": "92f6e500cd4e85327626ba43bab749e7658c6ce9"
+    },
+    {
+      "path": "artifacts/contracts/VerificationRegistry.sol/VerificationRegistry.dbg.json",
+      "size": 105,
+      "mode": 33188,
+      "sha": "75add002b57f8027e0585c2e0ae2bd33532db6ab"
+    },
+    {
+      "path": "artifacts/contracts/VerificationRegistry.sol/VerificationRegistry.json",
+      "size": 43008,
+      "mode": 33188,
+      "sha": "7fd133cd2b77bc7dbf30f334fd12205aeea5bd5c"
+    },
+    {
+      "path": "cache/solidity-files-cache.json",
+      "size": 9349,
+      "mode": 33188,
+      "sha": "633c04c40ce0b9606c03ff5bd156fd8f0468e03d"
+    },
+    {
+      "path": "components.json",
+      "size": 426,
+      "mode": 33188,
+      "sha": "33586cb24131fd99bce3d52ecfb06d238fd83a0b"
+    },
+    {
+      "path": "components/blocks",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "components/brand.tsx",
+      "size": 971,
+      "mode": 33188,
+      "sha": "000109927c956a73a016a8e16b8f37a415b1c1d5"
+    },
+    {
+      "path": "components/dashboard",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "components/evidence-object.tsx",
+      "size": 2853,
+      "mode": 33188,
+      "sha": "50ffe6327793c0535f9b40ed372a42aeacd8de03"
+    },
+    {
+      "path": "components/passport.tsx",
+      "size": 8186,
+      "mode": 33188,
+      "sha": "fbb811cefe3fad58869d176c1cb8865e8f26a8fd"
+    },
+    {
+      "path": "components/providers.tsx",
+      "size": 515,
+      "mode": 33188,
+      "sha": "fc29c0c53a65a5b8b7ad83dbc93458858c99f429"
+    },
+    {
+      "path": "components/readiness.ts",
+      "size": 437,
+      "mode": 33188,
+      "sha": "377266aeaf90b5e455959d941fca3727d59c0466"
+    },
+    {
+      "path": "components/records.tsx",
+      "size": 14669,
+      "mode": 33188,
+      "sha": "f9e33ce526b3a9e20967bc40068e3371fffb22d1"
+    },
+    {
+      "path": "components/registration.tsx",
+      "size": 17067,
+      "mode": 33188,
+      "sha": "73c35216bd77d25eedecdadd2f422e0c26f7201c"
+    },
+    {
+      "path": "components/scanner.tsx",
+      "size": 2042,
+      "mode": 33188,
+      "sha": "e74b32502677e58997f7d081d874a56f022abd2e"
+    },
+    {
+      "path": "components/settings.tsx",
+      "size": 3277,
+      "mode": 33188,
+      "sha": "51cb5c02e8282b89887311567fe14b72ad07ddfb"
+    },
+    {
+      "path": "components/shell.tsx",
+      "size": 4743,
+      "mode": 33188,
+      "sha": "2c20b33f3779728c39da363266b16d439565968e"
+    },
+    {
+      "path": "components/supply.tsx",
+      "size": 10151,
+      "mode": 33188,
+      "sha": "201caa10864fe9d08151986185c485fc6f573f47"
+    },
+    {
+      "path": "components/transaction.ts",
+      "size": 7660,
+      "mode": 33188,
+      "sha": "63f35c0c75b1485a1601b2492c014ad30c0d8dfc"
+    },
+    {
+      "path": "components/ui",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "components/verification",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "components/verify.tsx",
+      "size": 6173,
+      "mode": 33188,
+      "sha": "9a3708bdbcecee31f84e60b364d768f1ce2b8b9f"
+    },
+    {
+      "path": "components/wallet-provider.tsx",
+      "size": 590,
+      "mode": 33188,
+      "sha": "81b4d07591fcbb34a8d0632f0137801f348a9fb4"
+    },
+    {
+      "path": "components/wallet.tsx",
+      "size": 1639,
+      "mode": 33188,
+      "sha": "aa4e61236a688f65d6eedd6c7f82d394badbbd17"
+    },
+    {
+      "path": "contexts",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "contracts/CounterfeitReporter.sol",
+      "size": 15002,
+      "mode": 33188,
+      "sha": "2f34e1bbf1f1e61a4ac96bcab30ed283c1af579e"
+    },
+    {
+      "path": "contracts/ProductRegistry.sol",
+      "size": 18990,
+      "mode": 33188,
+      "sha": "e05f7e8a15b57f5a2433df300a1d4e34a5412d47"
+    },
+    {
+      "path": "contracts/SupplyChainTracker.sol",
+      "size": 14091,
+      "mode": 33188,
+      "sha": "b30322c0176637c29e6811102f8c11dfde3fb09d"
+    },
+    {
+      "path": "contracts/SupplyChainTracker.sol.old",
+      "size": 19856,
+      "mode": 33188,
+      "sha": "ca3ec7f3c052ec9848ae46c974a6dcfee9347661"
+    },
+    {
+      "path": "contracts/TestClaimReceiver.sol",
+      "size": 824,
+      "mode": 33188,
+      "sha": "897144757834634f99942efd12d6bc6684d7afe8"
+    },
+    {
+      "path": "contracts/VerificationRegistry.sol",
+      "size": 15599,
+      "mode": 33188,
+      "sha": "14c9777525ca20d96d05daf2f74467c73fafcf7a"
+    },
+    {
+      "path": "deploy.sh",
+      "size": 4482,
+      "mode": 33261,
+      "sha": "4dc8b00c1b169c7368563e4e3813a56adfe7e362"
+    },
+    {
+      "path": "deployments/legacy-unverified-addresses.json",
+      "size": 283,
+      "mode": 33188,
+      "sha": "5c2a480d60deebb359401d9b442fc2d62b698a66"
+    },
+    {
+      "path": "deployments/manifest.json",
+      "size": 268,
+      "mode": 33188,
+      "sha": "a8031300cf3cd6e85ea4ad9961c952f19265133f"
+    },
+    {
+      "path": "deployments/sepolia-1762501020791.json",
+      "size": 552,
+      "mode": 33188,
+      "sha": "147065b39d7d40265bfaf7282150972c8dd6687f"
+    },
+    {
+      "path": "docs/audit-evidence",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "docs/DEPENDENCY_REVIEW.md",
+      "size": 3541,
+      "mode": 33188,
+      "sha": "42d54b352c7f393fcf6ca5bab580568ce17437df"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_PROGRESS.md",
+      "size": 18327,
+      "mode": 33188,
+      "sha": "6009b47a0697d4b4cca1eae4d8d204ab1c2013b5"
+    },
+    {
+      "path": "docs/PROJECT_AUDIT.md",
+      "size": 19192,
+      "mode": 33188,
+      "sha": "a38ad2656bfb52f7e3efae446bf591ce573cb26d"
+    },
+    {
+      "path": "docs/QA_ACCEPTANCE_MATRIX.md",
+      "size": 9813,
+      "mode": 33188,
+      "sha": "0f6418a865f637119b58918bc24e91f712426561"
+    },
+    {
+      "path": "docs/RELEASE_HANDOFF.md",
+      "size": 4344,
+      "mode": 33188,
+      "sha": "a43e926d075984b2003b66e121cb717e243a6052"
+    },
+    {
+      "path": "docs/UI_REDESIGN.md",
+      "size": 5623,
+      "mode": 33188,
+      "sha": "6a76899fba69492528b1090b9cd39406eda32482"
+    },
+    {
+      "path": "docs/VERIFYCHAIN_MASTER_BUILD_PROMPT.md",
+      "size": 31252,
+      "mode": 33188,
+      "sha": "b6c170bf45012bbd17fc7636ec851509044a2304"
+    },
+    {
+      "path": "docs/VISUAL_REVIEW.md",
+      "size": 3876,
+      "mode": 33188,
+      "sha": "81123050e6821bca8703f9911de985aff0a680a5"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "size": 349,
+      "mode": 33188,
+      "sha": "28526a429c6e3347055dee63d84f2170b00125a3"
+    },
+    {
+      "path": "global.d.ts",
+      "size": 156,
+      "mode": 33188,
+      "sha": "14719d2c9070d71c1ae4039221b712b7e641aeca"
+    },
+    {
+      "path": "hardhat.config.js",
+      "size": 1293,
+      "mode": 33188,
+      "sha": "8bc04f958900cf93712978b2b1319f361cdbe26c"
+    },
+    {
+      "path": "hooks/blockchain",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "hooks/verification",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "lib/contracts/abis.ts",
+      "size": 59115,
+      "mode": 33188,
+      "sha": "b3719f9714273d690c97f41a9811d65ee4115854"
+    },
+    {
+      "path": "lib/contracts/source-identity.json",
+      "size": 1143,
+      "mode": 33188,
+      "sha": "8ecd6ddcd5f5a9ddeb32873821e309e5ab8531ac"
+    },
+    {
+      "path": "lib/domain/metadata.ts",
+      "size": 3169,
+      "mode": 33188,
+      "sha": "e96a74f130c1d868936780848ca57abb642dadcf"
+    },
+    {
+      "path": "lib/domain/network.ts",
+      "size": 484,
+      "mode": 33188,
+      "sha": "b1557ca9931694cba91b07b30190144476a3cd3c"
+    },
+    {
+      "path": "lib/domain/passport.ts",
+      "size": 1197,
+      "mode": 33188,
+      "sha": "6b92e66cf005f7b000e87082c73e07851adf34e3"
+    },
+    {
+      "path": "lib/integrations/lifi",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "lib/server/chain.ts",
+      "size": 7728,
+      "mode": 33188,
+      "sha": "dbbbd0a34fedc548eb25aeedcb34ed004c461ff8"
+    },
+    {
+      "path": "lib/server/config.ts",
+      "size": 1731,
+      "mode": 33188,
+      "sha": "718f1d2b76bc9d63e3c4bcff28ea8b2824412448"
+    },
+    {
+      "path": "lib/server/security.ts",
+      "size": 5769,
+      "mode": 33188,
+      "sha": "475ecb1803627107bde515ca67d542a645c451b9"
+    },
+    {
+      "path": "lib/wagmi-config.ts",
+      "size": 360,
+      "mode": 33188,
+      "sha": "366480695128c9b80660f116faf7da312bd7ab87"
+    },
+    {
+      "path": "lighthouserc.cjs",
+      "size": 904,
+      "mode": 33188,
+      "sha": "6bc1c81b476591a751bfe4d8c3967edd1b44dead"
+    },
+    {
+      "path": "middleware.ts",
+      "size": 1134,
+      "mode": 33188,
+      "sha": "7d23c69b31d8a36c9185f13372efb6c4b2da6385"
+    },
+    {
+      "path": "next-env.d.ts",
+      "size": 262,
+      "mode": 33188,
+      "sha": "79ea33d5bd6bf5319667f287c6aec3a5e0ce256a"
+    },
+    {
+      "path": "next.config.ts",
+      "size": 702,
+      "mode": 33188,
+      "sha": "fbd92cbd079100c954e2e6afb12282a0f34d5fb4"
+    },
+    {
+      "path": "package-lock.json",
+      "size": 852849,
+      "mode": 33188,
+      "sha": "1a40581fc8776175bc763b59c8aefb49f84d51b6"
+    },
+    {
+      "path": "package.json",
+      "size": 2349,
+      "mode": 33188,
+      "sha": "a5010d4ffaceb4025db9f2526750a004432ef1cf"
+    },
+    {
+      "path": "playwright-report",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "playwright.config.ts",
+      "size": 1344,
+      "mode": 33188,
+      "sha": "ef20bb4ce0e21d1379ab5cb1747b15277d139a7d"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "size": 32,
+      "mode": 33188,
+      "sha": "f31a43fcccde2efbd132c22bb461966d7b193733"
+    },
+    {
+      "path": "public/ai.png",
+      "size": 105073,
+      "mode": 33188,
+      "sha": "695a58ae007c455bfa28b3220d5c96466480e25f"
+    },
+    {
+      "path": "public/file.svg",
+      "size": 391,
+      "mode": 33188,
+      "sha": "fb380eeffe87d50b597383664c02982964d0d28c"
+    },
+    {
+      "path": "public/globe.svg",
+      "size": 1035,
+      "mode": 33188,
+      "sha": "2eba23b01a46733bb8423e6d38ebf5f7e95abec5"
+    },
+    {
+      "path": "public/hero.png",
+      "size": 457656,
+      "mode": 33188,
+      "sha": "acaeb56936d9cabab7bbf77b89e9d76fa9c68453"
+    },
+    {
+      "path": "public/next.svg",
+      "size": 1375,
+      "mode": 33188,
+      "sha": "3f3e95622612b989c5bd6a03299a308c6f3c7e6b"
+    },
+    {
+      "path": "public/vercel.svg",
+      "size": 128,
+      "mode": 33188,
+      "sha": "cebb8852d58c8886be3e9051a26957f42bb82f1a"
+    },
+    {
+      "path": "public/verifychain-shield.svg",
+      "size": 735,
+      "mode": 33188,
+      "sha": "cfc25ab49be26f77992e607398c8e62bb616af43"
+    },
+    {
+      "path": "public/window.svg",
+      "size": 385,
+      "mode": 33188,
+      "sha": "54c48e0daa6caa317fe1b4c419007fd93e948db9"
+    },
+    {
+      "path": "README.md",
+      "size": 11166,
+      "mode": 33188,
+      "sha": "72135ca1fa1cf680d86ea69a61da775b7e872bab"
+    },
+    {
+      "path": "scripts/activate-manifest.mjs",
+      "size": 1716,
+      "mode": 33188,
+      "sha": "6a276015ebc957643dae84d8174ae0f0a92feb88"
+    },
+    {
+      "path": "scripts/capture.mjs",
+      "size": 1245,
+      "mode": 33188,
+      "sha": "fdd59413656bb5afd0877859e67323f71023fd57"
+    },
+    {
+      "path": "scripts/deploy.cjs",
+      "size": 2539,
+      "mode": 33188,
+      "sha": "d15e25b0ca54e48530950f2a4b596a6d6af36247"
+    },
+    {
+      "path": "scripts/export-abis.cjs",
+      "size": 1159,
+      "mode": 33188,
+      "sha": "c9edc9ef10905cb42a5f78610805d70e4e2b252b"
+    },
+    {
+      "path": "scripts/local-integration.mjs",
+      "size": 1591,
+      "mode": 33188,
+      "sha": "48dd699e496dd0b2eb1127f9731e18c31c405c11"
+    },
+    {
+      "path": "scripts/release-check.mjs",
+      "size": 3909,
+      "mode": 33188,
+      "sha": "77a6c4abe088ae3eb4b632ad3307af65d69f197d"
+    },
+    {
+      "path": "scripts/review-redesign.mjs",
+      "size": 4609,
+      "mode": 33188,
+      "sha": "dbfc6e2122f7d8e6e78f26650694a59768447b1b"
+    },
+    {
+      "path": "test-results",
+      "size": 0,
+      "mode": 16877
+    },
+    {
+      "path": "test/contracts.js",
+      "size": 12029,
+      "mode": 33188,
+      "sha": "410a9452148b5e0629c682482a0d91619bf38726"
+    },
+    {
+      "path": "tests/e2e/passports.spec.ts",
+      "size": 15655,
+      "mode": 33188,
+      "sha": "fddb39ef473760623333927201846569c70759a2"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts",
+      "size": 4562,
+      "mode": 33188,
+      "sha": "db7cc9201e8c9dd04d3c4989160d51ad047d32ab"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-drawer-mobile-darwin.png",
+      "size": 33609,
+      "mode": 33188,
+      "sha": "81721a3238f68ac518d3a7d78151ddfc83bc2be6"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-landing-desktop-darwin.png",
+      "size": 335212,
+      "mode": 33188,
+      "sha": "fc3e52e8608e2125a946300227f13bfe11eefed6"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-landing-mobile-darwin.png",
+      "size": 254346,
+      "mode": 33188,
+      "sha": "df897e40a08acc88b4e6905f6afd59ffd159589b"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-overview-desktop-darwin.png",
+      "size": 150162,
+      "mode": 33188,
+      "sha": "c0dbae03b48d67b8f1e871c0aababe680b1b3107"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-overview-mobile-darwin.png",
+      "size": 123281,
+      "mode": 33188,
+      "sha": "4c1c42fcc1d9f7982e4f7228a88f257a13b1ce35"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-integrity-mismatch-panel-desktop-darwin.png",
+      "size": 48700,
+      "mode": 33188,
+      "sha": "b9cec612ade840123a8861f02abc7458ae356ff7"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-integrity-mismatch-panel-mobile-darwin.png",
+      "size": 46908,
+      "mode": 33188,
+      "sha": "65607710df559bafaa404cad6a6d438e394d5cfa"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-not-found-panel-desktop-darwin.png",
+      "size": 17575,
+      "mode": 33188,
+      "sha": "596d41a8e89fe16564c852b3eeafb42cc6b1aa0a"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-not-found-panel-mobile-darwin.png",
+      "size": 15450,
+      "mode": 33188,
+      "sha": "8bbee24896f08725c652d96a4138442348e53d11"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-registered-panel-desktop-darwin.png",
+      "size": 83536,
+      "mode": 33188,
+      "sha": "40c35e31219b044f838739ea6fded07b88be15ba"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-registered-panel-mobile-darwin.png",
+      "size": 80251,
+      "mode": 33188,
+      "sha": "805045e74192653b0f67fac9932cd24af339ea48"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-revoked-panel-desktop-darwin.png",
+      "size": 49295,
+      "mode": 33188,
+      "sha": "71544044e7e32ea1110efbfadb37f3c2b2c1602e"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-revoked-panel-mobile-darwin.png",
+      "size": 47458,
+      "mode": 33188,
+      "sha": "50afd805eedc9dfdee07b71904098979dc96a46a"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-unavailable-panel-desktop-darwin.png",
+      "size": 18248,
+      "mode": 33188,
+      "sha": "042598858eec38659400b7f556805645cbb64524"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-passport-unavailable-panel-mobile-darwin.png",
+      "size": 16082,
+      "mode": 33188,
+      "sha": "2cd021180b6355c3f91ec69f7b8bd79db9ce63cd"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-register-details-desktop-darwin.png",
+      "size": 131575,
+      "mode": 33188,
+      "sha": "6afe3d37dfc5e0c1154b959c359ddcddfbd40630"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-register-details-mobile-darwin.png",
+      "size": 107941,
+      "mode": 33188,
+      "sha": "cd22c88c5bc3ec27bca76c3f8b318daf1f785f7b"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-register-review-desktop-darwin.png",
+      "size": 174260,
+      "mode": 33188,
+      "sha": "3459b209a97f0d5c7dd7164e8d40e1a9375b289e"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-register-review-mobile-darwin.png",
+      "size": 151191,
+      "mode": 33188,
+      "sha": "f86ae4cfaa6ba1b2952a5ebe832c6a5670a95be2"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-verify-empty-desktop-darwin.png",
+      "size": 163195,
+      "mode": 33188,
+      "sha": "4a699e274d7b52c360e2e84a24a95e64bc07bf0a"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/dark-verify-empty-mobile-darwin.png",
+      "size": 125331,
+      "mode": 33188,
+      "sha": "cdf490c0d6d016b3d1802ed25e8a640a63b0fe3a"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-drawer-mobile-darwin.png",
+      "size": 33466,
+      "mode": 33188,
+      "sha": "72446f95949342e898364bbdbae43fd3db4964be"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-landing-desktop-darwin.png",
+      "size": 333463,
+      "mode": 33188,
+      "sha": "3d0cfe7e1f5d3793bd76d0f89044f0eafaf9aa7b"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-landing-mobile-darwin.png",
+      "size": 251804,
+      "mode": 33188,
+      "sha": "c3f1bd252ca348e3dfc0873a498ecfc942b6328b"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-overview-desktop-darwin.png",
+      "size": 148245,
+      "mode": 33188,
+      "sha": "411306a9af0a5b8d4e6194643487522354b66b7d"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-overview-mobile-darwin.png",
+      "size": 120604,
+      "mode": 33188,
+      "sha": "1ca0bcc84e0825841dcd27545c3e162773ecf96c"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-integrity-mismatch-panel-desktop-darwin.png",
+      "size": 47683,
+      "mode": 33188,
+      "sha": "86eca27ab947db7f2a7adc33021c1a5df1373243"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-integrity-mismatch-panel-mobile-darwin.png",
+      "size": 45646,
+      "mode": 33188,
+      "sha": "3a02d81ac064607a4bcae6592d9928f742842963"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-not-found-panel-desktop-darwin.png",
+      "size": 17184,
+      "mode": 33188,
+      "sha": "dfe2f39515e156e54d447f6a2de584d4a206b892"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-not-found-panel-mobile-darwin.png",
+      "size": 14965,
+      "mode": 33188,
+      "sha": "11cc0d795a824c885b93d3ff3275ff357b0b38c4"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-registered-panel-desktop-darwin.png",
+      "size": 82635,
+      "mode": 33188,
+      "sha": "16cde93390ee5710484951afae2acd9a6e829e58"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-registered-panel-mobile-darwin.png",
+      "size": 79287,
+      "mode": 33188,
+      "sha": "7ab7f8b09dd7c7d06aec3897a5a1450abf006eb2"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-revoked-panel-desktop-darwin.png",
+      "size": 48360,
+      "mode": 33188,
+      "sha": "1aadc85fe397f5e09d6f173ee1c6f73bf06c79eb"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-revoked-panel-mobile-darwin.png",
+      "size": 46259,
+      "mode": 33188,
+      "sha": "5ad2cf6a8bff753d487b9517fb14f7710c1c7b6f"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-unavailable-panel-desktop-darwin.png",
+      "size": 17896,
+      "mode": 33188,
+      "sha": "3de0e2932a1220e03667d962cacc51fd6d6e1d05"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-passport-unavailable-panel-mobile-darwin.png",
+      "size": 15645,
+      "mode": 33188,
+      "sha": "7b281cf372a4e20ae5bc5aef2b87fd21087a15ab"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-register-details-desktop-darwin.png",
+      "size": 130779,
+      "mode": 33188,
+      "sha": "f682f7896578e3104f044c9555267ee962578b27"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-register-details-mobile-darwin.png",
+      "size": 106448,
+      "mode": 33188,
+      "sha": "6970d88734968b19ae54e9d2865de67729887f85"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-register-review-desktop-darwin.png",
+      "size": 172718,
+      "mode": 33188,
+      "sha": "8007d4e8515df705c03bd0def6948c7daaa45823"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-register-review-mobile-darwin.png",
+      "size": 149136,
+      "mode": 33188,
+      "sha": "b319d90ea69939f1e2aba7602f53a8482729241c"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-verify-empty-desktop-darwin.png",
+      "size": 163164,
+      "mode": 33188,
+      "sha": "b6225243b76b9f48c060617daf2be6efb209f3ec"
+    },
+    {
+      "path": "tests/e2e/visual.spec.ts-snapshots/light-verify-empty-mobile-darwin.png",
+      "size": 124613,
+      "mode": 33188,
+      "sha": "4543ebd057a4eefdcbbfb9ad40390d0fda0c1c86"
+    },
+    {
+      "path": "tests/integration/passport.test.ts",
+      "size": 5645,
+      "mode": 33188,
+      "sha": "5e828e12eb74f278750aa5f9654e1baaa7657f0d"
+    },
+    {
+      "path": "tests/unit/api.test.ts",
+      "size": 1600,
+      "mode": 33188,
+      "sha": "6829024a6b9550545a7420c4106d96cacc40c64d"
+    },
+    {
+      "path": "tests/unit/domain.test.ts",
+      "size": 3097,
+      "mode": 33188,
+      "sha": "555299b2642cd17969e17c501cdcfcd9c791022f"
+    },
+    {
+      "path": "tests/unit/qr.test.ts",
+      "size": 998,
+      "mode": 33188,
+      "sha": "dbc864cfd99e209899f7cb19868fff57390dfb30"
+    },
+    {
+      "path": "tests/unit/security.test.ts",
+      "size": 3020,
+      "mode": 33188,
+      "sha": "02e6f6992ead8ee4aadb2a19516197981e6991d6"
+    },
+    {
+      "path": "tests/unit/server-only.ts",
+      "size": 11,
+      "mode": 33188,
+      "sha": "b878c11a77128e74c3cf15c93ef2ceddf2aa0b38"
+    },
+    {
+      "path": "tests/unit/transaction.test.ts",
+      "size": 6649,
+      "mode": 33188,
+      "sha": "5f82df871203c9e8e8554c8d4d2bb103bc956072"
+    },
+    {
+      "path": "tsconfig.json",
+      "size": 615,
+      "mode": 33188,
+      "sha": "1151243989cdfae76333b3c9b6f15682b26e6d16"
+    },
+    {
+      "path": "tsconfig.tsbuildinfo",
+      "size": 316320,
+      "mode": 33188,
+      "sha": "db1b0506eba9b404b5015021c697bf539e4704e6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "size": 375,
+      "mode": 33188,
+      "sha": "c700fbcf43787a12681035082f04538b7f777a47"
+    },
+    {
+      "path": "vitest.integration.config.ts",
+      "size": 441,
+      "mode": 33188,
+      "sha": "e575e1feb2631aa4c34cda66552f86a848de7da5"
+    }
+  ]
+}

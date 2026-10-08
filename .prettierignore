@@ -1,0 +1,7 @@
+lib/contracts/abis.ts
+package-lock.json
+docs/audit-evidence/
+.serena/
+artifacts/
+cache/
+.next/

@@ -1,0 +1,24 @@
+Vercel CLI 63.1.0
+> Found Project kartik2004sharmas-projects/verifychain [1s]
+
+  General
+
+    ID				prj_mFh66zxPy7OT9dKT5XDEIV4XHKaa
+    Name			verifychain
+    Owner			kartik2004sharma's projects
+    Created At			08 October 2026 22:27:51 [24s ago]
+    Root Directory		.
+    Node.js Version		24.x
+
+  Framework Settings
+
+    Framework Preset		Next.js
+    Build Command		`npm run build` or `next build`
+    Output Directory		Next.js default
+    Install Command		`yarn install`, `pnpm install`, `npm install`, or `bun install`
+
+  Sandbox
+
+    Region			iad1
+    Failover Regions		None
+

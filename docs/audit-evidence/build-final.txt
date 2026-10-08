@@ -1,0 +1,49 @@
+
+> verifychain@1.0.0 build
+> next build
+
+   ▲ Next.js 15.5.27
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 12.9s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ƒ /                                    1.69 kB         111 kB
+├ ƒ /_not-found                             1 kB         104 kB
+├ ƒ /api/blockchain/verify                 152 B         103 kB
+├ ƒ /api/health/live                       152 B         103 kB
+├ ƒ /api/health/ready                      152 B         103 kB
+├ ƒ /api/history                           152 B         103 kB
+├ ƒ /api/metadata/challenge                152 B         103 kB
+├ ƒ /api/metadata/upload                   152 B         103 kB
+├ ƒ /api/products                          152 B         103 kB
+├ ƒ /api/supply                            152 B         103 kB
+├ ƒ /dashboard                             180 B         150 kB
+├ ƒ /dashboard/analytics                   189 B         150 kB
+├ ƒ /dashboard/register-manufacturer       197 B         260 kB
+├ ƒ /dashboard/register-product            197 B         260 kB
+├ ƒ /dashboard/settings                  3.94 kB         113 kB
+├ ƒ /dashboard/supply-chain              4.61 kB         251 kB
+├ ƒ /dashboard/verification-analytics      189 B         150 kB
+├ ƒ /dashboard/verification-history        189 B         150 kB
+├ ƒ /dashboard/verify-product             2.4 kB         146 kB
+└ ƒ /verify                              2.41 kB         146 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/1255-8dc91b756d944555.js      46.2 kB
+  ├ chunks/4bd1b696-100b9d70ed4e49c1.js  54.2 kB
+  └ other shared chunks (total)          2.32 kB
+
+
+ƒ Middleware                             34.1 kB
+
+ƒ  (Dynamic)  server-rendered on demand
+

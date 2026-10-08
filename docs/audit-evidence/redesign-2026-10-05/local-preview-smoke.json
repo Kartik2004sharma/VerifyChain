@@ -1,0 +1,29 @@
+{
+  "origin": "http://127.0.0.1:3310",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/verify",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/api/health/live",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "path": "/api/health/ready",
+      "status": 503,
+      "expected": 503
+    }
+  ],
+  "source_hashes_match": true,
+  "public_deployment": false,
+  "readiness_note": "503 is expected: live release configuration remains missing.",
+  "checked_at_utc": "2026-10-05T18:33:29.656309+00:00"
+}

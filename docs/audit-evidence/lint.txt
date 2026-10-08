@@ -1,0 +1,142 @@
+> next lint
+./app/dashboard/analytics/page.tsx
+6:10  Error: 'useProductRegistry' is defined but never used.  @typescript-eslint/no-unused-vars
+91:11  Error: 'address' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+./app/dashboard/page.tsx
+16:3  Error: 'Clock' is defined but never used.  @typescript-eslint/no-unused-vars
+17:3  Error: 'MapPin' is defined but never used.  @typescript-eslint/no-unused-vars
+18:3  Error: 'User' is defined but never used.  @typescript-eslint/no-unused-vars
+89:68  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+125:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+129:26  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+./app/dashboard/register-manufacturer/page.tsx
+13:3  Error: 'ExternalLink' is defined but never used.  @typescript-eslint/no-unused-vars
+48:14  Error: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+185:81  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+284:28  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+./app/dashboard/register-product/page.tsx
+21:3  Error: 'Loader2' is defined but never used.  @typescript-eslint/no-unused-vars
+22:3  Error: 'Clock' is defined but never used.  @typescript-eslint/no-unused-vars
+23:3  Error: 'Building2' is defined but never used.  @typescript-eslint/no-unused-vars
+122:6  Warning: React Hook useEffect has a missing dependency: 'isSuccess'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+225:48  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+689:29  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+1017:31  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+1026:29  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+1205:42  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+1205:84  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+1205:99  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+1273:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+./app/dashboard/settings/page.tsx
+17:3  Error: 'Settings' is defined but never used.  @typescript-eslint/no-unused-vars
+77:66  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+275:81  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+./app/dashboard/supply-chain/page.tsx
+10:3  Error: 'MapPin' is defined but never used.  @typescript-eslint/no-unused-vars
+224:11  Error: 'address' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+242:17  Error: 'supplyChainInfo' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+247:79  Error: 'metadataURI' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+258:82  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+294:35  Error: 'data' is defined but never used.  @typescript-eslint/no-unused-vars
+294:41  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+308:9  Warning: The 'allProducts' array makes the dependencies of useMemo Hook (at line 323) change on every render. Move it inside the useMemo callback. Alternatively, wrap the initialization of 'allProducts' in its own useMemo() Hook.  react-hooks/exhaustive-deps
+402:90  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+402:108  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+507:32  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+507:52  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+516:59  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+516:77  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+./app/dashboard/verification-analytics/page.tsx
+32:10  Error: 'isLoading' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+./app/dashboard/verification-history/page.tsx
+42:17  Error: 'verificationCount' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+43:17  Error: 'productStats' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+49:78  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+49:83  Error: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+70:53  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+70:58  Error: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+356:27  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+356:47  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+./app/dashboard/verify-product/page.tsx
+8:52  Error: 'CardDescription' is defined but never used.  @typescript-eslint/no-unused-vars
+53:17  Error: 'productData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+73:68  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+296:54  Error: 'idx' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/CustomConnectButton.tsx
+86:27  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+./components/NavWalletButton.tsx
+4:18  Error: 'ChevronDown' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/ProductVerificationDashboard.tsx
+3:20  Error: 'useEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+28:10  Error: 'isLoading' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+29:11  Error: 'address' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+./components/WalletConnectButton.tsx
+86:27  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+./components/blocks/hero-section-1.tsx
+71:29  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+159:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+166:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+./components/blocks/technical-architecture.tsx
+10:3  Error: 'Layers' is defined but never used.  @typescript-eslint/no-unused-vars
+12:3  Error: 'Zap' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Error: 'ArrowUpDown' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/blocks/testimonials.tsx
+63:58  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+71:13  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+71:33  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+85:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+./components/dashboard/QuickActions.tsx
+10:3  Error: 'BarChart3' is defined but never used.  @typescript-eslint/no-unused-vars
+20:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+./components/dashboard/sidebar.tsx
+8:3  Error: 'MessageSquare' is defined but never used.  @typescript-eslint/no-unused-vars
+9:3  Error: 'ArrowLeftRight' is defined but never used.  @typescript-eslint/no-unused-vars
+13:3  Error: 'Coins' is defined but never used.  @typescript-eslint/no-unused-vars
+15:3  Error: 'Shield' is defined but never used.  @typescript-eslint/no-unused-vars
+16:3  Error: 'Droplets' is defined but never used.  @typescript-eslint/no-unused-vars
+36:6  Warning: React Hook useEffect has a missing dependency: 'setOpen'. Either include it or remove the dependency array. If 'setOpen' changes too often, find the parent component that defines it and wrap that definition in useCallback.  react-hooks/exhaustive-deps
+./components/navigation-new.tsx
+8:3  Error: 'Droplets' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/ui/chart.tsx
+72:7  Error: '_' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/ui/testimonial-card.tsx
+3:10  Error: 'cn' is defined but never used.  @typescript-eslint/no-unused-vars
+17:49  Error: 'href' is defined but never used.  @typescript-eslint/no-unused-vars
+22:11  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+22:18  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+27:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+./components/ui/use-toast.tsx
+21:7  Error: 'actionTypes' is assigned a value but only used as a type.  @typescript-eslint/no-unused-vars
+30:10  Error: 'genId' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/verification/ProductCard.tsx
+7:8  Error: 'Link' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/verification/ProductRegistrationForm.tsx
+178:14  Error: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+217:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+./components/verification/ProductTimeline.tsx
+23:48  Error: 'productId' is defined but never used.  @typescript-eslint/no-unused-vars
+101:19  Error: 'isLast' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+102:19  Error: 'isFirst' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+./components/verification/SupplyChainTimeline.tsx
+74:39  Error: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/verification/VerificationBadge.tsx
+85:9  Error: 'tooltipContent' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+156:3  Error: 'productName' is defined but never used.  @typescript-eslint/no-unused-vars
+157:6  Error: 'props' is defined but never used.  @typescript-eslint/no-unused-vars
+./components/verification/VerificationResult.tsx
+61:9  Error: 'truncateHash' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+./components/verification/VerificationResultModal.tsx
+20:3  Error: 'User' is defined but never used.  @typescript-eslint/no-unused-vars
+105:10  Error: 'copied' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+1017:7  Error: 'Zap' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+./lib/integrations/lifi/bridge.ts
+118:48  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+128:58  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+143:31  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+./lib/mock-blockchain-data.ts
+588:38  Error: 'timeRange' is defined but never used.  @typescript-eslint/no-unused-vars
+./lib/utils.ts
+14:38  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+14:52  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+14:58  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules

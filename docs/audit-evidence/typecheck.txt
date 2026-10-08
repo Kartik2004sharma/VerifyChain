@@ -1,0 +1,85 @@
+app/dashboard/analytics/page.tsx(38,3): error TS2345: Argument of type '() => Promise<{ default: typeof Line; }>' is not assignable to parameter of type 'DynamicOptions<Props> | Loader<Props>'.
+  Type '() => Promise<{ default: typeof Line; }>' is not assignable to type '() => LoaderComponent<Props>'.
+    Type 'Promise<{ default: typeof Line; }>' is not assignable to type 'LoaderComponent<Props>'.
+      Type '{ default: typeof Line; }' is not assignable to type 'ComponentType<Props> | ComponentModule<Props>'.
+        Type '{ default: typeof Line; }' is not assignable to type 'ComponentModule<Props>'.
+          Types of property 'default' are incompatible.
+            Type 'typeof Line' is not assignable to type 'ComponentType<Props>'.
+              Type 'typeof Line' is not assignable to type 'ComponentClass<Props, any>'.
+                The types of 'defaultProps.legendType' are incompatible between these types.
+                  Type 'string' is not assignable to type 'LegendType | undefined'.
+app/dashboard/analytics/page.tsx(46,3): error TS2345: Argument of type '() => Promise<{ default: typeof Bar; }>' is not assignable to parameter of type 'DynamicOptions<Props> | Loader<Props>'.
+  Type '() => Promise<{ default: typeof Bar; }>' is not assignable to type '() => LoaderComponent<Props>'.
+    Type 'Promise<{ default: typeof Bar; }>' is not assignable to type 'LoaderComponent<Props>'.
+      Type '{ default: typeof Bar; }' is not assignable to type 'ComponentType<Props> | ComponentModule<Props>'.
+        Type '{ default: typeof Bar; }' is not assignable to type 'ComponentModule<Props>'.
+          Types of property 'default' are incompatible.
+            Type 'typeof Bar' is not assignable to type 'ComponentType<Props>'.
+              Type 'typeof Bar' is not assignable to type 'ComponentClass<Props, any>'.
+                The types of 'defaultProps.layout' are incompatible between these types.
+                  Type 'string' is not assignable to type '"horizontal" | "vertical" | undefined'.
+app/dashboard/analytics/page.tsx(54,3): error TS2345: Argument of type '() => Promise<{ default: typeof Pie; }>' is not assignable to parameter of type 'DynamicOptions<Props> | Loader<Props>'.
+  Type '() => Promise<{ default: typeof Pie; }>' is not assignable to type '() => LoaderComponent<Props>'.
+    Type 'Promise<{ default: typeof Pie; }>' is not assignable to type 'LoaderComponent<Props>'.
+      Type '{ default: typeof Pie; }' is not assignable to type 'ComponentType<Props> | ComponentModule<Props>'.
+        Type '{ default: typeof Pie; }' is not assignable to type 'ComponentModule<Props>'.
+          Types of property 'default' are incompatible.
+            Type 'typeof Pie' is not assignable to type 'ComponentType<Props>'.
+              Type 'typeof Pie' is not assignable to type 'ComponentClass<Props, any>'.
+                The types of 'defaultProps.legendType' are incompatible between these types.
+                  Type 'string' is not assignable to type 'LegendType | undefined'.
+app/dashboard/analytics/page.tsx(62,3): error TS2345: Argument of type '() => Promise<{ default: typeof XAxis; }>' is not assignable to parameter of type 'DynamicOptions<Props> | Loader<Props>'.
+  Type '() => Promise<{ default: typeof XAxis; }>' is not assignable to type '() => LoaderComponent<Props>'.
+    Type 'Promise<{ default: typeof XAxis; }>' is not assignable to type 'LoaderComponent<Props>'.
+      Type '{ default: typeof XAxis; }' is not assignable to type 'ComponentType<Props> | ComponentModule<Props>'.
+        Type '{ default: typeof XAxis; }' is not assignable to type 'ComponentModule<Props>'.
+          Types of property 'default' are incompatible.
+            Type 'typeof XAxis' is not assignable to type 'ComponentType<Props>'.
+              Type 'typeof XAxis' is not assignable to type 'ComponentClass<Props, any>'.
+                The types of 'defaultProps.type' are incompatible between these types.
+                  Type 'string' is not assignable to type '"number" | "category" | undefined'.
+app/dashboard/analytics/page.tsx(66,3): error TS2345: Argument of type '() => Promise<{ default: typeof YAxis; }>' is not assignable to parameter of type 'DynamicOptions<Props> | Loader<Props>'.
+  Type '() => Promise<{ default: typeof YAxis; }>' is not assignable to type '() => LoaderComponent<Props>'.
+    Type 'Promise<{ default: typeof YAxis; }>' is not assignable to type 'LoaderComponent<Props>'.
+      Type '{ default: typeof YAxis; }' is not assignable to type 'ComponentType<Props> | ComponentModule<Props>'.
+        Type '{ default: typeof YAxis; }' is not assignable to type 'ComponentModule<Props>'.
+          Types of property 'default' are incompatible.
+            Type 'typeof YAxis' is not assignable to type 'ComponentType<Props>'.
+              Type 'typeof YAxis' is not assignable to type 'ComponentClass<Props, any>'.
+                The types of 'defaultProps.type' are incompatible between these types.
+                  Type 'string' is not assignable to type '"number" | "category" | undefined'.
+app/dashboard/analytics/page.tsx(74,3): error TS2345: Argument of type '() => Promise<{ default: typeof Tooltip; }>' is not assignable to parameter of type 'DynamicOptions<TooltipProps<ValueType, NameType>> | Loader<TooltipProps<ValueType, NameType>>'.
+  Type '() => Promise<{ default: typeof Tooltip; }>' is not assignable to type '() => LoaderComponent<TooltipProps<ValueType, NameType>>'.
+    Type 'Promise<{ default: typeof Tooltip; }>' is not assignable to type 'LoaderComponent<TooltipProps<ValueType, NameType>>'.
+      Type '{ default: typeof Tooltip; }' is not assignable to type 'ComponentType<TooltipProps<ValueType, NameType>> | ComponentModule<TooltipProps<ValueType, NameType>>'.
+        Type '{ default: typeof Tooltip; }' is not assignable to type 'ComponentModule<TooltipProps<ValueType, NameType>>'.
+          Types of property 'default' are incompatible.
+            Type 'typeof Tooltip' is not assignable to type 'ComponentType<TooltipProps<ValueType, NameType>>'.
+              Type 'typeof Tooltip' is not assignable to type 'ComponentClass<TooltipProps<ValueType, NameType>, any>'.
+                The types of 'defaultProps.animationEasing' are incompatible between these types.
+                  Type 'string' is not assignable to type 'AnimationTiming | undefined'.
+app/dashboard/analytics/page.tsx(78,3): error TS2345: Argument of type '() => Promise<{ default: typeof Legend; }>' is not assignable to parameter of type 'DynamicOptions<Props> | Loader<Props>'.
+  Type '() => Promise<{ default: typeof Legend; }>' is not assignable to type '() => LoaderComponent<Props>'.
+    Type 'Promise<{ default: typeof Legend; }>' is not assignable to type 'LoaderComponent<Props>'.
+      Type '{ default: typeof Legend; }' is not assignable to type 'ComponentType<Props> | ComponentModule<Props>'.
+        Type '{ default: typeof Legend; }' is not assignable to type 'ComponentModule<Props>'.
+          Types of property 'default' are incompatible.
+            Type 'typeof Legend' is not assignable to type 'ComponentType<Props>'.
+              Type 'typeof Legend' is not assignable to type 'ComponentClass<Props, any>'.
+                The types of 'defaultProps.layout' are incompatible between these types.
+                  Type 'string' is not assignable to type 'LayoutType | undefined'.
+components/ip-asset-card.tsx(6,30): error TS2307: Cannot find module '@/lib/api' or its corresponding type declarations.
+components/ProductVerificationDashboard.tsx(24,27): error TS2724: '"@/hooks/useProductRegistry"' has no exported member named 'useManufacturerCount'. Did you mean 'useManufacturerInfo'?
+components/verification/VerificationResult.tsx(244,25): error TS2339: Property 'blockchainHash' does not exist on type 'VerificationResult'.
+components/verification/VerificationResult.tsx(249,55): error TS2339: Property 'blockchainHash' does not exist on type 'VerificationResult'.
+components/verification/VerificationResult.tsx(261,82): error TS2339: Property 'blockchainHash' does not exist on type 'VerificationResult'.
+components/verification/VerificationResult.tsx(272,15): error TS2339: Property 'warnings' does not exist on type 'VerificationResult'.
+components/verification/VerificationResult.tsx(272,34): error TS2339: Property 'warnings' does not exist on type 'VerificationResult'.
+components/verification/VerificationResult.tsx(281,25): error TS2339: Property 'warnings' does not exist on type 'VerificationResult'.
+components/verification/VerificationResult.tsx(281,39): error TS7006: Parameter 'warning' implicitly has an 'any' type.
+components/verification/VerificationResult.tsx(281,48): error TS7006: Parameter 'index' implicitly has an 'any' type.
+lib/integrations/lifi/bridge.ts(155,51): error TS2345: Argument of type '{ updateCallback: (update: any) => void; switchChainHook: (requiredChainId: number) => Promise<void>; }' is not assignable to parameter of type 'ExecutionOptions'.
+  The types returned by 'switchChainHook(...)' are incompatible between these types.
+    Type 'Promise<void>' is not assignable to type 'Promise<Client | undefined>'.
+      Type 'void' is not assignable to type 'Client | undefined'.
+lib/integrations/lifi/bridge.ts(158,27): error TS2339: Property 'txHash' does not exist on type 'RouteExtended'.

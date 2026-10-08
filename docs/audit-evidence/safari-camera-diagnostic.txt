@@ -1,0 +1,46 @@
+[2m[WebServer] [22m(node:43284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:43306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:43306) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [webkit] › tests/e2e/passports.spec.ts:324:5 › camera denial leaves manual entry usable (1.1s)
+
+
+  1) [webkit] › tests/e2e/passports.spec.ts:324:5 › camera denial leaves manual entry usable ───────
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoContain[2m([22m[32mexpected[39m[2m) // indexOf[22m
+
+    Expected substring: [32m"Permission denied"[39m
+    Received string:    [31m"function getUserMedia() {[39m
+    [31m    [native code][39m
+    [31m}"[39m
+
+      340 |   expect(
+      341 |     await page.evaluate(() => navigator.mediaDevices.getUserMedia.toString()),
+    > 342 |   ).toContain("Permission denied");
+          |     ^
+      343 |   await page.getByRole("button", { name: "Scan QR with camera" }).click();
+      344 |   await expect(
+      345 |     page.getByRole("button", { name: "Close camera" }),
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/passports.spec.ts:342:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/passports-camera-denial-leaves-manual-entry-usable-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/passports-camera-denial-leaves-manual-entry-usable-webkit/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/passports-camera-denial-leaves-manual-entry-usable-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/passports-camera-denial-leaves-manual-entry-usable-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [webkit] › tests/e2e/passports.spec.ts:324:5 › camera denial leaves manual entry usable ────────

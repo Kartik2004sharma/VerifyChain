@@ -1,0 +1,10 @@
+
+> verifychain@1.0.0 start
+> next start --hostname 127.0.0.1 --port 3310
+
+   ▲ Next.js 15.5.27
+   - Local:        http://127.0.0.1:3310
+   - Network:      http://127.0.0.1:3310
+
+ ✓ Starting...
+ ✓ Ready in 4.6s

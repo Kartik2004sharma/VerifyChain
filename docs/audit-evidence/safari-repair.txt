@@ -1,0 +1,57 @@
+[2m[WebServer] [22m(node:42743) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:42760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [webkit] › tests/e2e/passports.spec.ts:324:5 › camera denial leaves manual entry usable (7.5s)
+(node:42856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:42856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 [webkit] › tests/e2e/passports.spec.ts:376:5 › skip link is usable by keyboard and API not-found shows no registrant (889ms)
+
+
+  1) [webkit] › tests/e2e/passports.spec.ts:324:5 › camera denial leaves manual entry usable ───────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Camera unavailable or permission denied.')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Camera unavailable or permission denied.')[22m
+
+
+      342 |       exact: false,
+      343 |     }),
+    > 344 |   ).toBeVisible();
+          |     ^
+      345 |   await page.getByRole("button", { name: "Close camera" }).click();
+      346 |   await expect(page.getByLabel("Product ID", { exact: true })).toBeVisible();
+      347 | });
+        at /Users/kartik/CS50x2025/Projects/VerifyChain/tests/e2e/passports.spec.ts:344:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/passports-camera-denial-leaves-manual-entry-usable-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/passports-camera-denial-leaves-manual-entry-usable-webkit/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/passports-camera-denial-leaves-manual-entry-usable-webkit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/passports-camera-denial-leaves-manual-entry-usable-webkit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [webkit] › tests/e2e/passports.spec.ts:324:5 › camera denial leaves manual entry usable ────────
+  1 passed (12.3s)

@@ -1,0 +1,12 @@
+
+> verifychain@1.0.0 test:e2e
+> playwright test --grep injected wallet|camera denial|dark theme --project desktop
+
+
+Running 3 tests using 1 worker
+
+  ✓  1 [desktop] › tests/e2e/passports.spec.ts:246:5 › one injected wallet state handles wrong-chain rejection, switch and disconnect (875ms)
+  ✓  2 [desktop] › tests/e2e/passports.spec.ts:317:5 › camera denial leaves manual entry usable (1.6s)
+  ✓  3 [desktop] › tests/e2e/passports.spec.ts:333:5 › dark theme result and keyboard evidence inspection (1.0s)
+
+  3 passed (10.7s)

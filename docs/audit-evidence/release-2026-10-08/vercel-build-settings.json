@@ -1,0 +1,9 @@
+{
+  "id": "prj_mFh66zxPy7OT9dKT5XDEIV4XHKaa",
+  "name": "verifychain",
+  "accountId": "team_IcoC9ZQU7Pd36m8RID0kJKje",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "nodeVersion": "24.x",
+  "framework": "nextjs"
+}

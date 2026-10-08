@@ -1,0 +1,8 @@
+WARNING: You are currently using Node.js v25.9.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+◇ injected env (0) from .env.local // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+
+
+  0 passing (0ms)
+

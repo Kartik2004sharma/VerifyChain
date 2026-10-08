@@ -1,0 +1,24 @@
+
+> verifychain@1.0.0 check
+> npm run lint && npm run typecheck && npm test && npm run contracts:test && npm run test:integration && npm run build
+
+
+> verifychain@1.0.0 lint
+> eslint app components lib tests scripts middleware.ts next.config.ts
+
+
+> verifychain@1.0.0 typecheck
+> tsc --noEmit
+
+docs/audit-evidence/redesign-2026-10-05/before/records.tsx(8,26): error TS2307: Cannot find module './passport' or its corresponding type declarations.
+docs/audit-evidence/redesign-2026-10-05/before/shell.tsx(3,30): error TS2307: Cannot find module './readiness' or its corresponding type declarations.
+docs/audit-evidence/redesign-2026-10-05/before/shell.tsx(21,37): error TS2307: Cannot find module './wallet' or its corresponding type declarations.
+docs/audit-evidence/redesign-2026-10-05/before/verify.tsx(6,26): error TS2307: Cannot find module './passport' or its corresponding type declarations.
+docs/audit-evidence/redesign-2026-10-05/before/verify.tsx(9,38): error TS2307: Cannot find module './scanner' or its corresponding type declarations.
+docs/audit-evidence/redesign-2026-10-05/before/verify.tsx(128,27): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: {}, context?: any): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<...> | Component<...> | null | undefined', gave the following error.
+    Type '{ onScan: (value: string) => void; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes'.
+      Property 'onScan' does not exist on type 'IntrinsicAttributes'.
+  Overload 2 of 2, '(props: {}): string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<...> | Component<...> | null | undefined', gave the following error.
+    Type '{ onScan: (value: string) => void; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes'.
+      Property 'onScan' does not exist on type 'IntrinsicAttributes'.

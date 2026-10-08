@@ -1,0 +1,251 @@
+import Link from "next/link";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  ShieldCheck,
+  ScanLine,
+  Check,
+  Package,
+  Route,
+} from "lucide-react";
+import { Brand } from "@/components/shell";
+export default function Home() {
+  return (
+    <>
+      <header className="landing-nav">
+        <Brand />
+        <nav aria-label="Main">
+          <Link href="#how">How it works</Link>
+          <Link href="/dashboard">
+            Workspace <ArrowUpRight size={15} />
+          </Link>
+          <Link className="button small" href="/verify">
+            Verify a product <ArrowRight size={16} />
+          </Link>
+        </nav>
+      </header>
+      <main id="content">
+        <section className="hero">
+          <div className="hero-copy">
+            <p className="eyebrow">
+              <span className="dot online" /> PRODUCT PROVENANCE, MADE
+              INSPECTABLE
+            </p>
+            <h1>
+              Check the record
+              <br />
+              behind the <em>product.</em>
+            </h1>
+            <p className="hero-lead">
+              A clearer view of where a product’s story begins. Inspect its
+              registration, check its metadata, and follow the available
+              evidence.
+            </p>
+            <form action="/verify" className="hero-lookup">
+              <label htmlFor="hero-id">Find a product passport</label>
+              <div className="input-action">
+                <input
+                  id="hero-id"
+                  name="id"
+                  required
+                  placeholder="Enter product ID"
+                />
+                <button className="button" aria-label="Verify product ID">
+                  <ArrowRight size={20} />
+                </button>
+              </div>
+            </form>
+            <div className="hero-links">
+              <Link href="/verify" className="text-link">
+                Verify a product <ArrowUpRight size={17} />
+              </Link>
+              <Link href="/dashboard/register-product" className="text-link">
+                Register a product <ArrowUpRight size={17} />
+              </Link>
+            </div>
+            <p className="network-disclosure">
+              Ethereum Sepolia testnet · Public lookup · No wallet required
+            </p>
+          </div>
+          <div className="hero-object">
+            <div className="passport-orbit orbit-one" />
+            <div className="passport-orbit orbit-two" />
+            <div className="example-passport">
+              <div className="passport-top">
+                <ShieldCheck size={23} />
+                <span className="mono">EXAMPLE PASSPORT</span>
+              </div>
+              <div className="example-body">
+                <span className="eyebrow">THE RECORD BEHIND THE OBJECT</span>
+                <div className="product-illustration">
+                  <div className="product-seal">
+                    <Package size={48} strokeWidth={1} />
+                  </div>
+                  <span className="mono">VC / 001</span>
+                </div>
+                <h2>
+                  A story you can
+                  <br />
+                  inspect.
+                </h2>
+                <p>Product registration</p>
+                <div className="example-check">
+                  <Check size={17} />
+                  <span>Registry record</span>
+                  <span className="mono">01</span>
+                </div>
+                <div className="example-check">
+                  <Check size={17} />
+                  <span>Metadata commitment</span>
+                  <span className="mono">02</span>
+                </div>
+                <div className="example-check">
+                  <Route size={17} />
+                  <span>Available checkpoints</span>
+                  <span className="mono">03</span>
+                </div>
+              </div>
+              <div className="example-footer">
+                <span>Illustration · No live product</span>
+                <ArrowUpRight size={18} />
+              </div>
+            </div>
+            <p className="object-caption mono">OPEN EVIDENCE. CLEAR LIMITS.</p>
+          </div>
+        </section>
+        <section id="how" className="landing-section">
+          <div className="section-heading">
+            <p className="eyebrow">FROM LABEL TO LEDGER</p>
+            <h2>
+              Three checks.
+              <br />
+              One clearer picture.
+            </h2>
+            <p>
+              Registration is a starting point. Each layer tells you something
+              different.
+            </p>
+          </div>
+          <div className="three-columns steps">
+            {[
+              [
+                ScanLine,
+                "01",
+                "Find the record",
+                "Scan a label or enter a product ID. Public verification never asks you to sign a transaction.",
+              ],
+              [
+                ShieldCheck,
+                "02",
+                "Inspect the commitment",
+                "Compare available product metadata with the hash registered on the blockchain.",
+              ],
+              [
+                Route,
+                "03",
+                "Follow the journey",
+                "Read actual handler checkpoints and inspect their on-chain context where available.",
+              ],
+            ].map(([Icon, n, t, d]) => {
+              const I = Icon as typeof ScanLine;
+              return (
+                <div key={String(n)}>
+                  <div className="step-top">
+                    <I size={26} />
+                    <span className="mono">{String(n)}</span>
+                  </div>
+                  <h3>{String(t)}</h3>
+                  <p>{String(d)}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+        <section className="evidence-section">
+          <div>
+            <p className="eyebrow">EVIDENCE WITHOUT OVERCLAIMS</p>
+            <h2>
+              A record is useful.
+              <br />
+              Its limits matter.
+            </h2>
+            <p>
+              VerifyChain shows what a wallet submitted to the configured
+              registry. It separates registration, metadata integrity and
+              registrant identity so you can judge the evidence.
+            </p>
+            <Link href="/verify" className="button">
+              Inspect a passport <ArrowRight size={17} />
+            </Link>
+          </div>
+          <div className="limits">
+            <h3>What the evidence establishes</h3>
+            <p>✓ A registration exists on the configured chain.</p>
+            <p>✓ Available metadata matches, differs or cannot be retrieved.</p>
+            <p>✓ Checkpoints were submitted by authorized handler wallets.</p>
+            <h3>What it cannot establish</h3>
+            <p>
+              Brand identity certification, physical authenticity, or exclusive
+              custody. A copied QR label can reference a real record.
+            </p>
+          </div>
+        </section>
+        <section className="landing-section manufacturer-callout">
+          <div>
+            <p className="eyebrow">FOR MANUFACTURERS</p>
+            <h2>
+              Give your products
+              <br />
+              an inspectable beginning.
+            </h2>
+            <p>
+              Connect a wallet, register your identity, review canonical product
+              metadata, and confirm your Sepolia transaction. Download a label
+              that opens the public passport.
+            </p>
+          </div>
+          <Link href="/dashboard/register-product" className="button">
+            Open registration <ArrowUpRight size={18} />
+          </Link>
+        </section>
+        <section className="landing-section faq">
+          <p className="eyebrow">BEFORE YOU BEGIN</p>
+          <h2>A few clear answers.</h2>
+          {[
+            [
+              "Do I need a wallet to verify?",
+              "No. Looking up a product is a public read. Registration and handler writes require an explicit wallet approval.",
+            ],
+            [
+              "Is this a production blockchain?",
+              "This release uses Ethereum Sepolia, a test network. Records are testnet evidence, even when the website is hosted publicly.",
+            ],
+            [
+              "Are manufacturers certified?",
+              "No. Manufacturer identities are self-registered wallet submissions. An active account is not proof of brand authorization.",
+            ],
+            [
+              "What happens if services are unavailable?",
+              "The app shows an unavailable state. It never replaces missing evidence with invented records or a counterfeit verdict.",
+            ],
+          ].map(([q, a]) => (
+            <details key={q}>
+              <summary>
+                {q}
+                <span>+</span>
+              </summary>
+              <p>{a}</p>
+            </details>
+          ))}
+        </section>
+      </main>
+      <footer className="landing-footer">
+        <Brand />
+        <span>Product provenance · Ethereum Sepolia testnet</span>
+        <Link href="/dashboard/settings">
+          Network & configuration <ArrowUpRight size={15} />
+        </Link>
+      </footer>
+    </>
+  );
+}

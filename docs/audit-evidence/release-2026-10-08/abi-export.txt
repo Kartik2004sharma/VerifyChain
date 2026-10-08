@@ -1,0 +1,4 @@
+
+> verifychain@1.0.0 abi:export
+> node scripts/export-abis.cjs
+
