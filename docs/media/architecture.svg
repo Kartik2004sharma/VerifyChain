@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" role="img" aria-labelledby="title description">
+  <title id="title">VerifyChain configured runtime architecture</title>
+  <desc id="description">Consumers use the Next.js interface. It calls server routes for validated reads through Sepolia RPC and for metadata uploads to Pinata and IPFS. Server routes use Upstash Redis for quotas and one-use nonces. Manufacturers and handlers approve contract writes through an injected wallet. Live services require configuration.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8" fill="#2455ec"/></marker>
+  </defs>
+  <rect width="1100" height="600" rx="24" fill="#f5f6fa"/>
+  <g font-family="Arial, sans-serif" fill="#0e1629">
+    <text x="40" y="52" font-size="25" font-weight="700">How the evidence moves</text>
+    <text x="40" y="82" font-size="16" fill="#596276">Configured runtime · Ethereum Sepolia testnet</text>
+  </g>
+  <g fill="none" stroke="#2455ec" stroke-width="2.5" marker-end="url(#arrow)">
+    <path d="M210 175H270"/><path d="M470 175H530"/><path d="M730 175H790"/>
+    <path d="M890 220V310"/>
+    <path d="M210 355H270"/><path d="M470 355H790"/>
+    <path d="M630 220V445"/><path d="M730 200H755V490H790"/>
+  </g>
+  <g fill="#fff" stroke="#dce1eb" stroke-width="1.5">
+    <rect x="40" y="130" width="170" height="90" rx="12"/>
+    <rect x="270" y="130" width="200" height="90" rx="12"/>
+    <rect x="530" y="130" width="200" height="90" rx="12"/>
+    <rect x="790" y="130" width="200" height="90" rx="12"/>
+    <rect x="40" y="310" width="170" height="90" rx="12"/>
+    <rect x="270" y="310" width="200" height="90" rx="12"/>
+    <rect x="790" y="310" width="200" height="90" rx="12"/>
+    <rect x="530" y="445" width="200" height="90" rx="12"/>
+    <rect x="790" y="445" width="200" height="90" rx="12"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#0e1629" text-anchor="middle">
+    <text x="125" y="182">Consumer</text>
+    <text x="370" y="169">Next.js UI</text>
+    <text x="630" y="169">Server routes</text>
+    <text x="890" y="169">Sepolia RPC</text>
+    <text x="125" y="347">Manufacturer</text><text x="125" y="373">or handler</text>
+    <text x="370" y="349">Injected wallet</text>
+    <text x="890" y="349">Contracts</text>
+    <text x="630" y="484">Pinata / IPFS</text>
+    <text x="890" y="484">Upstash Redis</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="14" fill="#596276" text-anchor="middle">
+    <text x="370" y="193">Public product passports</text><text x="630" y="193">Validated reads and uploads</text>
+    <text x="890" y="193">Chain and code checks</text><text x="370" y="373">Explicit approval</text>
+    <text x="890" y="373">Registration and checkpoints</text><text x="630" y="508">Canonical JSON metadata</text>
+    <text x="890" y="508">Quotas and one-use nonces</text>
+    <text x="550" y="340" fill="#2455ec">Signed writes</text>
+    <text x="630" y="575">Live services remain unavailable until the deployment and configuration validate.</text>
+  </g>
+</svg>

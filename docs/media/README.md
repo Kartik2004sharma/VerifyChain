@@ -4,6 +4,7 @@
 | ------------------------------------------------------------ | -------------------------------------------------------------- |
 | [verifychain-intro.mp4](verifychain-intro.mp4)               | 23-second, 1920×1080, 30 fps intro; H.264 video with AAC audio |
 | [verifychain-intro-poster.jpg](verifychain-intro-poster.jpg) | Settled opening frame, also baked into the video's first frame |
+| [architecture.svg](architecture.svg)                         | Static diagram of the intended configured runtime              |
 
 GitHub-hosted player: https://github.com/user-attachments/assets/87f9a80a-735d-4f73-9c0f-ff655a58f55c
 

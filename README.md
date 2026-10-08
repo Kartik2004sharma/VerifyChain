@@ -66,18 +66,7 @@ Rejected signatures, wrong networks, reverted calls, and unresolved receipts hav
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    Consumer[Consumer] --> UI[Next.js application]
-    Operator[Manufacturer or handler] --> Wallet[Injected wallet]
-    Wallet -->|Approve writes| Contracts[Sepolia contracts]
-    UI -->|Public reads and upload requests| API[Next.js route handlers]
-    API -->|Validated reads| RPC[Sepolia RPC]
-    RPC --> Contracts
-    API -->|Signed metadata upload| Pinata[Pinata and IPFS]
-    API -->|Quotas and one-use nonces| Redis[Upstash Redis]
-    API -->|Commitment and integrity result| UI
-```
+![VerifyChain architecture: public UI and server reads, approved wallet writes, IPFS metadata, and shared Redis quotas](docs/media/architecture.svg)
 
 The diagram describes the intended configured runtime. RPC, storage, and contract availability remain subject to the release status above.
 
